@@ -1,5 +1,5 @@
 /**
- * Defines <code>Notification</code> names for the application.
+ * Defines <code>Notification</code>s names for the application.
  */
 module EmployeeAdmin
 {

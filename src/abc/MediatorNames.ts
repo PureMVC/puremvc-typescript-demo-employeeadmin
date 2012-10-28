@@ -1,5 +1,5 @@
 /**
- * Defines <code>Mediator</code> names for the application.
+ * Defines <code>Mediator</code>s names for the application.
  */
 module EmployeeAdmin
 {

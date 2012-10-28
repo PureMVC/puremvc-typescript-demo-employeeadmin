@@ -1,5 +1,5 @@
 /**
- * Defines <code>Proxy</code> names for the application.
+ * Defines <code>Proxy</code>s names for the application.
  */
 module EmployeeAdmin
 {
