@@ -48,7 +48,7 @@ var ApplicationFacade = Objs("org.puremvc.js.demos.objs.employeeadmin.Applicatio
  * 		The <code>Facade</code> subclass instance used throughout the
  * 		application.
  */
-ApplicationFacade.getInstance = function()
+ApplicationFacade.getInstance()
 {
 	if( !Facade.instance ) 
 		Facade.instance = new ApplicationFacade();

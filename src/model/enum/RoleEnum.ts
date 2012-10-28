@@ -9,9 +9,9 @@ var RoleEnum = Objs("org.puremvc.js.demos.objs.employeeadmin.model.enum.RoleEnum
 	/**
 	 * The <code>RoleEnum</code> entry identifier.
 	 * 
-	 * @type {Number}
+	 * @type
 	 */
-	ordinal: null,
+	ordinal:number = null;
 	
 	
 	/**
@@ -78,7 +78,7 @@ RoleEnum.RETURNS:RoleEnum 		= new RoleEnum( "Returns",13  );
  * 		The roles list excluding the <code>RoleEnum.NONE_SELECTED</code>
  * 		item.
  */
-RoleEnum.getList = function()
+RoleEnum.getList()
 {
 	return [
 		RoleEnum.ADMIN, 
@@ -106,7 +106,7 @@ RoleEnum.getList = function()
  * 		The department list including the <code>RoleEnum.NONE_SELECTED</code>
  * 		item.
  */
-RoleEnum.getComboList = function()
+RoleEnum.getComboList()
 {
 	var cList:Array = RoleEnum.getList();
 	cList.unshift( RoleEnum.NONE_SELECTED );
@@ -123,7 +123,7 @@ RoleEnum.getComboList = function()
  * 		The <code>RoleEnum</code> with this ordinal value or <code>null</code>
  * 		if not found.
  */
-RoleEnum.getItem = function( ordinal )
+RoleEnum.getItem( ordinal )
 {
 	var list:Array = RoleEnum.getList();
 	for( var i:Number=0; i<list.length; i++ )

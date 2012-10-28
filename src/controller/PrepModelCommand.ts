@@ -1,5 +1,11 @@
 ///<reference path='../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
+///<reference path='../abc/ProxyNames.ts'/>
+///<reference path='../model/vo/UserVO.ts'/>
+///<reference path='../model/vo/RoleVO.ts'/>
+///<reference path='../model/UserProxy.ts'/>
+///<reference path='../model/RoleProxy.ts'/>
+
 /**
  * Configure and initialize model for the application.
  */
@@ -10,15 +16,24 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class PrepModelCommand
-		extends SimpleCommand,
+		extends SimpleCommand
 	{
 		/**
 		 * @override
 		 */
 		execute( note:INotification ):void
 		{
-			this.facade.registerProxy( new UserProxy( ProxyNames.USER_PROXY, this.generateUsers() ) );
-			this.facade.registerProxy( new RoleProxy( ProxyNames.ROLE_PROXY , this.generateRoles() ) );
+			/*
+			 * Data initialization.
+			 */
+			var userProxy:IProxy = new UserProxy( ProxyNames.USER_PROXY, this.generateUsers() );
+		 	var roleProxy:IProxy = new RoleProxy( ProxyNames.ROLE_PROXY , this.generateRoles() );
+
+			/*
+			 * Proxies initialization.
+			 */
+			this.facade.registerProxy( userProxy );
+			this.facade.registerProxy( roleProxy );
 		}
 
 		/**
@@ -30,7 +45,7 @@ module EmployeeAdmin
 		generateUsers():UserVO[]
 		{
 			var user:UserVO;
-			var users:UserVO[] = new Array();
+			var users:UserVO[] = new UserVO[]();
 
 			user = new UserVO();
 			user.uname = "lstooge";
@@ -65,13 +80,13 @@ module EmployeeAdmin
 		/**
 		 * Generates and returns a dummy roles list.
 		 *
-		 * @return {Array}
+		 * @return
 		 * 		The generated dummy roles list.
 		 */
-		generateRoles()
+		generateRoles():RoleVO[]
 		{
 			var role:RoleVO;
-			var roles:Array = new Array();
+			var roles:RoleVO[] = new RoleVO[]();
 
 			role = new RoleVO();
 			role.uname = "lstooge";

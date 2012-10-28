@@ -3,25 +3,31 @@
 /**
  * Start the application.
  */
-var StartupCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.StartupCommand",
-	MacroCommand,
+module EmployeeAdmin
 {
-	/**
-	 * @override
-	 * 
-	 * Add the Subcommands to startup the PureMVC apparatus.
-	 * 
-	 * Generally, it is best to prep the Model (mostly registering 
-	 * proxies)followed by preparation of the View (mostly registering 
-	 * Mediators).
-	 * 
-	 * @param {Notification} note
-	 * 		The <code>Notification</code> object to be passed to each entry
-	 * 		of <i>subCommands</i> list.
-	 */
-	initializeMacroCommand( note )
+	"use strict";
+
+	import puremvc = module("puremvc");
+
+	export class StartupCommand
+		extends SimpleCommand
 	{
-		this.addSubCommand( PrepModelCommand );
-		this.addSubCommand( PrepViewCommand );
+		/**
+		 * @override
+		 *
+		 * Add the Subcommands to startup the PureMVC apparatus.
+		 *
+		 * Generally, it is best to prep the Model (mostly registering  proxies)followed by
+		 * preparation of the View (mostly registering Mediators).
+		 *
+		 * @param {Notification} note
+		 * 		The <code>Notification</code> object to be passed to each entry	of
+		 * 		<i>subCommands</i> list.
+		 */
+		initializeMacroCommand( note:INotification )
+		{
+			this.addSubCommand( PrepModelCommand );
+			this.addSubCommand( PrepViewCommand );
+		}
 	}
-});
+}

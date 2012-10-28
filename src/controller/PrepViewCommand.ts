@@ -1,5 +1,15 @@
 ///<reference path='../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
+///<reference path='../abc/MediatorNames.ts'/>
+
+///<reference path='../view/UserListMediator.ts'/>
+///<reference path='../view/UserFormMediator.ts'/>
+///<reference path='../view/RolePanelMediator.ts'/>
+
+///<reference path='../view/components/RolePanel.ts'/>
+///<reference path='../view/components/UserForm.ts'/>
+///<reference path='../view/components/UserList.ts'/>
+
 /**
  * Configure and initialize view for the application.
  */
@@ -10,7 +20,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class PrepViewCommand
-		extends SimpleCommand,
+		extends SimpleCommand
 	{
 		/**
 		 * @override
@@ -27,9 +37,9 @@ module EmployeeAdmin
 			/*
 			 * Mediators initialization
 			 */
-			var userListMediator:UserListMediator = new UserListMediator( MediatorNames.USER_LIST_MEDIATOR, userList );
-			var userFormMediator:UserFormMediator = new UserFormMediator( MediatorNames.USER_FORM_MEDIATOR, userForm );
-			var rolePanelMediator:RolePanelMediator = new RolePanelMediator( MediatorNames.ROLE_PANEL_MEDIATOR, rolePanel );
+			var userListMediator:IMediator = new UserListMediator( MediatorNames.USER_LIST_MEDIATOR, userList );
+			var userFormMediator:IMediator = new UserFormMediator( MediatorNames.USER_FORM_MEDIATOR, userForm );
+			var rolePanelMediator:IMediator = new RolePanelMediator( MediatorNames.ROLE_PANEL_MEDIATOR, rolePanel );
 
 			/*
 			 * PureMVC mediators registration
