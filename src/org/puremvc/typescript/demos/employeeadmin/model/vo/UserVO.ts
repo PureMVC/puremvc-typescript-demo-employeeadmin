@@ -1,11 +1,6 @@
 /**
  * @classDescription
- * The value object in charge of transporting the data to describe each user of
- * the application.
- * 
- * @requires org.puremvc.js.demos.objs.employeeadmin.model.enum.DeptEnum DeptEnum
- * 
- * @constructor
+ * The value object in charge of transporting the data to describe each user of the application.
  */
 var UserVO = Objs("org.puremvc.js.demos.objs.employeeadmin.model.vo.UserVO",
 {

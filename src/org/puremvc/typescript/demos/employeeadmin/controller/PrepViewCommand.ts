@@ -1,10 +1,6 @@
 /**
  * @class
  * Configure and initialize view for the application.
- *
- * @extends org.puremvc.js.patterns.command.SimpleCommand SimpleCommand
- *
- * @constructor
  */
 var PrepViewCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.PrepViewCommand",
 	SimpleCommand,

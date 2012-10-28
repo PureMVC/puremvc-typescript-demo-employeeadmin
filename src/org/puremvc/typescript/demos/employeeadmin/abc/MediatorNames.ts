@@ -1,5 +1,3 @@
-
-
 /**
  * @class
  * Defines <code>Mediator</code> names for the application.

@@ -1,8 +1,6 @@
 /**
  * @class
  * An enumeration of department items.
- *
- * @constructor
  */
 var DeptEnum = Objs("org.puremvc.js.demos.objs.employeeadmin.model.enum.DeptEnum",
 {

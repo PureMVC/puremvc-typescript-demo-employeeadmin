@@ -1,8 +1,6 @@
 /**
  * @class
  * The UI component in charge of the <em>role panel</em>.
- * 
- * @extends org.puremvc.js.demos.objs.employeeadmin.view.components.UiComponent UiComponent
  */
 var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.RolePanel",
 	UiComponent,

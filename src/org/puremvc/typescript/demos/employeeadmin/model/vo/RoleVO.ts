@@ -1,9 +1,6 @@
 /**
  * @classDescription
- * The value object in charge of transporting the data to describe each user
- * roles.
- * 
- * @constructor
+ * The value object in charge of transporting the data to describe each user roles.
  */
 var RoleVO = Objs("org.puremvc.js.demos.objs.employeeadmin.model.vo.RoleVO",
 {

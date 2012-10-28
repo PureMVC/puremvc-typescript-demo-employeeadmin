@@ -1,10 +1,6 @@
 /**
  * @class
  * Start the application.
- *
- * @extends org.puremvc.js.patterns.command.SimpleCommand SimpleCommand
- *
- * @constructor
  */
 var StartupCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.StartupCommand",
 	MacroCommand,

@@ -1,10 +1,6 @@
 /**
  * @class
  * Configure and initialize model for the application.
- *
- * @extends org.puremvc.js.patterns.command.SimpleCommand SimpleCommand
- *
- * @constructor
  */
 var PrepModelCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.PrepModelCommand",
 	SimpleCommand,

@@ -1,10 +1,6 @@
 /**
  * @class
  * The UI component in charge of the <em>User List</em>.
- * 
- * @extends org.puremvc.js.demos.objs.employeeadmin.view.components.UiComponent UiComponent
- *
- * @constructor
  */
 var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UserList",
 	UiComponent,

@@ -1,14 +1,11 @@
 /**
  * @class
  * A base class used for UI components of the application.
- * 
- * <P>
- * It mainly adds a basic UiComponent implementation to make UI components
- * listenable from the <code>Mediator</code>s. Here to simplify the demo we
- * don't use a real <code>Event</code> class. Implementers and listeners are
- * responsible for the anonymous events object they dispatch and receive.
  *
- * @constructor
+ * It mainly adds a basic UiComponent implementation to make UI components listenable from the
+ * <code>Mediator</code>s. Here to simplify the demo we don't use a real <code>Event</code> class.
+ * Implementers and listeners are responsible for the anonymous events object they dispatch and
+ * receive.
  */
 var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UiComponent",
 {

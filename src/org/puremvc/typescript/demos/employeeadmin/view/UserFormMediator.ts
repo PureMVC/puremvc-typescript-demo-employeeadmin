@@ -1,17 +1,6 @@
 /**
  * @class
  * User form component <code>Mediator</code>.
- *
- * @requires org.puremvc.js.patterns.mediator.Mediator Mediator
- * @requires org.puremvc.js.patterns.observer.Notification Notification
- * @requires org.puremvc.js.demos.objs.employeeadmin.model.vo.UserVO UserVO
- * @requires org.puremvc.js.demos.objs.employeeadmin.model.UserProxy UserProxy
- * @requires org.puremvc.js.demos.objs.employeeadmin.model.enum.DeptEnum DeptEnum
- * @requires org.puremvc.js.demos.objs.employeeadmin.view.components.UserForm UserForm
- *
- * @extends org.puremvc.js.patterns.mediator.Mediator Mediator
- *
- * @constructor
  */
 var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFormMediator",
 	Mediator,

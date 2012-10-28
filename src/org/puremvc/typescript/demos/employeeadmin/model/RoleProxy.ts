@@ -1,18 +1,6 @@
 /**
  * @classDescription
- * PureMVC <code>Proxy</code> class object used to control the user roles list
- * of the application. 
- * 
- * @requires org.puremvc.js.patterns.proxy.Proxy Proxy
- * @requires org.puremvc.js.patterns.observer.Notification Notification
- * @requires org.puremvc.js.demos.objs.employeeadmin.model.vo.RoleVO RoleVO
- * @requires org.puremvc.js.demos.objs.employeeadmin.model.vo.UserVO UserVO
- * @requires org.puremvc.js.demos.objs.employeeadmin.model.enum.RoleEnum RoleEnum
- * @requires org.puremvc.js.demos.objs.employeeadmin.ApplicationFacade ApplicationFacade
- * 
- * @extends org.puremvc.js.patterns.proxy.Proxy Proxy
- * 
- * @constructor
+ * PureMVC <code>Proxy</code> class object used to control the user roles list of the application.
  */
 var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 	Proxy,

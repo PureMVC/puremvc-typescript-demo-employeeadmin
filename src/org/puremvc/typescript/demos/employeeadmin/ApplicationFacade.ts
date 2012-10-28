@@ -1,14 +1,6 @@
 /**
  * @class
  * PureMVC <code>Facade</code> for this application.
- * 
- * @requires org.puremvc.js.patterns.facade.Facade Facade
- * @requires org.puremvc.js.patterns.observer.Notification Notification
- * @requires org.puremvc.js.demos.objs.employeeadmin.controller.StartupCommand StartupCommand
- * @requires org.puremvc.js.demos.objs.employeeadmin.controller.DeleteUserCommand DeleteUserCommand
- * @requires org.puremvc.js.demos.objs.employeeadmin.controller.AddRoleResultCommand AddRoleResultCommand
- * 
- * @extends org.puremvc.js.patterns.facade.Facade Facade
  */
 var ApplicationFacade = Objs("org.puremvc.js.demos.objs.employeeadmin.ApplicationFacade",
 	Facade,

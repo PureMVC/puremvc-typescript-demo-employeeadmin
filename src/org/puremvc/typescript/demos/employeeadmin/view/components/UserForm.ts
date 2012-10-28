@@ -1,10 +1,6 @@
 /**
  * @class
  * The UI component in charge of the <em>user form</em>.
- * 
- * @extends org.puremvc.js.demos.objs.employeeadmin.view.components.UiComponent UiComponent
- *
- * @constructor
  */
 var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UserForm",
 	UiComponent,
