@@ -54,7 +54,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 */
 	registerListeners()
 	{
-		var userForm/*UserForm*/ = this.getUserForm();
+		var userForm:UserForm = this.getUserForm();
 		userForm.addEventListener( UserForm.ADD, this.onAdd, this );
 		userForm.addEventListener( UserForm.UPDATE, this.onUpdate, this );
 		userForm.addEventListener( UserForm.CANCEL, this.onCancel, this );
@@ -65,7 +65,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 */
 	unregisterListeners()
 	{
-		var userForm/*UserForm*/ = this.getUserForm();
+		var userForm:UserForm = this.getUserForm();
 		userForm.addEventListener( UserForm.ADD, this.onAdd, this );
 		userForm.addEventListener( UserForm.UPDATE, this.onUpdate, this );
 		userForm.addEventListener( UserForm.CANCEL, this.onCancel, this );
@@ -81,11 +81,11 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 */
 	onAdd( event )
 	{
-		var user/*UserVO*/ = this.getUserForm().getUser();
+		var user:UserVO = this.getUserForm().getUser();
 		this.userProxy.addItem( user );
 		this.sendNotification( NotificationNames.USER_ADDED, user );
 		
-		var userForm/*UserForm*/ = this.getUserForm();
+		var userForm:UserForm = this.getUserForm();
 		userForm.clearForm();
 		userForm.setEnabled(false);
 		userForm.setMode(UserForm.MODE_ADD);
@@ -98,11 +98,11 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 */
 	onUpdate()
 	{
-		var user/*UserVO*/ = this.getUserForm().getUser();
+		var user:UserVO = this.getUserForm().getUser();
 		this.userProxy.updateItem( user );
 		this.sendNotification(  NotificationNames.USER_UPDATED, user );
 		
-		var userForm/*UserForm*/ = this.getUserForm();
+		var userForm:UserForm = this.getUserForm();
 		userForm.clearForm();
 		userForm.setEnabled(false);
 		userForm.setMode(UserForm.MODE_ADD);
@@ -116,7 +116,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	onCancel()
 	{
 		this.sendNotification(  NotificationNames.CANCEL_SELECTED );
-		var userForm/*UserForm*/ = this.getUserForm();
+		var userForm:UserForm = this.getUserForm();
 		userForm.clearForm();
 		userForm.setEnabled(false);
 		userForm.setMode(UserForm.MODE_ADD);
@@ -139,9 +139,9 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 */
 	handleNotification( note )
 	{
-		var userForm/*UserForm*/ = this.getUserForm();
+		var userForm:UserForm = this.getUserForm();
 		
-		var user/*UserVO*/;
+		var user:UserVO;
 		switch ( note.getName() )
 		{
 			case NotificationNames.NEW_USER:

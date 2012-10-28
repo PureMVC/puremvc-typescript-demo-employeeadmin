@@ -125,7 +125,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	bindListeners()
 	{
 		//jQuery will be able to only remove events attached under this namespace
-		var namespace/*String*/ = ".UserRoleList";
+		var namespace:String = ".UserRoleList";
 		this.addRoleButton.on( "click"+namespace, jQuery.proxy( this, "addRoleButton_clickHandler") );
 		this.removeRoleButton.on( "click"+namespace, jQuery.proxy( this, "removeRoleButton_clickHandler") );
 		this.roleList.on( "change"+namespace, jQuery.proxy( this, "roleList_changeHandler") );
@@ -138,7 +138,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	unbindListeners()
 	{
 		//jQuery will be able to only remove events attached under this namespace
-		var namespace/*String*/ = ".UserRoleList";
+		var namespace:String = ".UserRoleList";
 		this.addRoleButton.off( "click"+namespace );
 		this.removeRoleButton.off( "click"+namespace );
 		this.roleList.off( "change"+namespace );
@@ -151,22 +151,22 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 */
 	fillRoleList()
 	{
-		var roleEnumList/*Array*/ = RoleEnum.getComboList();
+		var roleEnumList:Array = RoleEnum.getComboList();
 
 		/*First clear all*/
 		this.roleList.empty();
 
-		var htmlList/*String*/ = "";
-		for(var i/*Number*/=0; i<roleEnumList.length; i++)
+		var htmlList:String = "";
+		for(var i:Number=0; i<roleEnumList.length; i++)
 		{		
-			var role/*RoleVO*/ = roleEnumList[i];
+			var role:RoleVO = roleEnumList[i];
 			
 			/*
 			 * An item not having a value in jQuery will be excluded from the
 			 * pop-up menu.
 			 */ 
-			var valueAttr/*String*/ = 'value="' + role.ordinal + '"';
-			var selectedAttr/*String*/ = i == 0 ? "selected" : "";
+			var valueAttr:String = 'value="' + role.ordinal + '"';
+			var selectedAttr:String = i == 0 ? "selected" : "";
 			htmlList += '<option ' + valueAttr + ' ' + selectedAttr + ' >' + role.value + '</option>';
 		}
 	
@@ -190,10 +190,10 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		this.userRoles = userRoles;
 
 		// Fill the data-grid
-		for(var i/*Number*/=0; i<userRoles.length; i++)
+		for(var i:Number=0; i<userRoles.length; i++)
 		{
-			var role/*RoleVO*/ = userRoles[i];
-			var rowData/*Object*/ = role;
+			var role:RoleVO = userRoles[i];
+			var rowData:Object = role;
 
 			this.userRoleList.jqGrid( 'addRowData', i+1, rowData );
 		}	
@@ -310,7 +310,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 */
 	userRoleList_changeHandler( id )
 	{
-		var index/*Number*/ = this.userRoleList.jqGrid( 'getInd', id );
+		var index:Number = this.userRoleList.jqGrid( 'getInd', id );
 		this.selectedRole = this.userRoles[index-1];
 		this.setMode( RolePanel.REMOVE_MODE );
 	},
@@ -322,13 +322,13 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	{
 		this.userRoleList.jqGrid( 'resetSelection' );
 
-		var roleEnumList/*Array*/ = RoleEnum.getComboList();
+		var roleEnumList:Array = RoleEnum.getComboList();
 		this.selectedRole = roleEnumList[this.roleList.prop("selectedIndex")];
 		
-		var alreadyInList/*Boolean*/ = false;
-		for(var i/*Number*/=0; i<this.userRoles.length; i++)
+		var alreadyInList:Boolean = false;
+		for(var i:Number=0; i<this.userRoles.length; i++)
 		{
-			var role/*RoleVO*/ = this.userRoles[i];
+			var role:RoleVO = this.userRoles[i];
 			if( role.equals(this.selectedRole) )
 			{
 				alreadyInList = true;
@@ -346,11 +346,11 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 /*
  * Event names
  */
-RolePanel.ADD/*String*/ 			= "add";
-RolePanel.REMOVE/*String*/ 			= "remove";
+RolePanel.ADD:String 			= "add";
+RolePanel.REMOVE:String 			= "remove";
 
 /*
  * View states
  */
-RolePanel.ADD_MODE/*String*/ 		= "addMode";
-RolePanel.REMOVE_MODE/*String*/ 	= "removeMode";
+RolePanel.ADD_MODE:String 		= "addMode";
+RolePanel.REMOVE_MODE:String 	= "removeMode";

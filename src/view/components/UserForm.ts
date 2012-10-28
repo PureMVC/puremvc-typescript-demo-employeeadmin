@@ -147,9 +147,9 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	bindListeners()
 	{
 		//jQuery will be able to only remove events attached under this namespace
-		var namespace/*String*/ = ".UserForm";
+		var namespace:String = ".UserForm";
 
-		var focusEventProxy/*jQueryProxy*/ = jQuery.proxy( this, "field_focusHandler" );
+		var focusEventProxy:jQueryProxy = jQuery.proxy( this, "field_focusHandler" );
 		this.uname.on("focus" + namespace, focusEventProxy );
 		this.password.on("focus" + namespace, focusEventProxy );
 		this.confirm.on("focus" + namespace, focusEventProxy );
@@ -164,7 +164,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	unbindListeners()
 	{
 		//jQuery will only remove events attached under this namespace
-		var namespace/*String*/ = ".UserForm";
+		var namespace:String = ".UserForm";
 
 		this.uname.off("focus" + namespace );
 		this.password.off("focus" + namespace );
@@ -186,10 +186,10 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 */
 	fillList( deptEnumList )
 	{
-		var htmlList/*String*/ = "";
-		for(var i/*Number*/=0; i<deptEnumList.length; i++)
+		var htmlList:String = "";
+		for(var i:Number=0; i<deptEnumList.length; i++)
 		{		
-			var deptEnum/*DeptEnum*/ = deptEnumList[i];
+			var deptEnum:DeptEnum = deptEnumList[i];
 			
 			/*
 			 * An item not having a value in jQuery will be excluded from the
@@ -197,7 +197,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 			 */ 
 			var valueAttr = 'value="' + deptEnum.ordinal + '"';
 			
-			var selectedAttr/*String*/ = "";
+			var selectedAttr:String = "";
 			if( this.user && deptEnum.equals(this.user.department) )
 				selectedAttr = "selected";
 				
@@ -243,7 +243,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		}
 	},
 	
-	getUser()/*UserVO*/
+	getUser():UserVO
 	{
 		this.updateUser();
 		return this.user;
@@ -260,8 +260,8 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		this.user.email = this.email.val();
 		this.user.password = this.password.val();
 	
-		var selected/*Number*/ = parseInt(this.department.val())+1;
-		var deptEnumList/*Array*/ = DeptEnum.getComboList();
+		var selected:Number = parseInt(this.department.val())+1;
+		var deptEnumList:Array = DeptEnum.getComboList();
 		this.user.department = deptEnumList[selected];
 	},
 	
@@ -354,7 +354,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		if( this.getErrors() )
 			return;
 	
-		var user/*UserVO*/ = this.getUser();
+		var user:UserVO = this.getUser();
 		if( user.getIsValid() )
 		{
 			if( this.mode == UserForm.MODE_ADD )
@@ -390,7 +390,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 */
 	getErrors()
 	{
-		var error/*Boolean*/ = false;
+		var error:Boolean = false;
 
 		if( this.uname.val() == "" )
 			this.setFieldError( "uname", error = true );
@@ -407,9 +407,9 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		else
 			this.setFieldError( "confirm", false );
 	
-		var selected/*Number*/ = parseInt(this.department.val())+1;
-		var deptEnumList/*Array*/ = DeptEnum.getComboList();
-		var department/*DeptEnum*/ = deptEnumList[selected];
+		var selected:Number = parseInt(this.department.val())+1;
+		var deptEnumList:Array = DeptEnum.getComboList();
+		var department:DeptEnum = deptEnumList[selected];
 	
 		if( department.equals(DeptEnum.NONE_SELECTED) )
 			this.setFieldError( "department", error = true );
@@ -430,8 +430,8 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 */
 	setFieldError( fieldName, error )
 	{
-		var label/*HTMLElement*/ = this.userFormPanel.find( 'label[for="' + fieldName + '"]' );
-		var field/*HTMLElement*/ = this.userFormPanel.find( "#" + fieldName );
+		var label:HTMLElement = this.userFormPanel.find( 'label[for="' + fieldName + '"]' );
+		var field:HTMLElement = this.userFormPanel.find( "#" + fieldName );
 		
 		if( error )
 			field.addClass( "fieldError" );

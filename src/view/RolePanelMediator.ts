@@ -52,7 +52,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 */
 	registerListeners()
 	{
-		var rolePanel/*RolePanel*/ = this.getRolePanel();
+		var rolePanel:RolePanel = this.getRolePanel();
 		rolePanel.addEventListener( RolePanel.ADD, this.onAddRole, this );
 		rolePanel.addEventListener( RolePanel.REMOVE, this.onRemoveRole, this );
 	},
@@ -62,7 +62,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 */
 	unregisterListeners()
 	{
-		var rolePanel/*RolePanel*/ = this.getRolePanel();
+		var rolePanel:RolePanel = this.getRolePanel();
 		rolePanel.removeEventListener( RolePanel.ADD, this.onAddRole, this );
 		rolePanel.removeEventListener( RolePanel.REMOVE, this.onRemoveRole, this );
 	},
@@ -100,8 +100,8 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 */
 	updateUserRoleList()
 	{
-		var userName/*String*/ = this.getRolePanel().user.uname;
-		var userRoles/*Array*/ = this.roleProxy.getUserRoles( userName );
+		var userName:String = this.getRolePanel().user.uname;
+		var userRoles:Array = this.roleProxy.getUserRoles( userName );
 		this.getRolePanel().setUserRoles( userRoles );
 	},
 
@@ -126,7 +126,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 */
 	handleNotification( note )
 	{
-		var rolePanel/*RolePanel*/ = this.getRolePanel();
+		var rolePanel:RolePanel = this.getRolePanel();
 
 		switch( note.getName() )
 		{
@@ -138,7 +138,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 			case NotificationNames.USER_ADDED:
 				rolePanel.user = note.getBody();
 				
-				var roleVO/*RoleVO*/ = new RoleVO ();
+				var roleVO:RoleVO = new RoleVO ();
 				roleVO.uname = rolePanel.user.uname;
 				
 				this.roleProxy.addItem( roleVO );

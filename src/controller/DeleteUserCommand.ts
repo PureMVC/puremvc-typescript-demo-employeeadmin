@@ -15,11 +15,11 @@ module EmployeeAdmin
 		/**
 		 * @override
 		 */
-		execute( note )
+		execute( note:INotification ):void
 		{
-			var user/*UserVO*/ = note.getBody();
-			var userProxy/*UserProxy*/ = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
-			var roleProxy/*RoleProxy*/ = this.facade.retrieveProxy( ProxyNames.ROLE_PROXY );
+			var user:UserVO = note.getBody();
+			var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
+			var roleProxy:RoleProxy = this.facade.retrieveProxy( ProxyNames.ROLE_PROXY );
 
 			userProxy.deleteItem( user );
 			roleProxy.deleteItem( user );

@@ -100,7 +100,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	bindListeners()
     {
 		//jQuery will be able to only remove events attached under this namespace
-		var namespace/*String*/ = ".UserList";
+		var namespace:String = ".UserList";
 		this.userList.jqGrid( "setGridParam", { onSelectRow: jQuery.proxy( this, "userList_selectHandler" ) } );
 		this.newButton.on( "click"+namespace, jQuery.proxy( this, "newButton_clickHandler" ) );
 		this.deleteButton.on( "click"+namespace, jQuery.proxy( this, "deleteButton_clickHandler" ) );
@@ -112,7 +112,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	unbindListeners()
 	{
 		//jQuery will only remove events attached under this namespace
-		var namespace/*String*/ = ".UserList";
+		var namespace:String = ".UserList";
 		this.userList.jqGrid( "setGridParam", { onSelectRow: null } );
 		this.newButton.off( "click"+namespace );
 		this.deleteButton.off( "click"+namespace );
@@ -132,10 +132,10 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		this.userList.jqGrid( "clearGridData" );
 
 		// Fill the data-grid
-		for(var i/*Number*/=0; i<userList.length; i++)
+		for(var i:Number=0; i<userList.length; i++)
 		{
-			var user/*UserVO*/ = userList[i];
-			var rowData/*Object*/ = 
+			var user:UserVO = userList[i];
+			var rowData:Object =
 			{
 				uname: user.uname,
 				fname: user.fname,
@@ -170,10 +170,10 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 */
 	userList_selectHandler( id )
 	{
-		var rowData/*Object*/ = this.userList.jqGrid( "getRowData", id );
+		var rowData:Object = this.userList.jqGrid( "getRowData", id );
 
-		var uname/*String*/;
-		for( var i/*Number*/=0; i<this.users.length; i++ )
+		var uname:String;
+		for( var i:Number=0; i<this.users.length; i++ )
 		{
 			if( this.users[i].uname == rowData.uname )
 			{

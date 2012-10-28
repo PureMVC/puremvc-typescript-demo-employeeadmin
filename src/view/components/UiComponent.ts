@@ -45,11 +45,11 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 		if( typeof this.listenerMap[UiComponent.QUEUE_PATTERN + type] == 'undefined' )
 			return;
 	
-		var queue/*Array*/ = this.listenerMap[UiComponent.QUEUE_PATTERN + type].slice(0);
+		var queue:Array = this.listenerMap[UiComponent.QUEUE_PATTERN + type].slice(0);
 		
-		var props/*Object*/ = properties || {};
-		var len/*Number*/ = queue.length;
-		for(var i/*Number*/=0; i<len; i++)
+		var props:Object = properties || {};
+		var len:Number = queue.length;
+		for(var i:Number=0; i<len; i++)
 		{
 			var listenerDescriptor/*UiComponent.ListenerDescriptor*/ = queue[i];
 	
@@ -90,14 +90,14 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 			
 		var newListener/*UiComponent.ListenerDescriptor*/ = new UiComponent.ListenerDescriptor( listener, context );
 	
-		var queue/*Object*/;
+		var queue:Object;
 		if( typeof this.listenerMap[ UiComponent.QUEUE_PATTERN + type ] == "undefined" )
 			queue = this.listenerMap[ UiComponent.QUEUE_PATTERN + type ] = [];
 		else
 			queue = this.listenerMap[ UiComponent.QUEUE_PATTERN + type ];
 	
-		var len/*Number*/ = queue.length;
-		for(var i/*Number*/=0; i<len; i++ )
+		var len:Number = queue.length;
+		for(var i:Number=0; i<len; i++ )
 		{
 			var listenerDescriptor/*UiComponent.ListenerDescriptor*/ = queue[i];
 			if( listenerDescriptor.equals( newListener ) )
@@ -136,9 +136,9 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 		if( typeof this.listenerMap[UiComponent.QUEUE_PATTERN + type] == "undefined" )
 			return;
 			
-		var queue/*Object*/ = this.listenerMap[ UiComponent.QUEUE_PATTERN + type ];
-		var len/*Number*/ = queue.length;
-		for(var i/*Number*/=0; i<len; i++)
+		var queue:Object = this.listenerMap[ UiComponent.QUEUE_PATTERN + type ];
+		var len:Number = queue.length;
+		for(var i:Number=0; i<len; i++)
         {
             var listenerDescriptor/*UiComponent.ListenerDescriptor*/ = queue[i];
             if( listenerDescriptor.equals( new UiComponent.ListenerDescriptor( listener, context ) ) )

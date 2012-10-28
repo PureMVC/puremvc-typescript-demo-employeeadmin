@@ -51,12 +51,12 @@ var DeptEnum = Objs("org.puremvc.js.demos.objs.employeeadmin.model.enum.DeptEnum
 	}
 });
 
-DeptEnum.NONE_SELECTED/*DeptEnum*/ 	= new DeptEnum( "Select a department", -1 );
-DeptEnum.ACCT/*DeptEnum*/ 			= new DeptEnum( "Accounting", 0  );
-DeptEnum.SALES/*DeptEnum*/ 			= new DeptEnum( "Sales"	, 1  );
-DeptEnum.PLANT/*DeptEnum*/ 			= new DeptEnum( "Plant", 2  );
-DeptEnum.SHIPPING/*DeptEnum*/ 		= new DeptEnum( "Shipping", 3  );
-DeptEnum.QC/*DeptEnum*/ 			= new DeptEnum( "Quality Control", 4  );
+DeptEnum.NONE_SELECTED:DeptEnum 	= new DeptEnum( "Select a department", -1 );
+DeptEnum.ACCT:DeptEnum 			= new DeptEnum( "Accounting", 0  );
+DeptEnum.SALES:DeptEnum 			= new DeptEnum( "Sales"	, 1  );
+DeptEnum.PLANT:DeptEnum 			= new DeptEnum( "Plant", 2  );
+DeptEnum.SHIPPING:DeptEnum 		= new DeptEnum( "Shipping", 3  );
+DeptEnum.QC:DeptEnum 			= new DeptEnum( "Quality Control", 4  );
 
 /**
  * Returns the department list excluding the
@@ -85,7 +85,7 @@ DeptEnum.getList = function()
  */
 DeptEnum.getComboList = function()
 {
-	var cList/*Array*/ = DeptEnum.getList();
+	var cList:Array = DeptEnum.getList();
 	cList.unshift( DeptEnum.NONE_SELECTED );
 	return cList;
 };

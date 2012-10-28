@@ -54,8 +54,8 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		 */
 		getUser( uname )
 		{
-			var users/*Array*/ = this.getUsers();
-			for( var i/*Number*/=0; i<users.length; i++ )
+			var users:Array = this.getUsers();
+			for( var i:Number=0; i<users.length; i++ )
 				if( users[i].uname == uname )
 					return users[i];
 					
@@ -70,8 +70,8 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		 */ 
 		updateItem( user )
 		{
-			var users/*Array*/ = this.getUsers();
-			for( var i/*Number*/=0; i<users.length; i++ )
+			var users:Array = this.getUsers();
+			for( var i:Number=0; i<users.length; i++ )
 				if( users[i].uname == user.uname )
 					users[i] = user;
 		},
@@ -84,8 +84,8 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		 */ 
 		deleteItem( user )
 		{
-			var users/*Array*/ = this.getUsers();
-			for( var i/*Number*/=0; i<users.length; i++ )
+			var users:Array = this.getUsers();
+			for( var i:Number=0; i<users.length; i++ )
 				if( users[i].uname == user.uname )
 					users.splice(i,1);
 		}

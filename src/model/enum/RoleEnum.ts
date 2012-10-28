@@ -47,27 +47,27 @@ var RoleEnum = Objs("org.puremvc.js.demos.objs.employeeadmin.model.enum.RoleEnum
 	 * @return {Boolean}
 	 * 		The compared <code>RoleEnum</code> is equal to the current.
 	 */
-	equals( roleEnum/*RoleEnum*/ )
+	equals( roleEnum:RoleEnum )
 	{
 		return ( this.ordinal == roleEnum.ordinal && this.value == roleEnum.value );
 	}
 });
 
-RoleEnum.NONE_SELECTED/*RoleEnum*/ 	= new RoleEnum( "Select a role", -1 );
-RoleEnum.ADMIN/*RoleEnum*/ 			= new RoleEnum( "Administrator", 0  );
-RoleEnum.ACCT_PAY/*RoleEnum*/ 		= new RoleEnum( "Accounts Payable", 1  );
-RoleEnum.ACCT_RCV/*RoleEnum*/ 		= new RoleEnum( "Accounts Receivable", 2  );
-RoleEnum.EMP_BENEFITS/*RoleEnum*/ 	= new RoleEnum( "Employee Benefits", 3  );
-RoleEnum.GEN_LEDGER/*RoleEnum*/ 	= new RoleEnum( "General Ledger", 4  );
-RoleEnum.PAYROLL/*RoleEnum*/ 		= new RoleEnum( "Payroll", 5  );
-RoleEnum.INVENTORY/*RoleEnum*/ 		= new RoleEnum( "Inventory", 6  );
-RoleEnum.PRODUCTION/*RoleEnum*/ 	= new RoleEnum( "Production", 7  );
-RoleEnum.QUALITY_CTL/*RoleEnum*/ 	= new RoleEnum( "Quality Control", 8  );
-RoleEnum.SALES/*RoleEnum*/ 			= new RoleEnum( "Sales", 9  );
-RoleEnum.ORDERS/*RoleEnum*/ 		= new RoleEnum( "Orders",10  );
-RoleEnum.CUSTOMERS/*RoleEnum*/ 		= new RoleEnum( "Customers",11  );
-RoleEnum.SHIPPING/*RoleEnum*/ 		= new RoleEnum( "Shipping",12  );
-RoleEnum.RETURNS/*RoleEnum*/ 		= new RoleEnum( "Returns",13  );
+RoleEnum.NONE_SELECTED:RoleEnum 	= new RoleEnum( "Select a role", -1 );
+RoleEnum.ADMIN:RoleEnum 			= new RoleEnum( "Administrator", 0  );
+RoleEnum.ACCT_PAY:RoleEnum 		= new RoleEnum( "Accounts Payable", 1  );
+RoleEnum.ACCT_RCV:RoleEnum 		= new RoleEnum( "Accounts Receivable", 2  );
+RoleEnum.EMP_BENEFITS:RoleEnum 	= new RoleEnum( "Employee Benefits", 3  );
+RoleEnum.GEN_LEDGER:RoleEnum 	= new RoleEnum( "General Ledger", 4  );
+RoleEnum.PAYROLL:RoleEnum 		= new RoleEnum( "Payroll", 5  );
+RoleEnum.INVENTORY:RoleEnum 		= new RoleEnum( "Inventory", 6  );
+RoleEnum.PRODUCTION:RoleEnum 	= new RoleEnum( "Production", 7  );
+RoleEnum.QUALITY_CTL:RoleEnum 	= new RoleEnum( "Quality Control", 8  );
+RoleEnum.SALES:RoleEnum 			= new RoleEnum( "Sales", 9  );
+RoleEnum.ORDERS:RoleEnum 		= new RoleEnum( "Orders",10  );
+RoleEnum.CUSTOMERS:RoleEnum 		= new RoleEnum( "Customers",11  );
+RoleEnum.SHIPPING:RoleEnum 		= new RoleEnum( "Shipping",12  );
+RoleEnum.RETURNS:RoleEnum 		= new RoleEnum( "Returns",13  );
 
 
 /**
@@ -108,7 +108,7 @@ RoleEnum.getList = function()
  */
 RoleEnum.getComboList = function()
 {
-	var cList/*Array*/ = RoleEnum.getList();
+	var cList:Array = RoleEnum.getList();
 	cList.unshift( RoleEnum.NONE_SELECTED );
 	return cList;
 };
@@ -125,8 +125,8 @@ RoleEnum.getComboList = function()
  */
 RoleEnum.getItem = function( ordinal )
 {
-	var list/*Array*/ = RoleEnum.getList();
-	for( var i/*Number*/=0; i<list.length; i++ )
+	var list:Array = RoleEnum.getList();
+	for( var i:Number=0; i<list.length; i++ )
 		if( RoleEnum[list[i]].ordinal == ordinal )
 			return RoleEnum[list[i]];
 	
