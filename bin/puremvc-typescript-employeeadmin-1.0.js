@@ -14,11 +14,20 @@ ApplicationFacade.getInstance = function () {
     }
     return Facade.instance;
 };
-var MediatorNames = Objs("org.puremvc.js.demos.objs.employeeadmin.abc.MediatorNames", {
-});
-MediatorNames.USER_FORM_MEDIATOR = "userFormMediator";
-MediatorNames.USER_LIST_MEDIATOR = "userListMediator";
-MediatorNames.ROLE_PANEL_MEDIATOR = "rolePanelMediator";
+var EmployeeAdmin;
+(function (EmployeeAdmin) {
+    "use strict";
+    
+    var MediatorNames = (function () {
+        function MediatorNames() { }
+        MediatorNames.USER_FORM_MEDIATOR = "userFormMediator";
+        MediatorNames.USER_LIST_MEDIATOR = "userListMediator";
+        MediatorNames.ROLE_PANEL_MEDIATOR = "rolePanelMediator";
+        return MediatorNames;
+    })();
+    EmployeeAdmin.MediatorNames = MediatorNames;    
+})(EmployeeAdmin || (EmployeeAdmin = {}));
+
 var NotificationNames = Objs("org.puremvc.js.demos.objs.employeeadmin.abc.NotificationNames", {
 });
 NotificationNames.STARTUP = "startup";

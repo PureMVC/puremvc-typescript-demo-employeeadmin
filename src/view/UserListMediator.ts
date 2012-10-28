@@ -1,5 +1,6 @@
+///<reference path='../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+
 /**
- * @class
  * User list component <code>Mediator</code>.
  */
 var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserListMediator",

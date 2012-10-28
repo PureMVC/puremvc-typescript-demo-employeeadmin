@@ -1,10 +1,15 @@
+///<reference path='../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+
 /**
- * @class
  * Command used to delete a user from the main users list.
  */
 var DeleteUserCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.DeleteUserCommand",
 	SimpleCommand,
 {
+	"use strict";
+
+	import puremvc = module("puremvc");
+
 	/**
 	 * @override
 	 */

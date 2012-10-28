@@ -1,3 +1,5 @@
+///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+
 /**
  * @classDescription
  * An enumeration of role items.

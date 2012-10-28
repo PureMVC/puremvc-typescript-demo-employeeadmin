@@ -1,5 +1,6 @@
+///<reference path='../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+
 /**
- * @class
  * Start the application.
  */
 var StartupCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.StartupCommand",

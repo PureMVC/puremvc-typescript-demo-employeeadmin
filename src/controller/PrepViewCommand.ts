@@ -1,5 +1,6 @@
+///<reference path='../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+
 /**
- * @class
  * Configure and initialize view for the application.
  */
 var PrepViewCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.PrepViewCommand",

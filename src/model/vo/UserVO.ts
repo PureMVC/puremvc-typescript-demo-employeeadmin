@@ -1,3 +1,5 @@
+///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+
 /**
  * @classDescription
  * The value object in charge of transporting the data to describe each user of the application.

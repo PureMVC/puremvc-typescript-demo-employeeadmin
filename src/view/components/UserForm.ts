@@ -1,5 +1,6 @@
+///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+
 /**
- * @class
  * The UI component in charge of the <em>user form</em>.
  */
 var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UserForm",

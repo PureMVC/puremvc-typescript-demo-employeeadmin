@@ -1,5 +1,6 @@
+///<reference path='../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+
 /**
- * @class
  * PureMVC <code>Facade</code> for this application.
  */
 var ApplicationFacade = Objs("org.puremvc.js.demos.objs.employeeadmin.ApplicationFacade",

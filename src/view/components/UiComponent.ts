@@ -1,5 +1,6 @@
+///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+
 /**
- * @class
  * A base class used for UI components of the application.
  *
  * It mainly adds a basic UiComponent implementation to make UI components listenable from the
@@ -150,7 +151,6 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 });
 
 /**
- * @class
  * @private
  * The event object dispatched by the <code>UiComponent</code> class to its
  * event listeners.
