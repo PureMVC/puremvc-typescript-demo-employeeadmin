@@ -27,7 +27,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 * 		The <code>UserForm</code> view Component this <code>Mediator</code>
 	 * 		manage.
 	 */
-	initialize: function( name, viewComponent )
+	initialize( name, viewComponent )
 	{
 		RolePanelMediator.$super.initialize.call( this, RolePanelMediator.NAME, viewComponent );
 
@@ -42,7 +42,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 * 
 	 * @return {RolePanel}
 	 */
-	getRolePanel: function()
+	getRolePanel()
 	{
 		return this.viewComponent;
 	},
@@ -50,7 +50,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	/**
 	 * Register event listeners for the UserForm component.
 	 */
-	registerListeners: function()
+	registerListeners()
 	{
 		var rolePanel/*RolePanel*/ = this.getRolePanel();
 		rolePanel.addEventListener( RolePanel.ADD, this.onAddRole, this );
@@ -60,7 +60,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	/**
 	 * Unregister event listeners for the UserForm component.
 	 */
-	unregisterListeners: function()
+	unregisterListeners()
 	{
 		var rolePanel/*RolePanel*/ = this.getRolePanel();
 		rolePanel.removeEventListener( RolePanel.ADD, this.onAddRole, this );
@@ -73,7 +73,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 * @param {UiComponent.Event} event
 	 * 		The dispatched event object.
 	 */
-	onAddRole: function( event )
+	onAddRole( event )
 	{
 		this.roleProxy.addRoleToUser( this.getRolePanel().getUser(), this.getRolePanel().getSelectedRole() );
 
@@ -87,7 +87,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 * @param {UiComponent.Event} event
 	 * 		The dispatched event object.
 	 */
-	onRemoveRole: function( event )
+	onRemoveRole( event )
 	{
 		this.roleProxy.removeRoleFromUser( this.getRolePanel().getUser(), this.getRolePanel().getSelectedRole() );
 	
@@ -98,7 +98,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	/**
 	 * Force the user role list to update its display.
 	 */
-	updateUserRoleList: function()
+	updateUserRoleList()
 	{
 		var userName/*String*/ = this.getRolePanel().user.uname;
 		var userRoles/*Array*/ = this.roleProxy.getUserRoles( userName );
@@ -108,7 +108,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	/**
 	 * @override
 	 */
-	listNotificationInterests: function()
+	listNotificationInterests()
 	{
 		return [
 			NotificationNames.NEW_USER,
@@ -124,7 +124,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	/**
 	 * @override
 	 */
-	handleNotification: function( note )
+	handleNotification( note )
 	{
 		var rolePanel/*RolePanel*/ = this.getRolePanel();
 
@@ -183,7 +183,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 * job of removing any listeners from the mediator and the component to
 	 * make those instances ready for garbage collection.
 	 */
-	onRemove: function()
+	onRemove()
 	{
 		this.unregisterListeners();
 		this.getRolePanel().unbindListeners();

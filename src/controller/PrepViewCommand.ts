@@ -9,7 +9,7 @@ var PrepViewCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.P
 	/**
 	 * @override
 	 */
-	execute: function( note )
+	execute( note )
 	{
 		/*
 		 * View Components initialization

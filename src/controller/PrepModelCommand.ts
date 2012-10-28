@@ -9,7 +9,7 @@ var PrepModelCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.
 	/**
 	 * @override
 	 */
-	execute: function( note )
+	execute( note )
 	{
 		this.facade.registerProxy( new UserProxy( ProxyNames.USER_PROXY, this.generateUsers() ) );
 		this.facade.registerProxy( new RoleProxy( ProxyNames.ROLE_PROXY , this.generateRoles() ) );
@@ -21,7 +21,7 @@ var PrepModelCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.
 	 * @return {Array}
 	 * 		The generated dummy users list.	
 	 */
-	generateUsers: function()
+	generateUsers()
 	{
 		var user/*UserVO*/;
 		var users/*Array*/ = new Array();
@@ -62,7 +62,7 @@ var PrepModelCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.
 	 * @return {Array}
 	 * 		The generated dummy roles list.	
 	 */
-	generateRoles: function()
+	generateRoles()
 	{
 		var role/*RoleVO*/;
 		var roles/*Array*/ = new Array();

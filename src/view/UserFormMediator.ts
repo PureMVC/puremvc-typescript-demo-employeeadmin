@@ -29,7 +29,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 * 		The <code>UserForm</code> view Component this <code>Mediator</code>
 	 * 		manage.
 	 */
-	initialize: function( name, viewComponent )
+	initialize( name, viewComponent )
 	{
 		UserFormMediator.$super.initialize.call( this, name, viewComponent );
 	
@@ -44,7 +44,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 * 
 	 * @return {UserForm}
 	 */
-	getUserForm : function()
+	getUserForm ()
 	{
 		return this.viewComponent;
 	},
@@ -52,7 +52,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	/**
 	 * Register event listeners for the UserForm component.
 	 */
-	registerListeners: function()
+	registerListeners()
 	{
 		var userForm/*UserForm*/ = this.getUserForm();
 		userForm.addEventListener( UserForm.ADD, this.onAdd, this );
@@ -63,7 +63,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	/**
 	 * Unregister event listeners for the UserForm component.
 	 */
-	unregisterListeners: function()
+	unregisterListeners()
 	{
 		var userForm/*UserForm*/ = this.getUserForm();
 		userForm.addEventListener( UserForm.ADD, this.onAdd, this );
@@ -79,7 +79,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 * @param {UiComponent.Event} event
 	 * 		The dispatched event object.
 	 */
-	onAdd: function( event )
+	onAdd( event )
 	{
 		var user/*UserVO*/ = this.getUserForm().getUser();
 		this.userProxy.addItem( user );
@@ -96,7 +96,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 * 
 	 * Called when a user is updated using the form.
 	 */
-	onUpdate: function()
+	onUpdate()
 	{
 		var user/*UserVO*/ = this.getUserForm().getUser();
 		this.userProxy.updateItem( user );
@@ -113,7 +113,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 * 
 	 * Called when modifications made to a user in the form are canceled.
 	 */
-	onCancel: function()
+	onCancel()
 	{
 		this.sendNotification(  NotificationNames.CANCEL_SELECTED );
 		var userForm/*UserForm*/ = this.getUserForm();
@@ -125,7 +125,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	/**
 	 * @override
 	 */
-	listNotificationInterests: function()
+	listNotificationInterests()
 	{
 		return [
 			NotificationNames.NEW_USER,
@@ -137,7 +137,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	/**
 	 * @override
 	 */
-	handleNotification: function( note )
+	handleNotification( note )
 	{
 		var userForm/*UserForm*/ = this.getUserForm();
 		
@@ -176,7 +176,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 * job of removing any listeners from the mediator and the component to
 	 * make those instances ready for garbage collection.
 	 */
-	onRemove: function()
+	onRemove()
 	{
 		this.unregisterListeners();
 		this.getUserForm().unbindListeners();

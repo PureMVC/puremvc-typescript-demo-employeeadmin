@@ -12,7 +12,7 @@ var ApplicationFacade = Objs("org.puremvc.js.demos.objs.employeeadmin.Applicatio
 	 * @param {HTMLElement} app
 	 * 		The HTML root node element of the application.
 	 */
-	startup: function( app )
+	startup( app )
 	{
 		this.sendNotification( NotificationNames.STARTUP, app );
 	},
@@ -32,7 +32,7 @@ var ApplicationFacade = Objs("org.puremvc.js.demos.objs.employeeadmin.Applicatio
 	 * 
 	 * @override
 	 */
-	initializeController: function()
+	initializeController()
 	{
 		ApplicationFacade.$super.initializeController.call( this );
 		

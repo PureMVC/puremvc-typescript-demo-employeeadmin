@@ -15,7 +15,7 @@ var DeptEnum = Objs("org.puremvc.js.demos.objs.employeeadmin.model.enum.DeptEnum
 	 * @param {Number} ordinal
 	 * 		Index of the item in the list.	
 	 */
-	initialize: function( value, ordinal )
+	initialize( value, ordinal )
 	{
 		this.value = value;
 		this.ordinal = ordinal;
@@ -45,7 +45,7 @@ var DeptEnum = Objs("org.puremvc.js.demos.objs.employeeadmin.model.enum.DeptEnum
 	 * @return {Boolean}
 	 * 		The compared <code>DeptEnum</code> is equal to the current.
 	 */
-	equals: function( deptEnum )
+	equals( deptEnum )
 	{
 		return ( this.ordinal == deptEnum.ordinal && this.value == deptEnum.value );
 	}

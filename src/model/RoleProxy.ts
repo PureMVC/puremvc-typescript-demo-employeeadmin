@@ -21,7 +21,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 * 		The list of user roles <code>RoleVO</code> object controlled by the
 		 * 		<code>Proxy</code>.
 		 */
-		initialize: function( name, roles )
+		initialize( name, roles )
 		{
 			RoleProxy.$super.initialize.call( this, name, roles );
 		
@@ -34,7 +34,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 * @return {Array}
 		 * 		The role list.
 		 */
-		getRoles: function()
+		getRoles()
 		{
 			return this.data;
 		},
@@ -45,7 +45,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 * @param {RoleVO} role
 		 * 		The role to add.
 		 */ 
-		addItem: function( role )
+		addItem( role )
 		{
 			this.getRoles().push( role );
 		},
@@ -56,7 +56,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 * @param {RoleVO} item
 		 * 		The role to remove.
 		 */ 
-		deleteItem: function( item )
+		deleteItem( item )
 		{
 			var roles = this.getRoles();
 			for( var i/*Number*/=0; i<roles.length; i++)
@@ -81,7 +81,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 * @return {Boolean}
 		 * 		The user has the given role.
 		 */ 
-		doesUserHaveRole: function( user, role )
+		doesUserHaveRole( user, role )
 		{
 			var roles/*Array*/ = this.getRoles();
 			var hasRole/*Boolean*/ = false;
@@ -114,7 +114,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 * @param {RoleEnum} role
 		 * 		The role to add.
 		 */ 
-		addRoleToUser: function( user, role )
+		addRoleToUser( user, role )
 		{
 			var roles/*Array*/ = this.getRoles();
 			var result/*Boolean*/ = false;
@@ -142,7 +142,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 * @param {RoleEnum} role
 		 * 		The role to remove.
 		 */
-		removeRoleFromUser: function( user, role )
+		removeRoleFromUser( user, role )
 		{
 			var roles/*Array*/ = this.getRoles();
 			if( this.doesUserHaveRole( user, role ) )
@@ -176,7 +176,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 * @return {Array}
 		 * 		The user's role list.
 		 */ 
-		getUserRoles: function( uname )
+		getUserRoles( uname )
 		{
 			var roles/*Array*/ = this.getRoles();
 			var userRoles/*Array*/ = new Array();

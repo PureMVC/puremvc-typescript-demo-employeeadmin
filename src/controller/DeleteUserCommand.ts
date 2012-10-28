@@ -3,25 +3,28 @@
 /**
  * Command used to delete a user from the main users list.
  */
-var DeleteUserCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.DeleteUserCommand",
-	SimpleCommand,
+module EmployeeAdmin
 {
 	"use strict";
 
 	import puremvc = module("puremvc");
 
-	/**
-	 * @override
-	 */
-	execute: function( note )
+	export class DeleteUserCommand
+		extends SimpleCommand
 	{
-		var user/*UserVO*/ = note.getBody();
-		var userProxy/*UserProxy*/ = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
-		var roleProxy/*RoleProxy*/ = this.facade.retrieveProxy( ProxyNames.ROLE_PROXY );
+		/**
+		 * @override
+		 */
+		execute( note )
+		{
+			var user/*UserVO*/ = note.getBody();
+			var userProxy/*UserProxy*/ = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
+			var roleProxy/*RoleProxy*/ = this.facade.retrieveProxy( ProxyNames.ROLE_PROXY );
 
-		userProxy.deleteItem( user );
-		roleProxy.deleteItem( user );
+			userProxy.deleteItem( user );
+			roleProxy.deleteItem( user );
 
-		this.sendNotification( NotificationNames.USER_DELETED );
+			this.sendNotification( NotificationNames.USER_DELETED );
+		}
 	}
-});
+}

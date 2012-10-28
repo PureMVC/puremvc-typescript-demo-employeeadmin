@@ -31,7 +31,7 @@ var RoleEnum = Objs("org.puremvc.js.demos.objs.employeeadmin.model.enum.RoleEnum
 	 * @param {Number} ordinal
 	 * 		Index of the item in the list.	
 	 */
-	initialize: function( value, ordinal )
+	initialize( value, ordinal )
 	{
 		this.value = value;
 		this.ordinal = ordinal;
@@ -47,7 +47,7 @@ var RoleEnum = Objs("org.puremvc.js.demos.objs.employeeadmin.model.enum.RoleEnum
 	 * @return {Boolean}
 	 * 		The compared <code>RoleEnum</code> is equal to the current.
 	 */
-	equals: function( roleEnum/*RoleEnum*/ )
+	equals( roleEnum/*RoleEnum*/ )
 	{
 		return ( this.ordinal == roleEnum.ordinal && this.value == roleEnum.value );
 	}

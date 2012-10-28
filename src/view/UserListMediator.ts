@@ -28,7 +28,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	 * 		The <code>UserList</code> UI Component this <code>Mediator</code>
 	 * 		manage.
 	 */
-	initialize: function( name, viewComponent )
+	initialize( name, viewComponent )
 	{
 		UserListMediator.$super.initialize.call( this, name, viewComponent );
 
@@ -41,7 +41,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	/**
 	 * Register event listeners for the UserForm component.
 	 */
-	registerListeners: function()
+	registerListeners()
 	{
 		var userList/*UserList*/ = this.getUserList();
 		userList.addEventListener( UserList.NEW, this.onNew, this );
@@ -52,7 +52,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	/**
 	 * Unregister event listeners for the UserForm component.
 	 */
-	unregisterListeners: function()
+	unregisterListeners()
 	{
 		var userList/*UserList*/ = this.getUserList();
 		userList.removeEventListener( UserList.NEW, this.onNew, this );
@@ -70,7 +70,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	 * 		The <code>UserList</code> UI component this
 	 * 		<code>Mediator</code> manage.
 	 */
-	getUserList: function()
+	getUserList()
 	{
 		return this.viewComponent;
 	},
@@ -78,7 +78,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	/**
 	 * @override
 	 */
-	listNotificationInterests: function()
+	listNotificationInterests()
 	{
 		return [
 			NotificationNames.CANCEL_SELECTED,
@@ -91,7 +91,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	/**
 	 * @override
 	 */
-	handleNotification: function( note )
+	handleNotification( note )
 	{
 		var userList/*UserList*/ = this.getUserList();
 		var userProxy/*UserProxy*/ = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
@@ -124,7 +124,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	 * 
 	 * @private
 	 */
-	onNew: function()
+	onNew()
 	{
 		var user/*UserVO*/ = new UserVO();
 		this.sendNotification( NotificationNames.NEW_USER, user );
@@ -135,7 +135,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
      *
      * @private
      */
-	onDelete: function()
+	onDelete()
 	{
 		var uname/*String*/ = this.getUserList().getSelectedUser();
 		var userProxy/*UserProxy*/ = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
@@ -149,7 +149,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	 * 
 	 * Called when a user is selected in the user list.
 	 */
-	onSelect: function()
+	onSelect()
 	{
 		var uname/*String*/ = this.getUserList().getSelectedUser();
 		var userProxy/*UserProxy*/ = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
@@ -165,7 +165,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	 * job of removing any listeners from the mediator and the component to
 	 * make those instances ready for garbage collection.
 	 */
-	onRemove: function()
+	onRemove()
 	{
 		this.unregisterListeners();
 		this.getUserList().unbindListeners();

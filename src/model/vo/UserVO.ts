@@ -54,7 +54,7 @@ var UserVO = Objs("org.puremvc.js.demos.objs.employeeadmin.model.vo.UserVO",
 	 * @return {Boolean}
 	 * 		The data shared by the value object are valid.
 	 */
-	getIsValid: function()
+	getIsValid()
 	{
 		return 	this.uname != "" 
 				&&
@@ -70,7 +70,7 @@ var UserVO = Objs("org.puremvc.js.demos.objs.employeeadmin.model.vo.UserVO",
 	 * @return {Boolean}
 	 * 		The complete name for this user.
 	 */
-	getGivenName: function()
+	getGivenName()
 	{
 		return this.lname + ", " + this.fname;
 	}

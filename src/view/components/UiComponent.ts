@@ -14,7 +14,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	 * @constructs
 	 * Initialize a <code>UiComponent</code> instance.
 	 */
-	initialize: function()
+	initialize()
 	{
 		this.listenerMap = {};
 	},
@@ -37,7 +37,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	* 		An optional anonymous object to send to listeners of the event when it
 	* 		is dispatched.
 	*/
-	dispatchEvent: function( type, properties )
+	dispatchEvent( type, properties )
 	{
 		if( typeof type == 'undefined' )
 			return;
@@ -75,7 +75,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	 * @param {Object} context
 	 * 		The context attached for the listener method of the event to remove.
 	 */
-	addEventListener: function
+	addEventListener
 	(
 		type,
 		listener,
@@ -120,7 +120,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	 * @param {Object} context
 	 * 		The context attached for the listener method of the event to remove.
 	 */
-	removeEventListener: function
+	removeEventListener
 	(
 		type,
 		listener,
@@ -195,7 +195,7 @@ UiComponent.ListenerDescriptor = Objs("org.puremvc.js.demos.objs.employeeadmin.v
 	 * @param {Function} listener
 	 * 		The listener context on which to call the method.
 	 */	
-	initialize: function( listener, context )
+	initialize( listener, context )
 	{
 		this.listener = listener;
 		this.context = context;
@@ -213,7 +213,7 @@ UiComponent.ListenerDescriptor = Objs("org.puremvc.js.demos.objs.employeeadmin.v
      * @return {Boolean}
      * 		The two compared listeners are equals.
      */
-    equals: function( compared )
+    equals( compared )
     {
         if( compared.listener == this.listener )
         {

@@ -107,7 +107,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 *
 	 * Initialize a <code>UserForm</code> instance.
 	 */
-	initialize: function()
+	initialize()
 	{
 		UserForm.$super.initialize.call( this );
 		
@@ -122,7 +122,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
     /**
      * Initialize references to DOM elements.
      */
-    initializeChildren: function()
+    initializeChildren()
     {
 		/*
 		 * We use JQuery to initialize reference to UI components
@@ -144,7 +144,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
     /**
 	 * Bind events to their listeners.
      */
-	bindListeners: function()
+	bindListeners()
 	{
 		//jQuery will be able to only remove events attached under this namespace
 		var namespace/*String*/ = ".UserForm";
@@ -161,7 +161,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * Unbind events from their listeners.
 	 */
-	unbindListeners: function()
+	unbindListeners()
 	{
 		//jQuery will only remove events attached under this namespace
 		var namespace/*String*/ = ".UserForm";
@@ -184,7 +184,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 *		List of <code>DeptEnum</code> items or an empty array to empty
 	 *		the list UI component content. 
 	 */
-	fillList: function( deptEnumList )
+	fillList( deptEnumList )
 	{
 		var htmlList/*String*/ = "";
 		for(var i/*Number*/=0; i<deptEnumList.length; i++)
@@ -213,7 +213,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * Give focus to the form component.
 	 */
-	setFocus: function()
+	setFocus()
 	{
 		this.fname.focus();
 	},
@@ -224,7 +224,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @param {UserVO} user
 	 * 		The currently selected user.
 	 */
-	setUser: function( user )
+	setUser( user )
 	{
 		this.user = user;
 		
@@ -243,7 +243,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		}
 	},
 	
-	getUser: function()/*UserVO*/
+	getUser()/*UserVO*/
 	{
 		this.updateUser();
 		return this.user;
@@ -252,7 +252,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * Update user attributes with form fields value.
 	 */
-	updateUser: function()
+	updateUser()
 	{
 		this.user.uname = this.uname.val();
 		this.user.fname = this.fname.val();
@@ -268,7 +268,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * Clear the whole form.
 	 */
-	clearForm: function()
+	clearForm()
 	{
 		this.uname.val("");
 		this.fname.val("");
@@ -289,7 +289,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @param {Boolean} isEnabled
 	 * 		The form must be enabled.
 	 */
-	setEnabled: function( isEnabled )
+	setEnabled( isEnabled )
 	{
 		if( isEnabled )
 		{
@@ -328,7 +328,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @param {String} mode
 	 * 		<code>UserForm.MODE_ADD</code> or <code>UserForm.MODE_EDIT</code>
 	 */
-	setMode: function( mode )
+	setMode( mode )
 	{
 		this.mode = mode;
 	
@@ -347,7 +347,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * Submit the add or update.
 	 */
-	submitButton_clickHandler: function()
+	submitButton_clickHandler()
 	{
 		this.updateUser();
 		
@@ -367,7 +367,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * Cancel the add or update
 	 */
-	cancelButton_clickHandler: function()
+	cancelButton_clickHandler()
 	{
 		this.dispatchEvent( UserForm.CANCEL );
 	},
@@ -375,7 +375,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * Handle focus event on all the required form fields.
 	 */
-	field_focusHandler: function( evt )
+	field_focusHandler( evt )
 	{
 		//Remove error on the selected field.
 		this.setFieldError( evt.target.id, false );
@@ -388,7 +388,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @return {Boolean}
 	 * 		The form contains errors.
 	 */
-	getErrors: function()
+	getErrors()
 	{
 		var error/*Boolean*/ = false;
 
@@ -428,7 +428,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @param {Boolean} error
 	 * 		The field must be marked as containing an error.
 	 */
-	setFieldError: function( fieldName, error )
+	setFieldError( fieldName, error )
 	{
 		var label/*HTMLElement*/ = this.userFormPanel.find( 'label[for="' + fieldName + '"]' );
 		var field/*HTMLElement*/ = this.userFormPanel.find( "#" + fieldName );

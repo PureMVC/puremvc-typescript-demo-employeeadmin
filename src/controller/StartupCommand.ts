@@ -19,7 +19,7 @@ var StartupCommand = Objs("org.puremvc.js.demos.objs.employeeadmin.controller.St
 	 * 		The <code>Notification</code> object to be passed to each entry
 	 * 		of <i>subCommands</i> list.
 	 */
-	initializeMacroCommand: function( note )
+	initializeMacroCommand( note )
 	{
 		this.addSubCommand( PrepModelCommand );
 		this.addSubCommand( PrepViewCommand );
