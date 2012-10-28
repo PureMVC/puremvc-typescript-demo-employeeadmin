@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+        <meta charset="utf-8" />
+		<title> PureMVC TypeScript multicore framework demo : Employee Admin </title>
+
+		<!-- jQuery and jQuery UI library dependencies -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/ui-lightness/jquery-ui-1.8.16.custom.css"> 
+		<script type="text/javascript" src="lib/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="lib/jquery-ui-1.8.16.custom.min.js"></script> 
+		
+		<!-- jQgrid -->
+		<link rel="stylesheet" type="text/css" media="screen" href="lib/jqgrid/css/ui.jqgrid.css" />
+		<script src="lib/jqgrid/i18n/grid.locale-en.js" type="text/javascript"></script>
+		<script src="lib/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+		<!-- Objs library -->
+		<script type="text/javascript" src="lib/objs-2.1.2-min.js"></script>
+
+		<!-- PureMVC framework for JavaScript based on Objs -->
+		<script type="text/javascript" src="lib/puremvc-objs-2.0-min.js"></script>
+		
+		<!-- EmployeeAdmin application CSS -->		
+		<link rel="stylesheet" href="css/employee-admin.css"/> 
+
+		<!-- EmployeeAdmin application minified code -->		
+		<script type="text/javascript" src="bin/puremvc_employeeadmin_jquery-min.js"></script>
+		
+		<script type="text/javascript">
+		$(document).ready
+		(
+			function()
+			{
+				var applicationFacade/*ApplicationFacade*/ = ApplicationFacade.getInstance();
+				applicationFacade.startup( $("body") );
+			}
+		);
+		</script>
+	</head>
+
+	<body>
+
+		<div class="application">
+
+			<div class="title">
+				<span class="name">Employee Admin</span>
+				<span class="application-category">PureMVC JavaScript / Objs / jQuery Demo</span>
+			</div>
+	
+	
+			<!-- =============================================================================== -->
+			<!-- ================================== User List ================================== -->
+			<!-- =============================================================================== -->
+			
+			<div class="user-list-panel">	
+				<div class="panel-title">Users</div>
+				<div class="user-list-panel-content">
+				
+					<!-- User List DataGrid -->
+					<table id="user-list" class="user-list"></table>
+					
+					<!-- User List Controls -->
+					<div class="control-bar">
+	
+						<!-- Update/Add User Button -->
+						<button class="new-button">Add</button>
+	
+						<!-- Delete User Button -->
+						<button class="delete-button">Delete</button>
+	
+					</div>
+
+				</div>
+
+			</div>
+	
+	
+	
+			<!-- =============================================================================== -->
+			<!-- ================================== User Form ================================== -->
+			<!-- =============================================================================== -->
+				
+			<div class="user-form-panel">
+			
+				<div class="panel-title">User Profile</div>
+				
+				<div class="user-form-panel-content">
+	
+					<!-- First Name-->
+					<div class="field">
+						<label for="fname">First Name</label>
+						<input id="fname" type="text" class="fname ui-corner-all" value="" />
+					</div>
+	
+					<!-- Last Name -->
+					<div class="field">
+						<label for="lname">Last Name</label>
+						<input id="lname" type="text" class="lname ui-corner-all" value="" />
+					</div>
+	
+					<!-- Email -->
+					<div class="field">
+						<label for="email">Email</label>
+						<input id="email" type="text" class="email ui-corner-all" value="" />
+					</div>
+	
+					<!-- Username -->
+					<div class="field">
+						<label for="uname" class="required">Username</label>
+						<input id="uname" type="text" class="uname ui-corner-all" value="" />
+					</div>
+	
+					<!-- Password -->
+					<div class="field">
+						<label for="password" class="required">Password</label>
+						<input id="password" type="password" class="password ui-corner-all" value=""/>
+					</div>
+	
+					<!-- Confirm Password -->
+					<div class="field">
+						<label for="confirm" class="required">Confirm Password</label>
+						<input id="confirm" type="password" class="confirm ui-corner-all" value="" />
+					</div>
+	
+					<!-- Department Combo -->
+					<div class="field">
+						<label for="department" class="required">Department</label>
+						<select id="department" class="department"><option></option></select>
+					</div>
+
+				</div>
+	
+				<!-- User Profile Controls -->
+				<div class="controlBar">
+	
+					<!-- Update/Add User Button -->
+					<button id="submit-button">Add User</button>
+	
+					<!-- Cancel Button -->
+					<button id="cancel-button">Cancel</button>
+	
+				</div>
+	
+			</div>
+			
+			
+			<!-- =============================================================================== -->
+			<!-- ================================== Role List ================================== -->
+			<!-- =============================================================================== -->
+	
+			<div class="role-panel">
+	
+				<div class="panel-title">User Roles</div>
+	
+				<!-- User Role List -->
+				<div class="role-panel-content">
+					
+					<!-- User Role List DataGrid -->
+					<table id="user-role-list" class="user-role-list"></table>
+
+				</div>
+	
+				<!-- User Role Controls -->
+				<div class="controlBar">
+	
+					<!-- Full Role list -->
+					<select class="role-list"><option></option></select>
+	
+					<!-- Update/Add User Button -->
+					<button class="add-role-button">Add</button>
+	
+					<!-- Cancel Button -->
+					<button class="remove-role-button">Remove</button>
+	
+				</div>
+
+			</div>
+	
+		</div>
+	
+	</body>
+</html>

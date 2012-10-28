@@ -1,0 +1,234 @@
+HTML,BODY
+{
+	background-color:#8CA4DB;
+	padding:0;
+	margin:0;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:1em;
+}
+
+
+
+/* =============================================================================== *
+ * =================================== Generic =================================== *
+ * =============================================================================== */
+
+.panel-title
+{
+	padding-left:4px;
+	margin-bottom:2px;
+	text-align:left;
+	font-weight:bold;
+	font-size:0.8em;
+	height:20px;
+}
+
+.control-bar
+{
+	margin-top:8px;
+	text-align:right;
+	vertical-align:middle;
+}
+
+
+
+/* =============================================================================== *
+ * ================================ Application ================================== *
+ * =============================================================================== */
+
+
+.application
+{
+	width:670px;
+	height:540px;
+	margin:auto;
+}
+
+.application .title
+{
+	height:33px;
+	text-align:left;
+	background-color:white;
+	padding-top:8px;
+	vertical-align:middle;
+	margin-bottom:10px;
+}
+
+.application .name
+{
+	margin-left:20px;
+	color:#0559CC;
+	font-size:1.4em;
+}
+
+.application .category
+{
+	padding-left:12px;
+	color:0;
+	font-size:0.6em;
+	font-weight:bold;
+}
+
+
+
+/* =============================================================================== *
+ * ================================== User List ================================== *
+ * =============================================================================== */
+
+.user-list-panel
+{
+	padding:10px;
+	width:630px;
+	height:240px;
+	background-color:#B1BFDE;
+	text-align:center;
+	margin-left:10px;
+}
+
+.user-list-panel .control-bar
+{
+	text-align:center;
+	padding-right:1em;
+}
+
+
+
+/* =============================================================================== *
+ * ================================== User Form ================================== *
+ * =============================================================================== */
+
+.user-form-panel
+{
+	float:left;
+
+	margin-left:10px;
+	margin-top:10px;
+
+	width:300px;
+	height:280px;
+
+	padding:10px;
+	background-color:#B1BFDE;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.user-form-panel-content
+{
+	text-align:right;
+	background-color:#FFF;
+	width:280px;
+	height:195px;
+	padding:10px;
+	margin-bottom:10px;
+}
+
+.user-form-panel-content .field
+{
+	margin-bottom:5px;
+}
+
+.user-form-panel-content label
+{
+	font-size:0.7em;
+	padding-right:1em;
+}
+
+.user-form-panel-content label.required
+{
+	background-image:url("../img/required_field.gif");
+	background-repeat:no-repeat;
+	background-position:center right;
+}
+
+.user-form-panel-content label.fieldError
+{
+	background-image:url("../img/field_error.gif");
+}
+
+.user-form-panel-content input[type=text],
+.user-form-panel-content input[type=password]
+{
+	margin:0;
+	width:150px;
+	border: thin solid grey;
+}
+
+
+.user-form-panel-content input.fieldError
+{
+	background:#FFD087;
+}
+
+.user-form-panel-content select
+{
+	margin:0;
+	width:155px;
+}
+
+.user-form-panel-content select.fieldError
+{
+	background:#FFD087;
+}
+
+
+
+/* =============================================================================== *
+ * ================================== Role List ================================== *
+ * =============================================================================== */
+
+.role-panel
+{
+	float:right;
+
+	margin-right:10px;
+	margin-top:10px;
+
+	width:300px;
+	height:280px;
+
+	padding:10px;
+	background-color:#B1BFDE;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.role-panel-content
+{
+	text-align:right;
+	background-color:#FFF;
+	width:280px;
+	height:195px;
+	padding:10px;
+	margin-bottom:10px;
+}
+
+.role-list
+{
+	width:170px;
+}
+
+
+
+/* =============================================================================== *
+ * ============================= jQuery UI overrides ============================= *
+ * =============================================================================== */
+
+.ui-widget
+{
+	font-size:0.6em;
+}
+
+/* Arbitrary maximum height fixed for listbox widgets */
+UL[role="listbox"]
+{
+	max-height: 150px;
+	overflow: auto;
+}
+
+.ui-autocomplete-input
+{
+	height:20px;
+	padding-left:0.5em;
+	width:115px;
+}
