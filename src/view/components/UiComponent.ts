@@ -189,6 +189,16 @@ module EmployeeAdmin
 	class ListenerDescriptor
 	{
 		/**
+		 * The listener method to call.
+		 */
+		listener:Function;
+
+		/**
+		 * The listener context with which to call the method.
+		 */
+		context:any;
+
+		/**
 		 * Constructs a <code>ListenerDescriptor</code> instance.
 		 *
 		 * @param listener
@@ -213,7 +223,7 @@ module EmployeeAdmin
 		 * @return
 		 * 		The two compared listeners are equals.
 		 */
-		private equals( compared:ListenerDescriptor ):bool
+		equals( compared:ListenerDescriptor ):bool
 		{
 			if( compared.listener === this.listener )
 			{

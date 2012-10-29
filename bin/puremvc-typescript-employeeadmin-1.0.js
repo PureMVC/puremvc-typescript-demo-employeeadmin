@@ -935,6 +935,42 @@ var EmployeeAdmin;
 var EmployeeAdmin;
 (function (EmployeeAdmin) {
     "use strict";
+    var DeptEnum = (function () {
+        function DeptEnum(value, ordinal) {
+            this.ordinal = null;
+            this.value = null;
+            this.value = value;
+            this.ordinal = ordinal;
+        }
+        DeptEnum.prototype.equals = function (deptEnum) {
+            return (this.ordinal == deptEnum.ordinal && this.value == deptEnum.value);
+        };
+        DeptEnum.NONE_SELECTED = new DeptEnum("Select a department", -1);
+        DeptEnum.ACCT = new DeptEnum("Accounting", 0);
+        DeptEnum.SALES = new DeptEnum("Sales", 1);
+        DeptEnum.PLANT = new DeptEnum("Plant", 2);
+        DeptEnum.SHIPPING = new DeptEnum("Shipping", 3);
+        DeptEnum.QC = new DeptEnum("Quality Control", 4);
+        DeptEnum.getList = function getList() {
+            return [
+                DeptEnum.ACCT, 
+                DeptEnum.SALES, 
+                DeptEnum.PLANT
+            ];
+        }
+        DeptEnum.getComboList = function getComboList() {
+            var cList = DeptEnum.getList();
+            cList.unshift(DeptEnum.NONE_SELECTED);
+            return cList;
+        }
+        return DeptEnum;
+    })();
+    EmployeeAdmin.DeptEnum = DeptEnum;    
+})(EmployeeAdmin || (EmployeeAdmin = {}));
+
+var EmployeeAdmin;
+(function (EmployeeAdmin) {
+    "use strict";
     var UserForm = (function (_super) {
         __extends(UserForm, _super);
         function UserForm() {
@@ -1325,42 +1361,6 @@ var EmployeeAdmin;
         return StartupCommand;
     })(puremvc.SimpleCommand);
     EmployeeAdmin.StartupCommand = StartupCommand;    
-})(EmployeeAdmin || (EmployeeAdmin = {}));
-
-var EmployeeAdmin;
-(function (EmployeeAdmin) {
-    "use strict";
-    var DeptEnum = (function () {
-        function DeptEnum(value, ordinal) {
-            this.ordinal = null;
-            this.value = null;
-            this.value = value;
-            this.ordinal = ordinal;
-        }
-        DeptEnum.prototype.equals = function (deptEnum) {
-            return (this.ordinal == deptEnum.ordinal && this.value == deptEnum.value);
-        };
-        DeptEnum.NONE_SELECTED = new DeptEnum("Select a department", -1);
-        DeptEnum.ACCT = new DeptEnum("Accounting", 0);
-        DeptEnum.SALES = new DeptEnum("Sales", 1);
-        DeptEnum.PLANT = new DeptEnum("Plant", 2);
-        DeptEnum.SHIPPING = new DeptEnum("Shipping", 3);
-        DeptEnum.QC = new DeptEnum("Quality Control", 4);
-        DeptEnum.getList = function getList() {
-            return [
-                DeptEnum.ACCT, 
-                DeptEnum.SALES, 
-                DeptEnum.PLANT
-            ];
-        }
-        DeptEnum.getComboList = function getComboList() {
-            var cList = DeptEnum.getList();
-            cList.unshift(DeptEnum.NONE_SELECTED);
-            return cList;
-        }
-        return DeptEnum;
-    })();
-    EmployeeAdmin.DeptEnum = DeptEnum;    
 })(EmployeeAdmin || (EmployeeAdmin = {}));
 
 var EmployeeAdmin;
