@@ -19,47 +19,47 @@ module EmployeeAdmin
 		/**
 		 * The user form panel HTML element.
 		 */
-		private userFormPanel:HTMLElement = null;
+		private userFormPanel:JQuery = null;
 
 		/**
 		 * The unique name field HTML element.
 		 */
-		private uname:HTMLElement = null;
+		private uname:JQuery = null;
 
 		/**
 		 * The first name field HTML element.
 		 */
-		private fname:HTMLElement = null;
+		private fname:JQuery = null;
 
 		/**
 		 * The long name field HTML element.
 		 */
-		private lname:HTMLElement = null;
+		private lname:JQuery = null;
 
 		/**
 		 * The email field HTML element.
 		 */
-		private email:HTMLElement = null;
+		private email:JQuery = null;
 
 		/**
 		 * The password field HTML element.
 		 */
-		private password:HTMLElement = null;
+		private password:JQuery = null;
 
 		/**
 		 * The confirm password field HTML element.
 		 */
-		private confirm:HTMLElement = null;
+		private confirm:JQuery = null;
 
 		/**
 		 * The department field HTML element.
 		 */
-		private department:HTMLElement = null;
+		private department:JQuery = null;
 
 		/**
 		 * The submit button HTML element.
 		 */
-		private submitButton:HTMLElement = null;
+		private submitButton:JQuery = null;
 
 		/**
 		 * The selected user.
@@ -100,7 +100,7 @@ module EmployeeAdmin
 			 * We use JQuery to initialize reference to UI components
 			 */
 			//FIXME Have to be initialized in the view startup command
-			this.userFormPanel = jQuery(".user-form-panel");
+			this.userFormPanel = JQuery.find(".user-form-panel");
 
 			this.uname = this.userFormPanel.find("#uname");
 			this.fname = this.userFormPanel.find("#fname");
@@ -122,7 +122,7 @@ module EmployeeAdmin
 			//jQuery will be able to only remove events attached under this namespace
 			var namespace:string = ".UserForm";
 
-			var focusEventProxy:jQuery.proxy = jQuery.proxy( this, "field_focusHandler" );
+			var focusEventProxy:any = JQueryStatic.proxy( this, "field_focusHandler" );
 			this.uname.on("focus" + namespace, focusEventProxy );
 			this.password.on("focus" + namespace, focusEventProxy );
 			this.confirm.on("focus" + namespace, focusEventProxy );
@@ -397,8 +397,8 @@ module EmployeeAdmin
 		 */
 		private setFieldError( fieldName, error ):void
 		{
-			var label:HTMLElement = this.userFormPanel.find( 'label[for="' + fieldName + '"]' );
-			var field:HTMLElement = this.userFormPanel.find( "#" + fieldName );
+			var label:JQuery = this.userFormPanel.find( 'label[for="' + fieldName + '"]' );
+			var field:JQuery = this.userFormPanel.find( "#" + fieldName );
 
 			if( error )
 				field.addClass( "fieldError" );
