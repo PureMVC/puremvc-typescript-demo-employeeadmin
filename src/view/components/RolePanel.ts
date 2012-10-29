@@ -12,7 +12,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.RolePanel",
-	UiComponent,
+		extends UiComponent,
 {
 	/** 
 	 * Currently selected user.
@@ -84,10 +84,7 @@ module EmployeeAdmin
 	removeRoleButton: null;
 
 	/**
-	 * @constructs
-	 * @override
-	 * 
-	 * Initialize a <code>UserList</code> instance.
+	 * Constructs a <code>UserList</code> instance.
 	 */
 	constructor()
 	{

@@ -10,7 +10,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class ApplicationFacade = Objs("org.puremvc.js.demos.objs.employeeadmin.ApplicationFacade",
-	Facade,
+		extends Facade,
 {
 	/**
 	 * Start the application

@@ -15,8 +15,7 @@ module EmployeeAdmin
 	export class UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UiComponent",
 {
 	/**
-	 * @constructs
-	 * Initialize a <code>UiComponent</code> instance.
+	 * Constructs a <code>UiComponent</code> instance.
 	 */
 	constructor()
 	{
@@ -191,7 +190,7 @@ UiComponent.ListenerDescriptor = Objs("org.puremvc.js.demos.objs.employeeadmin.v
 {
 	/**
 	 * @construct
-	 * Initialize a <code>UiComponent.ListenerDescriptor</code> instance.
+	 * Constructs a <code>UiComponent.ListenerDescriptor</code> instance.
 	 * 
 	 * @param {Function} listener
 	 * 		The listener method to call.

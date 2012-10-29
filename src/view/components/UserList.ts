@@ -12,7 +12,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UserList",
-	UiComponent,
+		extends UiComponent,
 {
 
 	/**
@@ -56,9 +56,7 @@ module EmployeeAdmin
 	users: null;
 	
 	/**
-	 * @constructs
-	 * @override
-	 * Initialize a <code>UserList</code> instance.
+	 * Constructs a <code>UserList</code> instance.
 	 */
 	constructor()
 	{

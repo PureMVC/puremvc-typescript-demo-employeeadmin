@@ -10,13 +10,10 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
-	Proxy,
+		extends Proxy,
 	{
 		/**
-		 * @constructs
-		 * @override
-		 *
-		 * Initialize a <code>UserProxy</code> instance.
+		 * Constructs a <code>UserProxy</code> instance.
 		 * 
 		 * @param {string} name
 		 * 		Identifier of the <code>Proxy</code> object in the PureMVC framework.

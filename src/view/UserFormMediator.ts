@@ -10,7 +10,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFormMediator",
-	Mediator,
+		extends Mediator,
 {	
 
 	/**
@@ -23,10 +23,7 @@ module EmployeeAdmin
 	userProxy: null;
 
 	/**
-	 * @constructs
-	 * @override
-	 *
-	 * Initialize a <code>UserFormMediator</code> instance.
+	 * Constructs a <code>UserFormMediator</code> instance.
 	 * 
 	 * @param {string} name
 	 * 		Name for this <code>Mediator</code>.

@@ -12,7 +12,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UserForm",
-	UiComponent,
+		extends UiComponent,
 {
 	
 	/**
@@ -110,10 +110,7 @@ module EmployeeAdmin
 	mode: null;
 	
 	/**
-	 * @constructs
-	 * @override
-	 *
-	 * Initialize a <code>UserForm</code> instance.
+	 * Constructs a <code>UserForm</code> instance.
 	 */
 	constructor()
 	{

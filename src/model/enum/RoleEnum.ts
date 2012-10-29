@@ -22,8 +22,7 @@ module EmployeeAdmin
 		value: null;
 
 		/**
-		 * @constructs
-		 * Initialize a <code>RoleEnum</code> instance.
+		 * Constructs a <code>RoleEnum</code> instance.
 		 *
 		 * @param value
 		 * 		Value shared by each enum item.

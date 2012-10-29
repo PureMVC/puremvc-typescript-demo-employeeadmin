@@ -10,7 +10,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserListMediator",
-	Mediator,
+		extends Mediator,
 {
 
 	/**
@@ -22,10 +22,7 @@ module EmployeeAdmin
 	userList: null;
 	
 	/**
-	 * @constructs
-	 * @override
-	 *
-	 * Initialize a <code>UserListMediator</code> instance.
+	 * Constructs a <code>UserListMediator</code> instance.
 	 * 
 	 * @param {string} name
 	 * 		Name for this <code>Mediator</code>.

@@ -10,7 +10,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.RolePaneMediator",
-	Mediator,
+		extends Mediator,
 {
 	/**
 	 * A shortcut reference to the <code>RoleProxy</code>.
@@ -21,10 +21,7 @@ module EmployeeAdmin
 	roleProxy: null;
 
 	/**
-	 * @constructs
-	 * @override
-	 * 
-	 * Initialize a <code>RolePanelMediator</code> instance.
+	 * Constructs a <code>RolePanelMediator</code> instance.
 	 * 
 	 * @param {string} name
 	 * 		Name for this <code>Mediator</code>.
