@@ -21,7 +21,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 * 		The list of user roles <code>RoleVO</code> object controlled by the
 		 * 		<code>Proxy</code>.
 		 */
-		initialize( name, roles )
+		constructor( name, roles )
 		{
 			RoleProxy.$super.initialize.call( this, name, roles );
 		

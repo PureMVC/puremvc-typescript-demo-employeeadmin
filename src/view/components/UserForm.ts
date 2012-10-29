@@ -109,7 +109,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 *
 	 * Initialize a <code>UserForm</code> instance.
 	 */
-	initialize()
+	constructor()
 	{
 		UserForm.$super.initialize.call( this );
 		

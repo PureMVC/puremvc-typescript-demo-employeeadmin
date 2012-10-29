@@ -29,7 +29,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 * 		The <code>UserForm</code> view Component this <code>Mediator</code>
 	 * 		manage.
 	 */
-	initialize( name, viewComponent )
+	constructor( name, viewComponent )
 	{
 		UserFormMediator.$super.initialize.call( this, name, viewComponent );
 	

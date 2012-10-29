@@ -14,7 +14,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	 * @constructs
 	 * Initialize a <code>UiComponent</code> instance.
 	 */
-	initialize()
+	constructor()
 	{
 		this.listenerMap = {}
 	}
@@ -195,7 +195,7 @@ UiComponent.ListenerDescriptor = Objs("org.puremvc.js.demos.objs.employeeadmin.v
 	 * @param {Function} listener
 	 * 		The listener context on which to call the method.
 	 */	
-	initialize( listener, context )
+	constructor( listener, context )
 	{
 		this.listener = listener;
 		this.context = context;

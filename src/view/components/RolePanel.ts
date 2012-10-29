@@ -83,7 +83,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 * 
 	 * Initialize a <code>UserList</code> instance.
 	 */
-	initialize()
+	constructor()
 	{
 		RolePanel.$super.initialize.call( this );
 		

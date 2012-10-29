@@ -27,7 +27,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 * 		The <code>UserForm</code> view Component this <code>Mediator</code>
 	 * 		manage.
 	 */
-	initialize( name, viewComponent )
+	constructor( name, viewComponent )
 	{
 		RolePanelMediator.$super.initialize.call( this, RolePanelMediator.NAME, viewComponent );
 

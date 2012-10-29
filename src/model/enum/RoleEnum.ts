@@ -27,13 +27,13 @@ module EmployeeAdmin
 		 * @constructs
 		 * Initialize a <code>RoleEnum</code> instance.
 		 *
-		 * @param {string} value
+		 * @param value
 		 * 		Value shared by each enum item.
 		 *
-		 * @param {number} ordinal
+		 * @param ordinal
 		 * 		Index of the item in the list.
 		 */
-		initialize( value, ordinal )
+		constructor( value:string, ordinal:number )
 		{
 			this.value = value;
 			this.ordinal = ordinal;

@@ -54,7 +54,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @override
 	 * Initialize a <code>UserList</code> instance.
 	 */
-	initialize()
+	constructor()
 	{
 		UserList.$super.initialize.call( this );
 

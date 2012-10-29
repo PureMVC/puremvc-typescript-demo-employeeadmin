@@ -28,7 +28,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	 * 		The <code>UserList</code> UI Component this <code>Mediator</code>
 	 * 		manage.
 	 */
-	initialize( name, viewComponent )
+	constructor( name, viewComponent )
 	{
 		UserListMediator.$super.initialize.call( this, name, viewComponent );
 

@@ -19,7 +19,7 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		 * @param {Array} users	
 		 * 		The list of users controlled by the <code>Proxy</code>.
 		 */
-		initialize( name, users )
+		constructor( name, users )
 		{
 			UserProxy.$super.initialize.call( this, name, users );
 		}
