@@ -7,10 +7,8 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class UserFormMediator
-		extends Mediator
+		extends puremvc.Mediator
 	{
 		/**
 		 * A shortcut to the application <code>UserProxy</code> instance.
@@ -42,7 +40,7 @@ module EmployeeAdmin
 		 */
 		private getUserForm():UserForm
 		{
-			return this.viewComponent;
+			return <UserForm>/*</>*/ this.viewComponent;
 		}
 
 		/**
@@ -70,10 +68,10 @@ module EmployeeAdmin
 		/**
 		 * Called when a user is added using the form.
 		 *
-		 * @param {UiComponent.Event} event
+		 * @param event
 		 * 		The dispatched event object.
 		 */
-		private onAdd( event ):void
+		private onAdd( event:Event ):void
 		{
 			var user:UserVO = this.getUserForm().getUser();
 			this.userProxy.addItem( user );
@@ -87,8 +85,11 @@ module EmployeeAdmin
 
 		/**
 		 * Called when a user is updated using the form.
+		 *
+		 * @param event
+		 * 		The dispatched event object.
 		 */
-		private onUpdate():void
+		private onUpdate( event:Event ):void
 		{
 			var user:UserVO = this.getUserForm().getUser();
 			this.userProxy.updateItem( user );
@@ -102,8 +103,11 @@ module EmployeeAdmin
 
 		/**
 		 * Called when modifications made to a user in the form are canceled.
+		 *
+		 * @param event
+		 * 		The dispatched event object.
 		 */
-		private onCancel():void
+		private onCancel( event:Event ):void
 		{
 			this.sendNotification(  NotificationNames.CANCEL_SELECTED );
 			var userForm:UserForm = this.getUserForm();
@@ -127,7 +131,7 @@ module EmployeeAdmin
 		/**
 		 * @override
 		 */
-		handleNotification( note:INotification ):void
+		handleNotification( note:puremvc.INotification ):void
 		{
 			var userForm:UserForm = this.getUserForm();
 

@@ -17,15 +17,13 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class PrepViewCommand
-		extends SimpleCommand
+		extends puremvc.SimpleCommand
 	{
 		/**
 		 * @override
 		 */
-		execute( note )
+		execute( note:puremvc.INotification )
 		{
 			/*
 			 * View Components initialization
@@ -37,9 +35,9 @@ module EmployeeAdmin
 			/*
 			 * Mediators initialization
 			 */
-			var userListMediator:IMediator = new UserListMediator( MediatorNames.USER_LIST_MEDIATOR, userList );
-			var userFormMediator:IMediator = new UserFormMediator( MediatorNames.USER_FORM_MEDIATOR, userForm );
-			var rolePanelMediator:IMediator = new RolePanelMediator( MediatorNames.ROLE_PANEL_MEDIATOR, rolePanel );
+			var userListMediator:puremvc.IMediator = new UserListMediator( MediatorNames.USER_LIST_MEDIATOR, userList );
+			var userFormMediator:puremvc.IMediator = new UserFormMediator( MediatorNames.USER_FORM_MEDIATOR, userForm );
+			var rolePanelMediator:puremvc.IMediator = new RolePanelMediator( MediatorNames.ROLE_PANEL_MEDIATOR, rolePanel );
 
 			/*
 			 * PureMVC mediators registration

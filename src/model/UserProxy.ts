@@ -7,17 +7,15 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class UserProxy
-		extends Proxy
+		extends puremvc.Proxy
 	{
 		/**
 		 * Return the users list controlled by the <code>Proxy</code>.
 		 */
 		getUsers():UserVO[]
 		{
-			return <UserVO[]/> this.data;
+			return <UserVO[]>/*</>*/ this.data;
 		}
 		
 		/**
@@ -78,4 +76,4 @@ module EmployeeAdmin
 					users.splice(i,1);
 		}
 	}
-);
+}

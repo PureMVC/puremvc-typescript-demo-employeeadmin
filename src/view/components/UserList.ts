@@ -10,8 +10,6 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class UserList
 		extends UiComponent
 	{

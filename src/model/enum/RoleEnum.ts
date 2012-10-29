@@ -16,10 +16,8 @@ module EmployeeAdmin
 
 		/**
 		 * The <code>RoleEnum</code> entry value.
-		 *
-		 * @type {string}
 		 */
-		value: null;
+		value:string = null;
 
 		/**
 		 * Constructs a <code>RoleEnum</code> instance.

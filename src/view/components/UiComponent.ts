@@ -155,73 +155,6 @@ module EmployeeAdmin
 			}
 		}
 
-		//FIXME Public
-		/**
-		 * The event object dispatched by the <code>UiComponent</code> class to its event listeners.
-		 */
-		export static class Event
-		{
-			/**
-			 * Type of the dispatched event.
-			 */
-			type:string = null;
-
-			/**
-			 * Properties that follow the dispatched event.
-			 */
-			properties:any = null
-
-		}
-
-		/**
-		 * Private class defining a descriptor object used by the <code>listenerMap</code> to identify
-		 * each event listener.
-		 */
-		class ListenerDescriptor
-		{
-			/**
-			 * Constructs a <code>ListenerDescriptor</code> instance.
-			 *
-			 * @param listener
-			 * 		The listener method to call.
-			 *
-			 * @param context
-			 * 		The listener context on which to call the method.
-			 */
-			constructor( listener:Function, context:any )
-			{
-				this.listener = listener;
-				this.context = context;
-			}
-
-			/**
-			 * Compare two <code>ListenerDescriptor</code>s to determine if they target the exact
-			 * same event listener.
-			 *
-			 * @param compared
-			 * 		The descriptor that will be compared to the current.
-			 *
-			 * @return
-			 * 		The two compared listeners are equals.
-			 */
-			private equals( compared:ListenerDescriptor ):bool
-			{
-				if( compared.listener === this.listener )
-				{
-					if( typeof compared.context != "undefined" )
-					{
-						if( compared.context == null && this.context == null )
-							return true;
-
-						if( compared.context === this.context )
-							return true;
-					}
-				}
-
-				return false;
-			}
-		}
-
 		/**
 		 * A prefix used on map item names to prevent name conflicts.
 		 *
@@ -229,5 +162,72 @@ module EmployeeAdmin
 		 * @constant
 		 */
 		private static QUEUE_PATTERN:string = '@_@';
+	}
+
+
+	//FIXME Public
+	/**
+	 * The event object dispatched by the <code>UiComponent</code> class to its event listeners.
+	 */
+	export class Event
+	{
+		/**
+		 * Type of the dispatched event.
+		 */
+		type:string = null;
+
+		/**
+		 * Properties that follow the dispatched event.
+		 */
+		properties:any = null;
+	}
+
+	/**
+	 * Private class defining a descriptor object used by the <code>listenerMap</code> to identify
+	 * each event listener.
+	 */
+	class ListenerDescriptor
+	{
+		/**
+		 * Constructs a <code>ListenerDescriptor</code> instance.
+		 *
+		 * @param listener
+		 * 		The listener method to call.
+		 *
+		 * @param context
+		 * 		The listener context on which to call the method.
+		 */
+		constructor( listener:Function, context:any )
+		{
+			this.listener = listener;
+			this.context = context;
+		}
+
+		/**
+		 * Compare two <code>ListenerDescriptor</code>s to determine if they target the exact
+		 * same event listener.
+		 *
+		 * @param compared
+		 * 		The descriptor that will be compared to the current.
+		 *
+		 * @return
+		 * 		The two compared listeners are equals.
+		 */
+		private equals( compared:ListenerDescriptor ):bool
+		{
+			if( compared.listener === this.listener )
+			{
+				if( typeof compared.context != "undefined" )
+				{
+					if( compared.context == null && this.context == null )
+						return true;
+
+					if( compared.context === this.context )
+						return true;
+				}
+			}
+
+			return false;
+		}
 	}
 }

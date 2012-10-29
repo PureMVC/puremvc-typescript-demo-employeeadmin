@@ -7,10 +7,8 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class RoleProxy
-		extends Proxy
+		extends puremvc.Proxy
 	{
 		/**
 		 * Get the role list.
@@ -20,7 +18,7 @@ module EmployeeAdmin
 		 */
 		getRoles():RoleVO[]
 		{
-			return <RoleVO[]> this.data;
+			return <RoleVO[]>/*</>*/ this.data;
 		}
 		
 		/**
@@ -163,7 +161,7 @@ module EmployeeAdmin
 		getUserRoles( uname:string ):RoleVO[]
 		{
 			var roles:RoleVO[] = this.getRoles();
-			var userRoles::RoleVO[] = new Array();
+			var userRoles:RoleVO[] = new Array();
 			for( var i:number=0; i<roles.length; i++)
 			{ 
 				if( roles[i].uname === uname )

@@ -17,6 +17,6 @@ module EmployeeAdmin
 		/**
 		 * The list of roles associated to the user.
 		 */
-		roles:RolesVO[] = new RolesVO[]();
+		roles:RoleVO[] = new RoleVO[]();
 	}
 }

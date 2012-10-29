@@ -7,18 +7,13 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
-	export class
-		extends Mediator
+	export class RolePanelMediator
+		extends puremvc.Mediator
 	{
 		/**
 		 * A shortcut reference to the <code>RoleProxy</code>.
-		 *
-		 * @private
-		 * @type {RoleProxy}
 		 */
-		private roleProxy: null;
+		private roleProxy:RoleProxy = null;
 
 		/**
 		 * Constructs a <code>RolePanelMediator</code> instance.
@@ -45,8 +40,7 @@ module EmployeeAdmin
 		 */
 		private getRolePanel():RolePanel
 		{
-			//FIXME
-			return <RolePanel/> this.viewComponent;
+			return <RolePanel>/*</>*/ this.viewComponent;
 		}
 
 		/**
@@ -75,7 +69,7 @@ module EmployeeAdmin
 		 * @param event
 		 * 		The dispatched event object.
 		 */
-		private onAddRole( event:UiComponent.Event ):void
+		private onAddRole( event:Event ):void
 		{
 			this.roleProxy.addRoleToUser
 			(
@@ -93,7 +87,7 @@ module EmployeeAdmin
 		 * @param event
 		 * 		The dispatched event object.
 		 */
-		private onRemoveRole( event:UiComponent.Event ):void
+		private onRemoveRole( event:Event ):void
 		{
 			this.roleProxy.removeRoleFromUser
 			(
@@ -134,7 +128,7 @@ module EmployeeAdmin
 		/**
 		 * @override
 		 */
-		handleNotification( note:INotification ):void
+		handleNotification( note:puremvc.INotification ):void
 		{
 			var rolePanel:RolePanel = this.getRolePanel();
 

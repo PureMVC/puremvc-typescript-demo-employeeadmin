@@ -7,10 +7,8 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class ApplicationFacade
-		extends Facade
+		extends puremvc.Facade
 	{
 		/**
 		 * Start the application.
@@ -51,10 +49,10 @@ module EmployeeAdmin
 		 */
 		static getInstance():ApplicationFacade
 		{
-			if( !Facade.instance )
-				Facade.instance = new ApplicationFacade();
+			if( !puremvc.Facade.instance )
+				puremvc.Facade.instance = new ApplicationFacade();
 
-			return Facade.instance;
+			return puremvc.Facade.instance;
 		}
 	}
 }

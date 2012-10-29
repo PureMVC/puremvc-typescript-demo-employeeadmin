@@ -13,21 +13,19 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class PrepModelCommand
-		extends SimpleCommand
+		extends puremvc.SimpleCommand
 	{
 		/**
 		 * @override
 		 */
-		execute( note:INotification ):void
+		execute( note:puremvc.INotification ):void
 		{
 			/*
 			 * Data initialization.
 			 */
-			var userProxy:IProxy = new UserProxy( ProxyNames.USER_PROXY, this.generateUsers() );
-		 	var roleProxy:IProxy = new RoleProxy( ProxyNames.ROLE_PROXY , this.generateRoles() );
+			var userProxy:puremvc.IProxy = new UserProxy( ProxyNames.USER_PROXY, this.generateUsers() );
+		 	var roleProxy:puremvc.IProxy = new RoleProxy( ProxyNames.ROLE_PROXY , this.generateRoles() );
 
 			/*
 			 * Proxies initialization.

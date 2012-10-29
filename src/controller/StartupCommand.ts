@@ -7,10 +7,8 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class StartupCommand
-		extends SimpleCommand
+		extends puremvc.SimpleCommand
 	{
 		/**
 		 * @override
@@ -24,7 +22,7 @@ module EmployeeAdmin
 		 * 		The <code>Notification</code> object to be passed to each entry	of
 		 * 		<i>subCommands</i> list.
 		 */
-		initializeMacroCommand( note:INotification )
+		initializeMacroCommand( note:puremvc.INotification )
 		{
 			this.addSubCommand( PrepModelCommand );
 			this.addSubCommand( PrepViewCommand );

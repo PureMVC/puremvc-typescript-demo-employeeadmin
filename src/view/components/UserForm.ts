@@ -1,6 +1,9 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 ///<reference path='../../../lib/jquery/jquery-1.7.x.d.ts'/>
 
+///<reference path='../../model/enum/DeptEnum.ts'/>
+///<reference path='../../model/vo/RoleVO.ts'/>
+///<reference path='../../model/vo/UserVO.ts'/>
 ///<reference path='UiComponent.ts'/>
 
 /**
@@ -9,8 +12,6 @@
 module EmployeeAdmin
 {
 	"use strict";
-
-	import puremvc = module("puremvc");
 
 	export class UserForm
 		extends UiComponent
@@ -121,7 +122,7 @@ module EmployeeAdmin
 			//jQuery will be able to only remove events attached under this namespace
 			var namespace:string = ".UserForm";
 
-			var focusEventProxy:jQueryProxy = jQuery.proxy( this, "field_focusHandler" );
+			var focusEventProxy:jQuery.proxy = jQuery.proxy( this, "field_focusHandler" );
 			this.uname.on("focus" + namespace, focusEventProxy );
 			this.password.on("focus" + namespace, focusEventProxy );
 			this.confirm.on("focus" + namespace, focusEventProxy );

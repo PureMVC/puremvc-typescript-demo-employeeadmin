@@ -15,15 +15,13 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class DeleteUserCommand
-		extends SimpleCommand
+		extends puremvc.SimpleCommand
 	{
 		/**
 		 * @override
 		 */
-		execute( note:INotification ):void
+		execute( note:puremvc.INotification ):void
 		{
 			var user:UserVO = note.getBody();
 			var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );

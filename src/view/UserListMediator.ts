@@ -7,10 +7,8 @@ module EmployeeAdmin
 {
 	"use strict";
 
-	import puremvc = module("puremvc");
-
 	export class UserListMediator
-		extends Mediator
+		extends puremvc.Mediator
 	{
 		/**
 		 * The <code>UserList</code> UI component this <code>Mediator</code> manage.
@@ -66,7 +64,7 @@ module EmployeeAdmin
 		 */
 		private getUserList():UserList
 		{
-			return this.viewComponent;
+			return <UserList>/*</>*/ this.viewComponent;
 		}
 
 		/**
@@ -85,7 +83,7 @@ module EmployeeAdmin
 		/**
 		 * @override
 		 */
-		handleNotification( note:INotification ):void
+		handleNotification( note:puremvc.INotification ):void
 		{
 			var userList:UserList = this.getUserList();
 			var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
@@ -115,8 +113,11 @@ module EmployeeAdmin
 
 		/**
 		 * Called when to add a new user to the list.
+		 *
+		 * @param event
+		 * 		The dispatched event object.
 		 */
-		private onNew():void
+		private onNew( event:Event ):void
 		{
 			var user:UserVO = new UserVO();
 			this.sendNotification( NotificationNames.NEW_USER, user );
@@ -124,8 +125,11 @@ module EmployeeAdmin
 
 		/**
 		 * Called when to delete an user from the list.
+		 *
+		 * @param event
+		 * 		The dispatched event object.
 		 */
-		private onDelete():void
+		private onDelete( event:Event ):void
 		{
 			var userList:UserList = this.getUserList();
 			var uname:string = userList.getSelectedUser();
@@ -137,8 +141,11 @@ module EmployeeAdmin
 
 		/**
 		 * Called when a user is selected in the user list.
+		 *
+		 * @param event
+		 * 		The dispatched event object.
 		 */
-		private onSelect():void
+		private onSelect( event:Event ):void
 		{
 			var userList:UserList = this.getUserList();
 			var uname:string = userList.getSelectedUser();
