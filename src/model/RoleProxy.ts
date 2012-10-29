@@ -1,10 +1,15 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
 /**
- * @classDescription
  * PureMVC <code>Proxy</code> class object used to control the user roles list of the application.
  */
-var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
+module EmployeeAdmin
+{
+	"use strict";
+
+	import puremvc = module("puremvc");
+
+	export class RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 	Proxy,
 	{
 	

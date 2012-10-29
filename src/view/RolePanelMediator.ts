@@ -3,7 +3,13 @@
 /**
  * Role panel component <code>Mediator</code>.
  */
-var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.RolePaneMediator",
+module EmployeeAdmin
+{
+	"use strict";
+
+	import puremvc = module("puremvc");
+
+	export class RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.RolePaneMediator",
 	Mediator,
 {
 	/**

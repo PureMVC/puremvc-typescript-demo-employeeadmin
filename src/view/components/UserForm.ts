@@ -5,7 +5,13 @@
 /**
  * The UI component in charge of the <em>user form</em>.
  */
-var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UserForm",
+module EmployeeAdmin
+{
+	"use strict";
+
+	import puremvc = module("puremvc");
+
+	export class UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UserForm",
 	UiComponent,
 {
 	

@@ -5,7 +5,13 @@
 /**
  * The UI component in charge of the <em>User List</em>.
  */
-var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UserList",
+module EmployeeAdmin
+{
+	"use strict";
+
+	import puremvc = module("puremvc");
+
+	export class UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UserList",
 	UiComponent,
 {
 

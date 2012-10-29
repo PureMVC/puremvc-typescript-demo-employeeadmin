@@ -3,7 +3,13 @@
 /**
  * User form component <code>Mediator</code>.
  */
-var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFormMediator",
+module EmployeeAdmin
+{
+	"use strict";
+
+	import puremvc = module("puremvc");
+
+	export class UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFormMediator",
 	Mediator,
 {	
 

@@ -1,77 +1,69 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
 /**
- * @classDescription
  * The value object in charge of transporting the data to describe each user of the application.
  */
-var UserVO = Objs("org.puremvc.js.demos.objs.employeeadmin.model.vo.UserVO";
+module EmployeeAdmin
 {
-	/** 
-	 * Unique name of the user.
-	 * 
-	 * @type {string}
-	 */
-	uname: "";
-	
-	/** 
-	 * First name of the user.
-	 * 
-	 * @type {string}
-	 */
-	fname: "";
-	
-	/**  		
-	 * Last name of the user.
-	 * 
-	 * @type {string}
-	 */
-	lname: "";
-	
-	/** 		
-	 * E-mail name of the user.
-	 * 
-	 * @type {string}
-	 */
-	email: "";
-	
-	/** 		
-	 * Password name of the user.
-	 * 
-	 * @type {string}
-	 */
-	password: "";
-	
-	/**		
-	 * The <code>DeptEnum</code> item associated to the user.
-	 * 
-	 * @type {DeptEnum}
-	 */
-	department: DeptEnum.NONE_SELECTED;
-	
-	/**
-	 * Indicate if the data shared by the value object are valid.
-	 * 
-	 * @return {Boolean}
-	 * 		The data shared by the value object are valid.
-	 */
-	getIsValid()
+	"use strict";
+
+	export class UserVO
 	{
-		return 	this.uname != "" 
-				&&
-				this.password != ""
-				&&
-				this.department != DeptEnum.NONE_SELECTED
-		;
+		/**
+		 * Unique name of the user.
+		 */
+		uname:string = "";
+
+		/**
+		 * First name of the user.
+		 */
+		fname:string = "";
+
+		/**
+		 * Last name of the user.
+		 */
+		lname:string = "";
+
+		/**
+		 * E-mail name of the user.
+		 */
+		email:string = "";
+
+		/**
+		 * Password name of the user.
+		 */
+		password:string = "";
+
+		/**
+		 * The <code>DeptEnum</code> item associated to the user.
+		 */
+		department:DeptEnum = DeptEnum.NONE_SELECTED;
+
+		/**
+		 * Indicate if the data shared by the value object are valid.
+		 *
+		 * @return
+		 * 		The data shared by the value object are valid.
+		 */
+		getIsValid():bool
+		{
+			return 	this.uname != ""
+					&&
+					this.password != ""
+					&&
+					this.department != DeptEnum.NONE_SELECTED
+			;
+		}
+
+		/**
+		 * Return the complete name for this user.
+		 *
+		 * @return
+		 * 		The complete name for this user.
+		 */
+		getGivenName():string
+		{
+			return this.lname + ", " + this.fname;
+		}
 	}
-	
-	/**
-	 * Return the complete name for this user.
-	 * 
-	 * @return {Boolean}
-	 * 		The complete name for this user.
-	 */
-	getGivenName()
-	{
-		return this.lname + ", " + this.fname;
-	}
-});
+}

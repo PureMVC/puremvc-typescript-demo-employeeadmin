@@ -8,7 +8,11 @@
  * Implementers and listeners are responsible for the anonymous events object they dispatch and
  * receive.
  */
-var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UiComponent",
+module EmployeeAdmin
+{
+	"use strict";
+
+	export class UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.UiComponent",
 {
 	/**
 	 * @constructs

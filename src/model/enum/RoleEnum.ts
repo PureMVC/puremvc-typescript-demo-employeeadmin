@@ -1,7 +1,6 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
 /**
- * @classDescription
  * An enumeration of role items.
  */
 module EmployeeAdmin
@@ -14,7 +13,6 @@ module EmployeeAdmin
 		 * The <code>RoleEnum</code> entry identifier.
 		 */
 		ordinal:number = null;
-
 
 		/**
 		 * The <code>RoleEnum</code> entry value.
@@ -74,7 +72,6 @@ module EmployeeAdmin
 		static CUSTOMERS:RoleEnum 		= new RoleEnum( "Customers",11  );
 		static SHIPPING:RoleEnum 		= new RoleEnum( "Shipping",12  );
 		static RETURNS:RoleEnum 		= new RoleEnum( "Returns",13  );
-
 
 		/**
 		 * Returns the roles list excluding the <code>RoleEnum.NONE_SELECTED</code> item used to fill

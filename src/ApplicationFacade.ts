@@ -3,7 +3,13 @@
 /**
  * PureMVC <code>Facade</code> for this application.
  */
-var ApplicationFacade = Objs("org.puremvc.js.demos.objs.employeeadmin.ApplicationFacade",
+module EmployeeAdmin
+{
+	"use strict";
+
+	import puremvc = module("puremvc");
+
+	export class ApplicationFacade = Objs("org.puremvc.js.demos.objs.employeeadmin.ApplicationFacade",
 	Facade,
 {
 	/**

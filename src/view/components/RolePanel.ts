@@ -5,7 +5,13 @@
 /**
  * The UI component in charge of the <em>role panel</em>.
  */
-var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.RolePanel",
+module EmployeeAdmin
+{
+	"use strict";
+
+	import puremvc = module("puremvc");
+
+	export class RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.RolePanel",
 	UiComponent,
 {
 	/** 
