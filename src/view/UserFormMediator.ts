@@ -14,7 +14,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 * 
 	 * @type {UserProxy}
 	 */
-	userProxy: null,
+	userProxy: null;
 
 	/**
 	 * @constructs

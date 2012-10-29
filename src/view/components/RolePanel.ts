@@ -14,7 +14,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 * @private
 	 * @type {UserVO}
 	 */
-	user: null,
+	user: null;
 	
 	/**
 	 * The user roles list.
@@ -22,7 +22,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 * @private
 	 * @type {Array}
 	 */
-	userRoles: null,
+	userRoles: null;
 
 	/**
 	 * Currently selected role.
@@ -30,12 +30,12 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 * @private
 	 * @type {UserRole}
 	 */
-	selectedRole: null,
+	selectedRole: null;
 
 	/**
 	 * The add or remove role mode.
 	 */
-	mode: null,
+	mode: null;
 			
 	/**
 	 * The role panel HTML element.
@@ -43,7 +43,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	rolePanel: null,
+	rolePanel: null;
 			
 	/**
 	 * The full role list HTML element.
@@ -51,7 +51,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	roleList: null,
+	roleList: null;
 	
 	/**
 	 * The user role datagrid HTML element.
@@ -59,7 +59,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	userRoleList: null,
+	userRoleList: null;
 	
 	/**
 	 * The add role button HTML element.
@@ -67,7 +67,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	addRoleButton: null,
+	addRoleButton: null;
 	
 	/**
 	 * The remove role button HTML element.
@@ -75,7 +75,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	removeRoleButton: null,
+	removeRoleButton: null;
 
 	/**
 	 * @constructs

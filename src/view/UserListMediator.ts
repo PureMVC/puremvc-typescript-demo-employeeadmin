@@ -13,7 +13,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	 *
 	 * @type {UserList}
 	 */
-	userList: null,
+	userList: null;
 	
 	/**
 	 * @constructs

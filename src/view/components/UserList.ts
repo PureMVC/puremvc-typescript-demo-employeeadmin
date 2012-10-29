@@ -15,7 +15,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @type {HTMLElement}
 	 * @private
 	 */
-	userListPanel: null,
+	userListPanel: null;
 	
 	/**
 	 * The user list HTML element.
@@ -23,7 +23,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @type {HTMLElement}
 	 * @private
 	 */
-	userList: null,
+	userList: null;
 	
 	/**
 	 * The "new" button HTML element.
@@ -31,7 +31,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @type {HTMLElement}
 	 * @private
 	 */
-	newButton: null,
+	newButton: null;
 
 	/**
 	 * The current selected user.
@@ -39,7 +39,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @type {string}
 	 * @private
 	 */
-	selectedUser: null,
+	selectedUser: null;
 	
 	/**
 	 * The user list of the application.
@@ -47,7 +47,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @type {Array}
 	 * @private
 	 */
-	users: null,
+	users: null;
 	
 	/**
 	 * @constructs

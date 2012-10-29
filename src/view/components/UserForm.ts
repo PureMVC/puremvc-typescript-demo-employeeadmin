@@ -15,7 +15,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	userFormPanel: null,
+	userFormPanel: null;
 	
 	/**
 	 * The unique name field HTML element.
@@ -23,7 +23,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	uname: null,
+	uname: null;
 	
 	/**
 	 * The first name field HTML element.
@@ -31,7 +31,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	fname: null,
+	fname: null;
 	
 	/**
 	 * The long name field HTML element.
@@ -39,7 +39,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	lname: null,
+	lname: null;
 	
 	/**
 	 * The email field HTML element.
@@ -47,7 +47,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	email: null,
+	email: null;
 	
 	/**
 	 * The password field HTML element.
@@ -55,7 +55,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	password: null,
+	password: null;
 	
 	/**
 	 * The confirm password field HTML element.
@@ -63,7 +63,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	confirm: null,
+	confirm: null;
 	
 	/**
 	 * The department field HTML element.
@@ -71,7 +71,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	department: null,
+	department: null;
 	
 	/**
 	 * The submit button HTML element.
@@ -79,7 +79,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {HTMLElement}
 	 */
-	submitButton: null,
+	submitButton: null;
 	
 	/**
 	 * The selected user.
@@ -87,7 +87,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {UserVO}
 	 */
-	user: null,
+	user: null;
 	
 	/**
 	 * The roles list for the selected user.
@@ -95,13 +95,13 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * @private
 	 * @type {Array}
 	 */
-	userRoles: null,
+	userRoles: null;
 	
 	/**
 	 * @private
 	 * @type {string}
 	 */
-	mode: null,
+	mode: null;
 	
 	/**
 	 * @constructs

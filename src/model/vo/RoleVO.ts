@@ -11,7 +11,7 @@ var RoleVO = Objs("org.puremvc.js.demos.objs.employeeadmin.model.vo.RoleVO",
 	 * 
 	 * @type {string}
 	 */
-	uname: "",
+	uname: "";
 	
 	/**
 	 * The list of roles associated to the user.

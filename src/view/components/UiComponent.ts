@@ -25,7 +25,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	 * @type {Object}
 	 * @private
 	 */
-	listenerMap: null,
+	listenerMap: null;
 	
 	/**
 	* Dispatches an event into the event flow.
@@ -162,7 +162,7 @@ UiComponent.Event = Objs("org.puremvc.js.demos.objs.employeeadmin.view.component
 	 * 
 	 * @type {string}
 	 */
-	type: null,
+	type: null;
 	
 	/**
 	 * Properties that follow the dispatched event.
