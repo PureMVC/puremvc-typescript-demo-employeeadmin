@@ -13,7 +13,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class RolePanel
-		extends UiComponent,
+		extends UiComponent
 	{
 		/**
 		 * Currently selected user.
@@ -31,7 +31,7 @@ module EmployeeAdmin
 		private selectedRole:UserRole = null;
 
 		/**
-		 * The add or remove role mode.
+		 * The ADD_MODE or REMOVE_MODE role mode.
 		 */
 		private mode:string = null;
 
