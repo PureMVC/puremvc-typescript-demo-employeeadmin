@@ -22,7 +22,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	 *
 	 * Initialize a <code>UserFormMediator</code> instance.
 	 * 
-	 * @param {String} name
+	 * @param {string} name
 	 * 		Name for this <code>Mediator</code>.
 	 *
 	 * @param {UserForm} viewComponent

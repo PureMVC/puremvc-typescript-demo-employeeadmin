@@ -30,7 +30,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	/**
 	* Dispatches an event into the event flow.
 	* 
-	* @param {String} type
+	* @param {string} type
 	* 		The type of the event to dispatch.
 	* 
 	* @param {Object} properties
@@ -66,7 +66,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	/**
 	* Add an event listener so that the listener receives notification of an event.
 	 *  
-	 * @param {String} type
+	 * @param {string} type
 	 * 		Type of the event to add.
 	 * 
 	 * @param {Function} listener
@@ -111,7 +111,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	 * Remove an event listener so that the listener stops receiving notification
 	 * of an event.
 	 *  
-	 * @param {String} type
+	 * @param {string} type
 	 * 		Type of the event to remove.
 	 * 
 	 * @param {Function} listener
@@ -160,7 +160,7 @@ UiComponent.Event = Objs("org.puremvc.js.demos.objs.employeeadmin.view.component
 	/**
 	 * Type of the dispatched event.
 	 * 
-	 * @type {String}
+	 * @type {string}
 	 */
 	type: null,
 	
@@ -240,7 +240,7 @@ UiComponent.ListenerDescriptor = Objs("org.puremvc.js.demos.objs.employeeadmin.v
  * 
  * A prefix used on map item names to prevent name conflicts.
  * 
- * @type {String}
+ * @type {string}
  * @constant
  */
 UiComponent.QUEUE_PATTERN = '@_@';

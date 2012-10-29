@@ -21,7 +21,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	 *
 	 * Initialize a <code>UserListMediator</code> instance.
 	 * 
-	 * @param {String} name
+	 * @param {string} name
 	 * 		Name for this <code>Mediator</code>.
 	 *
 	 * @param {UserList} viewComponent
@@ -137,7 +137,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
      */
 	onDelete()
 	{
-		var uname:String = this.getUserList().getSelectedUser();
+		var uname:string = this.getUserList().getSelectedUser();
 		var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
 		var selectedUser:UserVO = userProxy.getUser( uname );
 
@@ -151,7 +151,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	 */
 	onSelect()
 	{
-		var uname:String = this.getUserList().getSelectedUser();
+		var uname:string = this.getUserList().getSelectedUser();
 		var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
 		var selectedUser:UserVO = userProxy.getUser( uname );
 

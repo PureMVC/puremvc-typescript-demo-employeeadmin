@@ -9,35 +9,35 @@ var UserVO = Objs("org.puremvc.js.demos.objs.employeeadmin.model.vo.UserVO",
 	/** 
 	 * Unique name of the user.
 	 * 
-	 * @type {String}
+	 * @type {string}
 	 */
 	uname: "",
 	
 	/** 
 	 * First name of the user.
 	 * 
-	 * @type {String}
+	 * @type {string}
 	 */
 	fname: "",
 	
 	/**  		
 	 * Last name of the user.
 	 * 
-	 * @type {String}
+	 * @type {string}
 	 */
 	lname: "",
 	
 	/** 		
 	 * E-mail name of the user.
 	 * 
-	 * @type {String}
+	 * @type {string}
 	 */
 	email: "",
 	
 	/** 		
 	 * Password name of the user.
 	 * 
-	 * @type {String}
+	 * @type {string}
 	 */
 	password: "",
 	

@@ -99,7 +99,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	
 	/**
 	 * @private
-	 * @type {String}
+	 * @type {string}
 	 */
 	mode: null,
 	
@@ -149,7 +149,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	bindListeners()
 	{
 		//jQuery will be able to only remove events attached under this namespace
-		var namespace:String = ".UserForm";
+		var namespace:string = ".UserForm";
 
 		var focusEventProxy:jQueryProxy = jQuery.proxy( this, "field_focusHandler" );
 		this.uname.on("focus" + namespace, focusEventProxy );
@@ -166,7 +166,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	unbindListeners()
 	{
 		//jQuery will only remove events attached under this namespace
-		var namespace:String = ".UserForm";
+		var namespace:string = ".UserForm";
 
 		this.uname.off("focus" + namespace );
 		this.password.off("focus" + namespace );
@@ -188,7 +188,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 */
 	fillList( deptEnumList )
 	{
-		var htmlList:String = "";
+		var htmlList:string = "";
 		for(var i:number=0; i<deptEnumList.length; i++)
 		{		
 			var deptEnum:DeptEnum = deptEnumList[i];
@@ -199,7 +199,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 			 */ 
 			var valueAttr = 'value="' + deptEnum.ordinal + '"';
 			
-			var selectedAttr:String = "";
+			var selectedAttr:string = "";
 			if( this.user && deptEnum.equals(this.user.department) )
 				selectedAttr = "selected";
 				
@@ -327,7 +327,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * Set the form mode to ADD or EDIT.
 	 * 
-	 * @param {String} mode
+	 * @param {string} mode
 	 * 		<code>UserForm.MODE_ADD</code> or <code>UserForm.MODE_EDIT</code>
 	 */
 	setMode( mode )
@@ -424,7 +424,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * Set or unset the error state on the uname field.
 	 * 
-	 * @param {String} fieldName
+	 * @param {string} fieldName
 	 * 		Name of the field to mark as (or not mark as) containing an error.
 	 *
 	 * @param {Boolean} error

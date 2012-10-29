@@ -127,7 +127,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	bindListeners()
 	{
 		//jQuery will be able to only remove events attached under this namespace
-		var namespace:String = ".UserRoleList";
+		var namespace:string = ".UserRoleList";
 		this.addRoleButton.on( "click"+namespace, jQuery.proxy( this, "addRoleButton_clickHandler") );
 		this.removeRoleButton.on( "click"+namespace, jQuery.proxy( this, "removeRoleButton_clickHandler") );
 		this.roleList.on( "change"+namespace, jQuery.proxy( this, "roleList_changeHandler") );
@@ -140,7 +140,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	unbindListeners()
 	{
 		//jQuery will be able to only remove events attached under this namespace
-		var namespace:String = ".UserRoleList";
+		var namespace:string = ".UserRoleList";
 		this.addRoleButton.off( "click"+namespace );
 		this.removeRoleButton.off( "click"+namespace );
 		this.roleList.off( "change"+namespace );
@@ -158,7 +158,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		/*First clear all*/
 		this.roleList.empty();
 
-		var htmlList:String = "";
+		var htmlList:string = "";
 		for(var i:number=0; i<roleEnumList.length; i++)
 		{		
 			var role:RoleVO = roleEnumList[i];
@@ -167,8 +167,8 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 			 * An item not having a value in jQuery will be excluded from the
 			 * pop-up menu.
 			 */ 
-			var valueAttr:String = 'value="' + role.ordinal + '"';
-			var selectedAttr:String = i == 0 ? "selected" : "";
+			var valueAttr:string = 'value="' + role.ordinal + '"';
+			var selectedAttr:string = i == 0 ? "selected" : "";
 			htmlList += '<option ' + valueAttr + ' ' + selectedAttr + ' >' + role.value + '</option>';
 		}
 	
@@ -253,7 +253,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	/**
 	 * Enable or disable the form.
 	 *
-	 * @param {String} mode
+	 * @param {string} mode
 	 *		The Add/Remove role mode of the form.
 	 */
 	setMode( mode )
@@ -307,7 +307,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	/**
 	 * Select role to remove.
 	 * 
-	 * @param {String} id
+	 * @param {string} id
 	 * 		The id of the selected row.
 	 */
 	userRoleList_changeHandler( id )
@@ -348,11 +348,11 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 /*
  * Event names
  */
-RolePanel.ADD:String 			= "add";
-RolePanel.REMOVE:String 			= "remove";
+RolePanel.ADD:string 			= "add";
+RolePanel.REMOVE:string 			= "remove";
 
 /*
  * View states
  */
-RolePanel.ADD_MODE:String 		= "addMode";
-RolePanel.REMOVE_MODE:String 	= "removeMode";
+RolePanel.ADD_MODE:string 		= "addMode";
+RolePanel.REMOVE_MODE:string 	= "removeMode";

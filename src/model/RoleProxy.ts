@@ -14,7 +14,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		 *
 		 * Initialize a <code>RoleProxy</code> instance.
 		 * 
-		 * @param {String} name
+		 * @param {string} name
 		 * 		Identifier of the <code>Proxy</code> object in the PureMVC framework.
 		 * 
 		 * @param {Array} roles	
@@ -170,7 +170,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		/**
 		 * Get a user's roles.
 		 * 
-		 * @param {String} uname
+		 * @param {string} uname
 		 * 		The user unique name.
 		 * 
 		 * @return {Array}

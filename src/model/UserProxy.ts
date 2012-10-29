@@ -13,7 +13,7 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		 *
 		 * Initialize a <code>UserProxy</code> instance.
 		 * 
-		 * @param {String} name
+		 * @param {string} name
 		 * 		Identifier of the <code>Proxy</code> object in the PureMVC framework.
 		 * 
 		 * @param {Array} users	
@@ -45,7 +45,7 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		/**
 		 * Return a user given its user name.
 		 * 
-		 * @param {String} uname
+		 * @param {string} uname
 		 * 		The user name of the user to find.
 		 * 
 		 * @return {UserVO}

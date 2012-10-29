@@ -36,7 +36,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * The current selected user.
 	 * 
-	 * @type {String}
+	 * @type {string}
 	 * @private
 	 */
 	selectedUser: null,
@@ -102,7 +102,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	bindListeners()
     {
 		//jQuery will be able to only remove events attached under this namespace
-		var namespace:String = ".UserList";
+		var namespace:string = ".UserList";
 		this.userList.jqGrid( "setGridParam", { onSelectRow: jQuery.proxy( this, "userList_selectHandler" ) } );
 		this.newButton.on( "click"+namespace, jQuery.proxy( this, "newButton_clickHandler" ) );
 		this.deleteButton.on( "click"+namespace, jQuery.proxy( this, "deleteButton_clickHandler" ) );
@@ -114,7 +114,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	unbindListeners()
 	{
 		//jQuery will only remove events attached under this namespace
-		var namespace:String = ".UserList";
+		var namespace:string = ".UserList";
 		this.userList.jqGrid( "setGridParam", { onSelectRow: null } );
 		this.newButton.off( "click"+namespace );
 		this.deleteButton.off( "click"+namespace );
@@ -156,7 +156,7 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	 * <p>Note that jQgrid cannot embed any external data to transport the
 	 * UserVo. So it is best to return uname.
 	 * 
-	 * @return {String}
+	 * @return {string}
 	 * 		The user name selected in the user list.
 	 */
 	getSelectedUser()
@@ -167,14 +167,14 @@ var UserList = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	/**
 	 * List row selection event listener.
 	 * 
-	 * @param {String} id
+	 * @param {string} id
 	 * 		The id of the selected row.
 	 */
 	userList_selectHandler( id )
 	{
 		var rowData:Object = this.userList.jqGrid( "getRowData", id );
 
-		var uname:String;
+		var uname:string;
 		for( var i:number=0; i<this.users.length; i++ )
 		{
 			if( this.users[i].uname == rowData.uname )

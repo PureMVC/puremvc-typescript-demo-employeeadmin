@@ -20,7 +20,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 * 
 	 * Initialize a <code>RolePanelMediator</code> instance.
 	 * 
-	 * @param {String} name
+	 * @param {string} name
 	 * 		Name for this <code>Mediator</code>.
 	 *
 	 * @param {RolePanel} viewComponent
@@ -100,7 +100,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	 */
 	updateUserRoleList()
 	{
-		var userName:String = this.getRolePanel().user.uname;
+		var userName:string = this.getRolePanel().user.uname;
 		var userRoles:Array = this.roleProxy.getUserRoles( userName );
 		this.getRolePanel().setUserRoles( userRoles );
 	}

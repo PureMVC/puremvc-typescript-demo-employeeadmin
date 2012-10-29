@@ -12,8 +12,6 @@ module EmployeeAdmin
 	{
 		/**
 		 * The <code>RoleEnum</code> entry identifier.
-		 *
-		 * @type
 		 */
 		ordinal:number = null;
 
@@ -21,7 +19,7 @@ module EmployeeAdmin
 		/**
 		 * The <code>RoleEnum</code> entry value.
 		 *
-		 * @type {String}
+		 * @type {string}
 		 */
 		value: null,
 
@@ -29,7 +27,7 @@ module EmployeeAdmin
 		 * @constructs
 		 * Initialize a <code>RoleEnum</code> instance.
 		 *
-		 * @param {String} value
+		 * @param {string} value
 		 * 		Value shared by each enum item.
 		 *
 		 * @param {number} ordinal
