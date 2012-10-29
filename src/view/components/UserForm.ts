@@ -93,11 +93,12 @@ module EmployeeAdmin
 		/**
 		 * Initialize references to DOM elements.
 		 */
-		initializeChildren():void
+		private initializeChildren():void
 		{
 			/*
 			 * We use JQuery to initialize reference to UI components
 			 */
+			//FIXME Have to be initialized in the view startup command
 			this.userFormPanel = jQuery(".user-form-panel");
 
 			this.uname = this.userFormPanel.find("#uname");
@@ -115,7 +116,7 @@ module EmployeeAdmin
 		/**
 		 * Bind events to their listeners.
 		 */
-		bindListeners():void
+		private bindListeners():void
 		{
 			//jQuery will be able to only remove events attached under this namespace
 			var namespace:string = ".UserForm";
@@ -132,7 +133,7 @@ module EmployeeAdmin
 		/**
 		 * Unbind events from their listeners.
 		 */
-		unbindListeners():void
+		private unbindListeners():void
 		{
 			//jQuery will only remove events attached under this namespace
 			var namespace:string = ".UserForm";
@@ -148,14 +149,13 @@ module EmployeeAdmin
 		}
 
 		/**
-		 * Add items from <code>DeptEnum</code> to the corresponding list UI
-		 * component.
+		 * Add items from <code>DeptEnum</code> to the corresponding list UI component.
 		 *
 		 * @param deptEnumList
-		 *		List of <code>DeptEnum</code> items or an empty array to empty
-		 *		the list UI component content.
+		 *		List of <code>DeptEnum</code> items or an empty array to empty the list UI component
+		 *		content.
 		 */
-		fillList( deptEnumList:DeptEnum[] ):void
+		private fillList( deptEnumList:DeptEnum[] ):void
 		{
 			var htmlList:string = "";
 			for( var i:number=0; i<deptEnumList.length; i++ )
@@ -290,10 +290,10 @@ module EmployeeAdmin
 		}
 
 		/**
-		 * Set the form mode to ADD or EDIT.
+		 * Set the form mode to <code>MODE_ADD</code> or <code>MODE_EDIT</code>.
 		 *
 		 * @param mode
-		 * 		<code>UserForm.MODE_ADD</code> or <code>UserForm.MODE_EDIT</code>
+		 * 		<code>MODE_ADD</code> or <code>MODE_EDIT</code> from mode
 		 */
 		setMode( mode:string ):void
 		{
@@ -314,7 +314,7 @@ module EmployeeAdmin
 		/**
 		 * Submit the add or update.
 		 */
-		submitButton_clickHandler():void
+		private submitButton_clickHandler():void
 		{
 			this.updateUser();
 
@@ -334,7 +334,7 @@ module EmployeeAdmin
 		/**
 		 * Cancel the add or update
 		 */
-		cancelButton_clickHandler():void
+		private cancelButton_clickHandler():void
 		{
 			this.dispatchEvent( UserForm.CANCEL );
 		}
@@ -342,20 +342,19 @@ module EmployeeAdmin
 		/**
 		 * Handle focus event on all the required form fields.
 		 */
-		field_focusHandler( evt ):void
+		private field_focusHandler( evt ):void
 		{
 			//Remove error on the selected field.
 			this.setFieldError( evt.target.id, false );
 		}
 
 		/**
-		 * Display errors associated with form fields and return if at least one
-		 * field is in error.
+		 * Display errors associated with form fields and return if at least one field is in error.
 		 *
 		 * @return {bool}
 		 * 		The form contains errors.
 		 */
-		getErrors():bool
+		private getErrors():bool
 		{
 			var error:bool = false;
 
@@ -395,7 +394,7 @@ module EmployeeAdmin
 		 * @param {bool} error
 		 * 		The field must be marked as containing an error.
 		 */
-		setFieldError( fieldName, error ):void
+		private setFieldError( fieldName, error ):void
 		{
 			var label:HTMLElement = this.userFormPanel.find( 'label[for="' + fieldName + '"]' );
 			var field:HTMLElement = this.userFormPanel.find( "#" + fieldName );

@@ -77,8 +77,9 @@ module EmployeeAdmin
 		/**
 		 * Initialize references to DOM elements.
 		 */
-		initializeChildren():void
+		private initializeChildren():void
 		{
+			//FIXME Have to be initialized in the view startup command
 			this.rolePanel = jQuery(".role-panel");
 
 			this.userRoleList = this.rolePanel.find("#user-role-list");
@@ -104,7 +105,7 @@ module EmployeeAdmin
 		/**
 		 * Configure event listeners registration.
 		 */
-		bindListeners():void
+		private bindListeners():void
 		{
 			//jQuery will be able to only remove events attached under this namespace
 			var namespace:string = ".UserRoleList";
@@ -117,7 +118,7 @@ module EmployeeAdmin
 		/**
 		 * Configure event listeners registration.
 		 */
-		unbindListeners():void
+		private unbindListeners():void
 		{
 			//jQuery will be able to only remove events attached under this namespace
 			var namespace:string = ".UserRoleList";
@@ -130,7 +131,7 @@ module EmployeeAdmin
 		/**
 		 * Add items from <code>RoleEnum</code> to the <code>roleList</code> component.
 		 */
-		fillRoleList():void
+		private fillRoleList():void
 		{
 			var roleEnumList:Array = RoleEnum.getComboList();
 
@@ -228,10 +229,10 @@ module EmployeeAdmin
 		}
 
 		/**
-		 * Enable or disable the form.
+		 * Set the panel mode to <code>ADD_MODE</code> or <code>REMOVE_MODE</code>.
 		 *
 		 * @param mode
-		 *		The Add/Remove role mode of the form.
+		 *		The panel <code>ADD_MODE</code> or <code>REMOVE_MODE</code> mode.
 		 */
 		setMode( mode:string ):void
 		{
@@ -268,7 +269,7 @@ module EmployeeAdmin
 		/**
 		 * Add button onclick event listener.
 		 */
-		addRoleButton_clickHandler():void
+		private addRoleButton_clickHandler():void
 		{
 			this.dispatchEvent( RolePanel.ADD );
 		}
@@ -276,7 +277,7 @@ module EmployeeAdmin
 		/**
 		 * Remove button onclick event listener.
 		 */
-		removeRoleButton_clickHandler():void
+		private removeRoleButton_clickHandler():void
 		{
 			this.dispatchEvent( RolePanel.REMOVE );
 		}
@@ -287,7 +288,7 @@ module EmployeeAdmin
 		 * @param {string} id
 		 * 		The id of the selected row.
 		 */
-		userRoleList_changeHandler( id ):void
+		private userRoleList_changeHandler( id ):void
 		{
 			var index:number = this.userRoleList.jqGrid( 'getInd', id );
 			this.selectedRole = this.userRoles[index-1];
@@ -297,7 +298,7 @@ module EmployeeAdmin
 		/**
 		 * Select role to add.
 		 */
-		roleList_changeHandler():void
+		private roleList_changeHandler():void
 		{
 			this.userRoleList.jqGrid( 'resetSelection' );
 
