@@ -20,7 +20,7 @@ module EmployeeAdmin
 		 */
 		getRoles():RoleVO[]
 		{
-			return <RoleVO[]/> this.data;
+			return <RoleVO[]> this.data;
 		}
 		
 		/**
@@ -29,7 +29,7 @@ module EmployeeAdmin
 		 * @param role
 		 * 		The role to add.
 		 */ 
-		addItem( role ):RoleVO
+		addItem( role:RoleVO ):void
 		{
 			this.getRoles().push( role );
 		}
@@ -40,12 +40,12 @@ module EmployeeAdmin
 		 * @param item
 		 * 		The role to remove.
 		 */ 
-		deleteItem( item ):RoleVO
+		deleteItem( item:RoleVO ):void
 		{
 			var roles:RoleVO[] = this.getRoles();
 			for( var i:number=0; i<roles.length; i++)
 			{
-				if( roles[i].uname == item.uname )
+				if( roles[i].uname === item.uname )
 				{
 					roles.splice(i,1);
 					break;
@@ -71,7 +71,7 @@ module EmployeeAdmin
 			var hasRole:bool = false;
 			for( var i:number=0; i<roles.length; i++)
 			{ 
-				if( roles[i].uname == user.uname )
+				if( roles[i].uname === user.uname )
 				{
 					var userRoles:Array = roles[i].roles;
 					for( var j:number=0; j<userRoles.length; j++ )
@@ -92,15 +92,15 @@ module EmployeeAdmin
 		/**
 		 * Add a role to a user.
 		 * 
-		 * @param {UserVO} user
+		 * @param user
 		 * 		The user to whom to add a role.
 		 * 
-		 * @param {RoleEnum} role
+		 * @param role
 		 * 		The role to add.
 		 */ 
-		addRoleToUser( user, role )
+		addRoleToUser( user:UserVO, role:RoleEnum ):void
 		{
-			var roles:Array = this.getRoles();
+			var roles:RoleVO[] = this.getRoles();
 			var result:bool = false;
 			if ( !this.doesUserHaveRole(user, role) )
 			{
@@ -120,22 +120,22 @@ module EmployeeAdmin
 		/**
 		 * Remove a role from a user.
 		 * 
-		 * @param {UserVO} user
+		 * @param user
 		 * 		The user to whom remove the role.
 		 * 
-		 * @param {RoleEnum} role
+		 * @param role
 		 * 		The role to remove.
 		 */
-		removeRoleFromUser( user, role )
+		removeRoleFromUser( user:UserVO, role:RoleEnum ):void
 		{
-			var roles:Array = this.getRoles();
+			var roles:RoleVO[] = this.getRoles();
 			if( this.doesUserHaveRole( user, role ) )
 			{
 				for( var i:number=0; i<roles.length; i++)
 				{ 
-					if( roles[i].uname == user.uname )
+					if( roles[i].uname === user.uname )
 					{
-						var userRoles:Array = roles[i].roles;
+						var userRoles:RoleVO[] = roles[i].roles;
 						for( var j:number=0; j<userRoles.length; j++)
 						{
 							var roleEnum:RoleEnum = userRoles[j];
@@ -154,19 +154,19 @@ module EmployeeAdmin
 		/**
 		 * Get a user's roles.
 		 * 
-		 * @param {string} uname
+		 * @param uname
 		 * 		The user unique name.
 		 * 
-		 * @return {Array}
+		 * @return
 		 * 		The user's role list.
 		 */ 
-		getUserRoles( uname )
+		getUserRoles( uname:string ):RoleVO[]
 		{
-			var roles:Array = this.getRoles();
-			var userRoles:Array = new Array();
+			var roles:RoleVO[] = this.getRoles();
+			var userRoles::RoleVO[] = new Array();
 			for( var i:number=0; i<roles.length; i++)
 			{ 
-				if( roles[i].uname == uname )
+				if( roles[i].uname === uname )
 				{
 					userRoles = roles[i].roles;
 					break;
@@ -176,4 +176,4 @@ module EmployeeAdmin
 			return userRoles;
 		}
 	}
-);
+}

@@ -9,37 +9,23 @@ module EmployeeAdmin
 
 	import puremvc = module("puremvc");
 
-	export class UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
+	export class UserProxy
 		extends Proxy,
 	{
 		/**
-		 * Constructs a <code>UserProxy</code> instance.
-		 * 
-		 * @param {string} name
-		 * 		Identifier of the <code>Proxy</code> object in the PureMVC framework.
-		 * 
-		 * @param {Array} users	
-		 * 		The list of users controlled by the <code>Proxy</code>.
-		 */
-		constructor( name, users )
-		{
-			UserProxy.$super.initialize.call( this, name, users );
-		}
-		
-		/**
 		 * Return the users list controlled by the <code>Proxy</code>.
 		 */
-		getUsers()
+		getUsers():UserVO[]
 		{
-			return this.data;
+			return <UserVO[]/> this.data;
 		}
 		
 		/**
 		 * Add a user to the list.
 		 * 
-		 * @param {UserVO} user
+		 * @param user
 		 */ 
-		addItem( user )
+		addItem( user:UserVO ):void
 		{
 			this.getUsers().push( user );
 		}
@@ -47,18 +33,18 @@ module EmployeeAdmin
 		/**
 		 * Return a user given its user name.
 		 * 
-		 * @param {string} uname
+		 * @param uname
 		 * 		The user name of the user to find.
 		 * 
-		 * @return {UserVO}
-		 * 		The user with the given user name or null if none exists with
-		 * 		this user name.
+		 * @return
+		 * 		The user with the given user name or <code>null</code> if none exists with this user
+		 * 		name.
 		 */
-		getUser( uname )
+		getUser( uname:string ):UserVO
 		{
-			var users:Array = this.getUsers();
+			var users:UserVO[] = this.getUsers();
 			for( var i:number=0; i<users.length; i++ )
-				if( users[i].uname == uname )
+				if( users[i].uname === uname )
 					return users[i];
 					
 			return null; 
@@ -67,28 +53,28 @@ module EmployeeAdmin
 		/**
 		 * Update a user informations.
 		 * 
-		 * @param {UserVO} user
+		 * @param user
 		 * 		The user to update.
-		 */ 
-		updateItem( user )
+		 */
+		updateItem( user:UserVO ):void
 		{
-			var users:Array = this.getUsers();
+			var users:UserVO[] = this.getUsers();
 			for( var i:number=0; i<users.length; i++ )
-				if( users[i].uname == user.uname )
+				if( users[i].uname === user.uname )
 					users[i] = user;
 		}
 		
 		/**
 		 * Remove a user from the list.
 		 * 
-		 * @param {UserVO} user
+		 * @param user
 		 * 		The user to remove.
 		 */ 
-		deleteItem( user )
+		deleteItem( user:UserVO ):void
 		{
-			var users:Array = this.getUsers();
+			var users:UserVO[] = this.getUsers();
 			for( var i:number=0; i<users.length; i++ )
-				if( users[i].uname == user.uname )
+				if( users[i].uname === user.uname )
 					users.splice(i,1);
 		}
 	}
