@@ -100,7 +100,7 @@ module EmployeeAdmin
 			 * We use JQuery to initialize reference to UI components
 			 */
 			//FIXME Have to be initialized in the view startup command
-			this.userFormPanel = JQuery.find(".user-form-panel");
+			this.userFormPanel = jQuery(".user-form-panel");
 
 			this.uname = this.userFormPanel.find("#uname");
 			this.fname = this.userFormPanel.find("#fname");
@@ -122,7 +122,7 @@ module EmployeeAdmin
 			//jQuery will be able to only remove events attached under this namespace
 			var namespace:string = ".UserForm";
 
-			var focusEventProxy:any = JQueryStatic.proxy( this, "field_focusHandler" );
+			var focusEventProxy:any = jQuery.proxy( this, "field_focusHandler" );
 			this.uname.on("focus" + namespace, focusEventProxy );
 			this.password.on("focus" + namespace, focusEventProxy );
 			this.confirm.on("focus" + namespace, focusEventProxy );
@@ -230,7 +230,7 @@ module EmployeeAdmin
 			this.user.password = this.password.val();
 
 			var selected:number = parseInt(this.department.val())+1;
-			var deptEnumList:Array = DeptEnum.getComboList();
+			var deptEnumList:DeptEnum[] = DeptEnum.getComboList();
 			this.user.department = deptEnumList[selected];
 		}
 
