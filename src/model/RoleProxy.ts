@@ -10,7 +10,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class RoleProxy
-		extends Proxy,
+		extends Proxy
 	{
 		/**
 		 * Get the role list.

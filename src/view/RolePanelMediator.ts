@@ -118,7 +118,7 @@ module EmployeeAdmin
 		/**
 		 * @override
 		 */
-		listNotificationInterests():void
+		listNotificationInterests():string[]
 		{
 			return [
 				NotificationNames.NEW_USER,
@@ -193,7 +193,7 @@ module EmployeeAdmin
 		 * job of removing any listeners from the mediator and the component to
 		 * make those instances ready for garbage collection.
 		 */
-		private onRemove():void
+		onRemove():void
 		{
 			this.unregisterListeners();
 			this.getRolePanel().unbindListeners();

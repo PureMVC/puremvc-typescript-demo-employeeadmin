@@ -10,7 +10,7 @@ module EmployeeAdmin
 	import puremvc = module("puremvc");
 
 	export class UserProxy
-		extends Proxy,
+		extends Proxy
 	{
 		/**
 		 * Return the users list controlled by the <code>Proxy</code>.
