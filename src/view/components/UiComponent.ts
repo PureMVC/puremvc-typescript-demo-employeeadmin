@@ -16,8 +16,8 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	 */
 	initialize()
 	{
-		this.listenerMap = {};
-	},
+		this.listenerMap = {}
+	}
 	
 	/**
 	 * A map of <code>UiComponent.listenerDescriptor</code> objects.
@@ -47,9 +47,9 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 	
 		var queue:Array = this.listenerMap[UiComponent.QUEUE_PATTERN + type].slice(0);
 		
-		var props:Object = properties || {};
-		var len:Number = queue.length;
-		for(var i:Number=0; i<len; i++)
+		var props:Object = properties || {}
+		var len:number = queue.length;
+		for(var i:number=0; i<len; i++)
 		{
 			var listenerDescriptor/*UiComponent.ListenerDescriptor*/ = queue[i];
 	
@@ -61,7 +61,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 					listenerDescriptor.listener.call( this, event, props );
 			}
 		}
-	},
+	}
 	
 	/**
 	* Add an event listener so that the listener receives notification of an event.
@@ -96,8 +96,8 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 		else
 			queue = this.listenerMap[ UiComponent.QUEUE_PATTERN + type ];
 	
-		var len:Number = queue.length;
-		for(var i:Number=0; i<len; i++ )
+		var len:number = queue.length;
+		for(var i:number=0; i<len; i++ )
 		{
 			var listenerDescriptor/*UiComponent.ListenerDescriptor*/ = queue[i];
 			if( listenerDescriptor.equals( newListener ) )
@@ -105,7 +105,7 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 		}
 	
 		queue.push(newListener);
-	},
+	}
 	
 	/**
 	 * Remove an event listener so that the listener stops receiving notification
@@ -137,8 +137,8 @@ var UiComponent = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.
 			return;
 			
 		var queue:Object = this.listenerMap[ UiComponent.QUEUE_PATTERN + type ];
-		var len:Number = queue.length;
-		for(var i:Number=0; i<len; i++)
+		var len:number = queue.length;
+		for(var i:number=0; i<len; i++)
         {
             var listenerDescriptor/*UiComponent.ListenerDescriptor*/ = queue[i];
             if( listenerDescriptor.equals( new UiComponent.ListenerDescriptor( listener, context ) ) )
@@ -199,7 +199,7 @@ UiComponent.ListenerDescriptor = Objs("org.puremvc.js.demos.objs.employeeadmin.v
 	{
 		this.listener = listener;
 		this.context = context;
-	},
+	}
 
     /**
      * @private

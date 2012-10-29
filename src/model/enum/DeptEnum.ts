@@ -72,7 +72,7 @@ module EmployeeAdmin
 				DeptEnum.SALES,
 				DeptEnum.PLANT
 			];
-		};
+		}
 
 		/**
 		 * Returns the department list including the <code>DeptEnum.NONE_SELECTED</code> item used

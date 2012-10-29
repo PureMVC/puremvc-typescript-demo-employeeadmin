@@ -36,7 +36,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 
 		var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
 		viewComponent.setUsers(userProxy.getUsers());
-	},
+	}
 	
 	/**
 	 * Register event listeners for the UserForm component.
@@ -47,7 +47,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 		userList.addEventListener( UserList.NEW, this.onNew, this );
 		userList.addEventListener( UserList.DELETE, this.onDelete, this );
 		userList.addEventListener( UserList.SELECT, this.onSelect, this );
-	},
+	}
 
 	/**
 	 * Unregister event listeners for the UserForm component.
@@ -58,7 +58,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 		userList.removeEventListener( UserList.NEW, this.onNew, this );
 		userList.removeEventListener( UserList.DELETE, this.onDelete, this );
 		userList.removeEventListener( UserList.SELECT, this.onSelect, this );
-	},
+	}
 	
 	/**
 	 * @private
@@ -73,7 +73,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	getUserList()
 	{
 		return this.viewComponent;
-	},
+	}
 	
 	/**
 	 * @override
@@ -86,7 +86,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 			NotificationNames.USER_ADDED,
 			NotificationNames.USER_DELETED
 		];
-	},
+	}
 	
 	/**
 	 * @override
@@ -117,7 +117,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 				userList.deSelect();
 			break;
 		}
-	},
+	}
 	
 	/**
 	 * Called when to add a new user to the list.
@@ -128,7 +128,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 	{
 		var user:UserVO = new UserVO();
 		this.sendNotification( NotificationNames.NEW_USER, user );
-	},
+	}
 
     /**
      * Called when to delete an user from the list.
@@ -142,7 +142,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 		var selectedUser:UserVO = userProxy.getUser( uname );
 
 		this.sendNotification( NotificationNames.DELETE_USER, selectedUser );
-	},
+	}
 
 	/**
 	 * @private
@@ -156,7 +156,7 @@ var UserListMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserLi
 		var selectedUser:UserVO = userProxy.getUser( uname );
 
 		this.sendNotification( NotificationNames.USER_SELECTED, selectedUser );
-	},
+	}
 
 	/**
 	 * @override

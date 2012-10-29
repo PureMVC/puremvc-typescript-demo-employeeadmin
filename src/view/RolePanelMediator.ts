@@ -33,7 +33,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 
 		this.registerListeners();
 		this.roleProxy = this.facade.retrieveProxy( ProxyNames.ROLE_PROXY );
-	},
+	}
 
 	/**
 	 * @private
@@ -45,7 +45,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	getRolePanel()
 	{
 		return this.viewComponent;
-	},
+	}
 
 	/**
 	 * Register event listeners for the UserForm component.
@@ -55,7 +55,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 		var rolePanel:RolePanel = this.getRolePanel();
 		rolePanel.addEventListener( RolePanel.ADD, this.onAddRole, this );
 		rolePanel.addEventListener( RolePanel.REMOVE, this.onRemoveRole, this );
-	},
+	}
 
 	/**
 	 * Unregister event listeners for the UserForm component.
@@ -65,7 +65,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 		var rolePanel:RolePanel = this.getRolePanel();
 		rolePanel.removeEventListener( RolePanel.ADD, this.onAddRole, this );
 		rolePanel.removeEventListener( RolePanel.REMOVE, this.onRemoveRole, this );
-	},
+	}
 
 	/**
 	 * Called when a role is added to the selected user's role list.
@@ -79,7 +79,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 
 		this.updateUserRoleList();
 		this.getRolePanel().setMode(null);
-	},
+	}
 
 	/**
 	 * Called when a role is removed from the selected user's role list.
@@ -93,7 +93,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 	
 		this.updateUserRoleList();
 		this.getRolePanel().setMode(null);
-	},
+	}
 
 	/**
 	 * Force the user role list to update its display.
@@ -103,7 +103,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 		var userName:String = this.getRolePanel().user.uname;
 		var userRoles:Array = this.roleProxy.getUserRoles( userName );
 		this.getRolePanel().setUserRoles( userRoles );
-	},
+	}
 
 	/**
 	 * @override
@@ -119,7 +119,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 			NotificationNames.USER_SELECTED,
 			NotificationNames.ADD_ROLE_RESULT
 		];
-	},
+	}
 
 	/**
 	 * @override
@@ -174,7 +174,7 @@ var RolePanelMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.compo
 				this.updateUserRoleList();
 			break;
 		}
-	},
+	}
 
 	/**
 	 * @override

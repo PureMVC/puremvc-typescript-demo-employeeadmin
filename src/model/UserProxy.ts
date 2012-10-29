@@ -22,7 +22,7 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		initialize( name, users )
 		{
 			UserProxy.$super.initialize.call( this, name, users );
-		},
+		}
 		
 		/**
 		 * Return the users list controlled by the <code>Proxy</code>.
@@ -30,7 +30,7 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		getUsers()
 		{
 			return this.data;
-		},
+		}
 		
 		/**
 		 * Add a user to the list.
@@ -40,7 +40,7 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		addItem( user )
 		{
 			this.getUsers().push( user );
-		},
+		}
 		
 		/**
 		 * Return a user given its user name.
@@ -55,12 +55,12 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		getUser( uname )
 		{
 			var users:Array = this.getUsers();
-			for( var i:Number=0; i<users.length; i++ )
+			for( var i:number=0; i<users.length; i++ )
 				if( users[i].uname == uname )
 					return users[i];
 					
 			return null; 
-		},
+		}
 		
 		/**
 		 * Update a user informations.
@@ -71,10 +71,10 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		updateItem( user )
 		{
 			var users:Array = this.getUsers();
-			for( var i:Number=0; i<users.length; i++ )
+			for( var i:number=0; i<users.length; i++ )
 				if( users[i].uname == user.uname )
 					users[i] = user;
-		},
+		}
 		
 		/**
 		 * Remove a user from the list.
@@ -85,7 +85,7 @@ var UserProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.UserProxy",
 		deleteItem( user )
 		{
 			var users:Array = this.getUsers();
-			for( var i:Number=0; i<users.length; i++ )
+			for( var i:number=0; i<users.length; i++ )
 				if( users[i].uname == user.uname )
 					users.splice(i,1);
 		}

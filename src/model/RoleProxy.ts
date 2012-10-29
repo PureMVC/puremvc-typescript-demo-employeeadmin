@@ -26,7 +26,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 			RoleProxy.$super.initialize.call( this, name, roles );
 		
 			return this;
-		},
+		}
 		
 		/**
 		 * Get the role list.
@@ -37,7 +37,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		getRoles()
 		{
 			return this.data;
-		},
+		}
 		
 		/**
 		 * Add a role to the list.
@@ -48,7 +48,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		addItem( role )
 		{
 			this.getRoles().push( role );
-		},
+		}
 		
 		/**
 		 * Remove a role from the list. 
@@ -59,7 +59,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		deleteItem( item )
 		{
 			var roles = this.getRoles();
-			for( var i:Number=0; i<roles.length; i++)
+			for( var i:number=0; i<roles.length; i++)
 			{
 				if( roles[i].uname == item.uname )
 				{
@@ -67,7 +67,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 					break;
 				}
 			}	
-		},
+		}
 		
 		/**
 		 * Determine if the user has a given role.
@@ -85,12 +85,12 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		{
 			var roles:Array = this.getRoles();
 			var hasRole:Boolean = false;
-			for( var i:Number=0; i<roles.length; i++)
+			for( var i:number=0; i<roles.length; i++)
 			{ 
 				if( roles[i].uname == user.uname )
 				{
 					var userRoles:Array = roles[i].roles;
-					for( var j:Number=0; j<userRoles.length; j++ )
+					for( var j:number=0; j<userRoles.length; j++ )
 					{
 						var roleEnum:RoleEnum = userRoles[j];
 						if( roleEnum.equals( role ) )
@@ -103,7 +103,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 				}
 			}
 			return hasRole;
-		},
+		}
 		
 		/**
 		 * Add a role to a user.
@@ -120,7 +120,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 			var result:Boolean = false;
 			if ( !this.doesUserHaveRole(user, role) )
 			{
-				for( var i:Number=0; i<roles.length; i++)
+				for( var i:number=0; i<roles.length; i++)
 				{ 
 					if( roles[i].uname == user.uname )
 					{
@@ -131,7 +131,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 					}
 				}
 			}
-		},
+		}
 		
 		/**
 		 * Remove a role from a user.
@@ -147,12 +147,12 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 			var roles:Array = this.getRoles();
 			if( this.doesUserHaveRole( user, role ) )
 			{
-				for( var i:Number=0; i<roles.length; i++)
+				for( var i:number=0; i<roles.length; i++)
 				{ 
 					if( roles[i].uname == user.uname )
 					{
 						var userRoles:Array = roles[i].roles;
-						for( var j:Number=0; j<userRoles.length; j++)
+						for( var j:number=0; j<userRoles.length; j++)
 						{
 							var roleEnum:RoleEnum = userRoles[j];
 							if( roleEnum.equals( role ) )
@@ -165,7 +165,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 					}
 				}
 			}
-		},
+		}
 		
 		/**
 		 * Get a user's roles.
@@ -180,7 +180,7 @@ var RoleProxy = Objs("org.puremvc.js.demos.objs.employeeadmin.model.RoleProxy",
 		{
 			var roles:Array = this.getRoles();
 			var userRoles:Array = new Array();
-			for( var i:Number=0; i<roles.length; i++)
+			for( var i:number=0; i<roles.length; i++)
 			{ 
 				if( roles[i].uname == uname )
 				{

@@ -92,7 +92,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		
 		this.fillRoleList();
 		this.setEnabled(false);
-	},
+	}
 
     /**
      * Initialize references to DOM elements.
@@ -119,7 +119,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		this.roleList = this.rolePanel.find(".role-list");
 		this.addRoleButton = this.rolePanel.find(".add-role-button").button();
 		this.removeRoleButton = this.rolePanel.find(".remove-role-button").button();
-    },
+    }
 
 	/**
 	 * Configure event listeners registration.
@@ -132,7 +132,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		this.removeRoleButton.on( "click"+namespace, jQuery.proxy( this, "removeRoleButton_clickHandler") );
 		this.roleList.on( "change"+namespace, jQuery.proxy( this, "roleList_changeHandler") );
 		this.userRoleList.jqGrid( "setGridParam", { onSelectRow: jQuery.proxy( this, "userRoleList_changeHandler") } );
-	},
+	}
 
 	/**
 	 * Configure event listeners registration.
@@ -145,7 +145,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		this.removeRoleButton.off( "click"+namespace );
 		this.roleList.off( "change"+namespace );
 		this.userRoleList.jqGrid( "setGridParam", { onSelectRow: null } );
-	},
+	}
 
 	/**
 	 * Add items from <code>RoleEnum</code> to the <code>roleList</code>
@@ -159,7 +159,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		this.roleList.empty();
 
 		var htmlList:String = "";
-		for(var i:Number=0; i<roleEnumList.length; i++)
+		for(var i:number=0; i<roleEnumList.length; i++)
 		{		
 			var role:RoleVO = roleEnumList[i];
 			
@@ -173,7 +173,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		}
 	
 		this.roleList.html(htmlList);
-	},
+	}
 
 	/**
 	 * Set the displayed user roles list.
@@ -192,14 +192,14 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		this.userRoles = userRoles;
 
 		// Fill the data-grid
-		for(var i:Number=0; i<userRoles.length; i++)
+		for(var i:number=0; i<userRoles.length; i++)
 		{
 			var role:RoleVO = userRoles[i];
 			var rowData:Object = role;
 
 			this.userRoleList.jqGrid( 'addRowData', i+1, rowData );
 		}	
-	},
+	}
 	
 	/**
 	 * Get the selected user for whom roles list is displayed.
@@ -210,7 +210,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	getUser()
 	{
 		return this.user;
-	},
+	}
 	
 	/**
 	 * Get the selected role in the remove/add combobox if any.
@@ -221,7 +221,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	getSelectedRole()
 	{
 		return this.selectedRole;
-	},
+	}
 
 	/**
 	 * Enable or disable the form.
@@ -248,7 +248,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 
 		if( !isEnabled )
 			this.roleList.prop("selectedIndex",0);
-	},
+	}
 
 	/**
 	 * Enable or disable the form.
@@ -275,7 +275,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 				this.addRoleButton.button("disable");
 				this.removeRoleButton.button("disable");
 		}
-	},
+	}
 
 	/**
 	 * Clear the panel from all its displayed data.
@@ -286,7 +286,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		this.setUserRoles(null);
 		this.roleList.prop("selectedIndex",0);
 		this.userRoleList.jqGrid('resetSelection');
-	},
+	}
 
 	/**
 	 * Add button onclick event listener.
@@ -294,7 +294,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	addRoleButton_clickHandler()
 	{
 		this.dispatchEvent( RolePanel.ADD );
-	},
+	}
 
 	/**
 	 * Remove button onclick event listener.
@@ -302,7 +302,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	removeRoleButton_clickHandler()
 	{
 		this.dispatchEvent( RolePanel.REMOVE );
-	},
+	}
 
 	/**
 	 * Select role to remove.
@@ -312,10 +312,10 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 	 */
 	userRoleList_changeHandler( id )
 	{
-		var index:Number = this.userRoleList.jqGrid( 'getInd', id );
+		var index:number = this.userRoleList.jqGrid( 'getInd', id );
 		this.selectedRole = this.userRoles[index-1];
 		this.setMode( RolePanel.REMOVE_MODE );
-	},
+	}
 
 	/**
 	 * Select role to add.
@@ -328,7 +328,7 @@ var RolePanel = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Ro
 		this.selectedRole = roleEnumList[this.roleList.prop("selectedIndex")];
 		
 		var alreadyInList:Boolean = false;
-		for(var i:Number=0; i<this.userRoles.length; i++)
+		for(var i:number=0; i<this.userRoles.length; i++)
 		{
 			var role:RoleVO = this.userRoles[i];
 			if( role.equals(this.selectedRole) )

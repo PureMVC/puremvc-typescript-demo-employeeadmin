@@ -35,7 +35,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	
 		this.registerListeners();
 		this.userProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
-	},
+	}
 			
 	/**
 	 * @private
@@ -47,7 +47,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 	getUserForm ()
 	{
 		return this.viewComponent;
-	},
+	}
 
 	/**
 	 * Register event listeners for the UserForm component.
@@ -58,7 +58,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 		userForm.addEventListener( UserForm.ADD, this.onAdd, this );
 		userForm.addEventListener( UserForm.UPDATE, this.onUpdate, this );
 		userForm.addEventListener( UserForm.CANCEL, this.onCancel, this );
-	},
+	}
 
 	/**
 	 * Unregister event listeners for the UserForm component.
@@ -69,7 +69,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 		userForm.addEventListener( UserForm.ADD, this.onAdd, this );
 		userForm.addEventListener( UserForm.UPDATE, this.onUpdate, this );
 		userForm.addEventListener( UserForm.CANCEL, this.onCancel, this );
-	},
+	}
 
 	/**
 	 * @private
@@ -89,7 +89,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 		userForm.clearForm();
 		userForm.setEnabled(false);
 		userForm.setMode(UserForm.MODE_ADD);
-	},
+	}
 
 	/**
 	 * @private
@@ -106,7 +106,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 		userForm.clearForm();
 		userForm.setEnabled(false);
 		userForm.setMode(UserForm.MODE_ADD);
-	},
+	}
 
 	/**
 	 * @private
@@ -120,7 +120,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 		userForm.clearForm();
 		userForm.setEnabled(false);
 		userForm.setMode(UserForm.MODE_ADD);
-	},
+	}
 	
 	/**
 	 * @override
@@ -132,7 +132,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 			NotificationNames.USER_DELETED,
 			NotificationNames.USER_SELECTED
 		];
-	},
+	}
 	
 	/**
 	 * @override
@@ -167,7 +167,7 @@ var UserFormMediator = Objs("org.puremvc.js.demos.objs.employeeadmin.view.UserFo
 				userForm.setFocus();
 			break;
 		}
-	},
+	}
 
 	/**
 	 * @override

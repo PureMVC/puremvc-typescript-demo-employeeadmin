@@ -15,7 +15,7 @@ var ApplicationFacade = Objs("org.puremvc.js.demos.objs.employeeadmin.Applicatio
 	startup( app )
 	{
 		this.sendNotification( NotificationNames.STARTUP, app );
-	},
+	}
 
 	/**
 	 * The <code>Model</code> <code>View</code> and
@@ -54,4 +54,4 @@ ApplicationFacade.getInstance()
 		Facade.instance = new ApplicationFacade();
 	
 	return Facade.instance;
-};
+}

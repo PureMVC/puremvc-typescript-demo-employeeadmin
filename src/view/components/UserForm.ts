@@ -119,7 +119,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		//Needed to erase prefilled form informations.
 		this.clearForm();
 		this.setEnabled(false);
-	},
+	}
 
     /**
      * Initialize references to DOM elements.
@@ -141,7 +141,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	
 		this.submitButton = this.userFormPanel.find("#submit-button").button();
 		this.cancelButton = this.userFormPanel.find("#cancel-button").button();	
-    },
+    }
 	
     /**
 	 * Bind events to their listeners.
@@ -158,7 +158,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		this.department.on("focus" + namespace, focusEventProxy );
 		this.submitButton.on( "click" + namespace, jQuery.proxy( this, "submitButton_clickHandler" ) );
 		this.cancelButton.on( "click" + namespace, jQuery.proxy( this, "cancelButton_clickHandler" ) );
-	},
+	}
 
 	/**
 	 * Unbind events from their listeners.
@@ -176,7 +176,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 
 		this.submitButton.off( "click" + namespace );
 		this.cancelButton.off( "click" + namespace );
-	},
+	}
 
 	/**
 	 * Add items from <code>DeptEnum</code> to the corresponding list UI
@@ -189,7 +189,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	fillList( deptEnumList )
 	{
 		var htmlList:String = "";
-		for(var i:Number=0; i<deptEnumList.length; i++)
+		for(var i:number=0; i<deptEnumList.length; i++)
 		{		
 			var deptEnum:DeptEnum = deptEnumList[i];
 			
@@ -210,7 +210,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		}
 	
 		this.department.html(htmlList);
-	},
+	}
 	
 	/**
 	 * Give focus to the form component.
@@ -218,7 +218,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	setFocus()
 	{
 		this.fname.focus();
-	},
+	}
 	
 	/**
 	 * Set the user used to populate the form.
@@ -243,13 +243,13 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 
 			this.fillList( DeptEnum.getComboList() );
 		}
-	},
+	}
 	
 	getUser():UserVO
 	{
 		this.updateUser();
 		return this.user;
-	},
+	}
 	
 	/**
 	 * Update user attributes with form fields value.
@@ -262,10 +262,10 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		this.user.email = this.email.val();
 		this.user.password = this.password.val();
 	
-		var selected:Number = parseInt(this.department.val())+1;
+		var selected:number = parseInt(this.department.val())+1;
 		var deptEnumList:Array = DeptEnum.getComboList();
 		this.user.department = deptEnumList[selected];
-	},
+	}
 	
 	/**
 	 * Clear the whole form.
@@ -283,7 +283,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		this.setFieldError( "password", false );
 		this.setFieldError( "confirm", false );
 		this.setFieldError( "department", false );
-	},
+	}
 
 	/**
 	 * Enable or disable the form.
@@ -322,7 +322,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 			this.cancelButton.button( "disable" );
 		}		
 
-	},
+	}
 
 	/**
 	 * Set the form mode to ADD or EDIT.
@@ -344,7 +344,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 				this.submitButton.find(".ui-button-text").text("Save");
 			break;
 		}
-	},
+	}
 	
 	/**
 	 * Submit the add or update.
@@ -364,7 +364,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 			else
 				this.dispatchEvent( UserForm.UPDATE );
 		}
-	},
+	}
 	
 	/**
 	 * Cancel the add or update
@@ -372,7 +372,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	cancelButton_clickHandler()
 	{
 		this.dispatchEvent( UserForm.CANCEL );
-	},
+	}
 	
 	/**
 	 * Handle focus event on all the required form fields.
@@ -381,7 +381,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 	{
 		//Remove error on the selected field.
 		this.setFieldError( evt.target.id, false );
-	},
+	}
 	
 	/**
 	 * Display errors associated with form fields and return if at least one
@@ -409,7 +409,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 		else
 			this.setFieldError( "confirm", false );
 	
-		var selected:Number = parseInt(this.department.val())+1;
+		var selected:number = parseInt(this.department.val())+1;
 		var deptEnumList:Array = DeptEnum.getComboList();
 		var department:DeptEnum = deptEnumList[selected];
 	
@@ -419,7 +419,7 @@ var UserForm = Objs("org.puremvc.js.demos.objs.employeeadmin.view.components.Use
 			this.setFieldError( "department", false );
 	
 		return error;
-	},
+	}
 		
 	/**
 	 * Set or unset the error state on the uname field.

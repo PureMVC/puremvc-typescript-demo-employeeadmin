@@ -62,7 +62,7 @@ var UserVO = Objs("org.puremvc.js.demos.objs.employeeadmin.model.vo.UserVO",
 				&&
 				this.department != DeptEnum.NONE_SELECTED
 		;
-	},
+	}
 	
 	/**
 	 * Return the complete name for this user.
