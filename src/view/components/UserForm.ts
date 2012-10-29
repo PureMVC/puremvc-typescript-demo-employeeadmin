@@ -291,7 +291,7 @@ module EmployeeAdmin
 	/**
 	 * Enable or disable the form.
 	 * 
-	 * @param {Boolean} isEnabled
+	 * @param {bool} isEnabled
 	 * 		The form must be enabled.
 	 */
 	setEnabled( isEnabled )
@@ -390,12 +390,12 @@ module EmployeeAdmin
 	 * Display errors associated with form fields and return if at least one
 	 * field is in error.
 	 * 
-	 * @return {Boolean}
+	 * @return {bool}
 	 * 		The form contains errors.
 	 */
 	getErrors()
 	{
-		var error:Boolean = false;
+		var error:bool = false;
 
 		if( this.uname.val() == "" )
 			this.setFieldError( "uname", error = true );
@@ -430,7 +430,7 @@ module EmployeeAdmin
 	 * @param {string} fieldName
 	 * 		Name of the field to mark as (or not mark as) containing an error.
 	 *
-	 * @param {Boolean} error
+	 * @param {bool} error
 	 * 		The field must be marked as containing an error.
 	 */
 	setFieldError( fieldName, error )

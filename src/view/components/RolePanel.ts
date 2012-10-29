@@ -229,7 +229,7 @@ module EmployeeAdmin
 	/**
 	 * Enable or disable the form.
 	 * 
-	 * @param {Boolean} isEnabled
+	 * @param {bool} isEnabled
 	 * 		When true enable the form and when false disable it. 
 	 */
 	setEnabled( isEnabled )
@@ -330,7 +330,7 @@ module EmployeeAdmin
 		var roleEnumList:Array = RoleEnum.getComboList();
 		this.selectedRole = roleEnumList[this.roleList.prop("selectedIndex")];
 		
-		var alreadyInList:Boolean = false;
+		var alreadyInList:bool = false;
 		for(var i:number=0; i<this.userRoles.length; i++)
 		{
 			var role:RoleVO = this.userRoles[i];

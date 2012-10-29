@@ -13,40 +13,23 @@ module EmployeeAdmin
 		extends Proxy,
 	{
 		/**
-		 * Constructs a <code>RoleProxy</code> instance.
-		 * 
-		 * @param {string} name
-		 * 		Identifier of the <code>Proxy</code> object in the PureMVC framework.
-		 * 
-		 * @param {Array} roles	
-		 * 		The list of user roles <code>RoleVO</code> object controlled by the
-		 * 		<code>Proxy</code>.
-		 */
-		constructor( name, roles )
-		{
-			RoleProxy.$super.initialize.call( this, name, roles );
-		
-			return this;
-		}
-		
-		/**
 		 * Get the role list.
 		 * 
-		 * @return {Array}
+		 * @return
 		 * 		The role list.
 		 */
-		getRoles()
+		getRoles():RoleVO[]
 		{
-			return this.data;
+			return <RoleVO[]/> this.data;
 		}
 		
 		/**
 		 * Add a role to the list.
 		 * 
-		 * @param {RoleVO} role
+		 * @param role
 		 * 		The role to add.
 		 */ 
-		addItem( role )
+		addItem( role ):RoleVO
 		{
 			this.getRoles().push( role );
 		}
@@ -54,12 +37,12 @@ module EmployeeAdmin
 		/**
 		 * Remove a role from the list. 
 		 * 
-		 * @param {RoleVO} item
+		 * @param item
 		 * 		The role to remove.
 		 */ 
-		deleteItem( item )
+		deleteItem( item ):RoleVO
 		{
-			var roles = this.getRoles();
+			var roles:RoleVO[] = this.getRoles();
 			for( var i:number=0; i<roles.length; i++)
 			{
 				if( roles[i].uname == item.uname )
@@ -73,19 +56,19 @@ module EmployeeAdmin
 		/**
 		 * Determine if the user has a given role.
 		 * 
-		 * @param {UserVO} user
+		 * @param user
 		 * 		The user for whom to search for the role.
 		 * 
-		 * @param {RoleEnum} role
+		 * @param role
 		 * 		The role to search for.
 		 * 
-		 * @return {Boolean}
+		 * @return
 		 * 		The user has the given role.
 		 */ 
-		doesUserHaveRole( user, role )
+		doesUserHaveRole( user:UserVO, role:RoleEnum ):bool
 		{
-			var roles:Array = this.getRoles();
-			var hasRole:Boolean = false;
+			var roles:RoleVO[] = this.getRoles();
+			var hasRole:bool = false;
 			for( var i:number=0; i<roles.length; i++)
 			{ 
 				if( roles[i].uname == user.uname )
@@ -118,7 +101,7 @@ module EmployeeAdmin
 		addRoleToUser( user, role )
 		{
 			var roles:Array = this.getRoles();
-			var result:Boolean = false;
+			var result:bool = false;
 			if ( !this.doesUserHaveRole(user, role) )
 			{
 				for( var i:number=0; i<roles.length; i++)

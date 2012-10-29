@@ -213,7 +213,7 @@ UiComponent.ListenerDescriptor = Objs("org.puremvc.js.demos.objs.employeeadmin.v
      * @param {UiComponent.ListenerDescriptor} compared
      * 		The descriptor that will be compared to the current.
      *
-     * @return {Boolean}
+     * @return {bool}
      * 		The two compared listeners are equals.
      */
     equals( compared )
