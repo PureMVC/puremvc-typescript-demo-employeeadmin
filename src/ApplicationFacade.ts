@@ -52,7 +52,7 @@ module EmployeeAdmin
 			if( !puremvc.Facade.instance )
 				puremvc.Facade.instance = new ApplicationFacade();
 
-			return puremvc.Facade.instance;
+			return <ApplicationFacade> /*</>*/puremvc.Facade.instance;
 		}
 	}
 }
