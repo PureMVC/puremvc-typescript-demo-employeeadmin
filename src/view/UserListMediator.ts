@@ -1,5 +1,7 @@
 ///<reference path='../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
+///<reference path='../abc/NotificationNames.ts'/>
+
 /**
  * User list component <code>Mediator</code>.
  */
@@ -30,7 +32,7 @@ module EmployeeAdmin
 
 			this.registerListeners();
 
-			var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
+			var userProxy:UserProxy = <UserProxy> /*</>*/ this.facade.retrieveProxy( ProxyNames.USER_PROXY );
 			viewComponent.setUsers(userProxy.getUsers());
 		}
 
@@ -86,7 +88,7 @@ module EmployeeAdmin
 		handleNotification( note:puremvc.INotification ):void
 		{
 			var userList:UserList = this.getUserList();
-			var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
+			var userProxy:UserProxy = <UserProxy> /*</>*/ this.facade.retrieveProxy( ProxyNames.USER_PROXY );
 
 			switch( note.getName() )
 			{
@@ -113,11 +115,8 @@ module EmployeeAdmin
 
 		/**
 		 * Called when to add a new user to the list.
-		 *
-		 * @param event
-		 * 		The dispatched event object.
 		 */
-		private onNew( event:Event ):void
+		private onNew():void
 		{
 			var user:UserVO = new UserVO();
 			this.sendNotification( NotificationNames.NEW_USER, user );
@@ -126,14 +125,17 @@ module EmployeeAdmin
 		/**
 		 * Called when to delete an user from the list.
 		 *
-		 * @param event
-		 * 		The dispatched event object.
+		 * @param type
+		 * 		Type of the event dispatched.
+		 *
+		 * @param properties
+		 * 		An anonymous object associated to the event dispatched.
 		 */
-		private onDelete( event:Event ):void
+		private onDelete( type:string, properties:any ):void
 		{
 			var userList:UserList = this.getUserList();
 			var uname:string = userList.getSelectedUser();
-			var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
+			var userProxy:UserProxy = <UserProxy> /*</>*/ this.facade.retrieveProxy( ProxyNames.USER_PROXY );
 			var selectedUser:UserVO = userProxy.getUser( uname );
 
 			this.sendNotification( NotificationNames.DELETE_USER, selectedUser );
@@ -142,14 +144,17 @@ module EmployeeAdmin
 		/**
 		 * Called when a user is selected in the user list.
 		 *
-		 * @param event
-		 * 		The dispatched event object.
+		 * @param type
+		 * 		Type of the event dispatched.
+		 *
+		 * @param properties
+		 * 		An anonymous object associated to the event dispatched.
 		 */
-		private onSelect( event:Event ):void
+		private onSelect( type:string, properties:any ):any
 		{
 			var userList:UserList = this.getUserList();
 			var uname:string = userList.getSelectedUser();
-			var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
+			var userProxy:UserProxy = <UserProxy> /*</>*/ this.facade.retrieveProxy( ProxyNames.USER_PROXY );
 			var selectedUser:UserVO = userProxy.getUser( uname );
 
 			this.sendNotification( NotificationNames.USER_SELECTED, selectedUser );
@@ -165,7 +170,7 @@ module EmployeeAdmin
 		onRemove():void
 		{
 			this.unregisterListeners();
-			this.getUserList().unbindListeners();
+			this.getUserList().destroy();
 		}
 	}
 }

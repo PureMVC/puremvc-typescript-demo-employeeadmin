@@ -29,7 +29,7 @@ module EmployeeAdmin
 			super( name, viewComponent );
 
 			this.registerListeners();
-			this.userProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
+			this.userProxy = <UserProxy> /*</>*/ this.facade.retrieveProxy( ProxyNames.USER_PROXY );
 		}
 
 		/**
@@ -68,10 +68,13 @@ module EmployeeAdmin
 		/**
 		 * Called when a user is added using the form.
 		 *
-		 * @param event
-		 * 		The dispatched event object.
+		 * @param type
+		 * 		Type of the event dispatched.
+		 *
+		 * @param properties
+		 * 		An anonymous object associated to the event dispatched.
 		 */
-		private onAdd( event:Event ):void
+		private onAdd( type:string, properties:any ):void
 		{
 			var user:UserVO = this.getUserForm().getUser();
 			this.userProxy.addItem( user );
@@ -86,10 +89,13 @@ module EmployeeAdmin
 		/**
 		 * Called when a user is updated using the form.
 		 *
-		 * @param event
-		 * 		The dispatched event object.
+		 * @param type
+		 * 		Type of the event dispatched.
+		 *
+		 * @param properties
+		 * 		An anonymous object associated to the event dispatched.
 		 */
-		private onUpdate( event:Event ):void
+		private onUpdate( type:string, properties:any ):void
 		{
 			var user:UserVO = this.getUserForm().getUser();
 			this.userProxy.updateItem( user );
@@ -104,10 +110,13 @@ module EmployeeAdmin
 		/**
 		 * Called when modifications made to a user in the form are canceled.
 		 *
-		 * @param event
-		 * 		The dispatched event object.
-		 */
-		private onCancel( event:Event ):void
+		 * @param type
+		 * 		Type of the event dispatched.
+		 *
+		 * @param properties
+		 * 		An anonymous object associated to the event dispatched.
+		*/
+		private onCancel( type:string, properties:any ):void
 		{
 			this.sendNotification(  NotificationNames.CANCEL_SELECTED );
 			var userForm:UserForm = this.getUserForm();
@@ -151,7 +160,7 @@ module EmployeeAdmin
 				break;
 
 				case NotificationNames.USER_SELECTED:
-					user = note.getBody();
+					user =  <UserVO> /*</>*/ note.getBody();
 
 					userForm.clearForm();
 					userForm.setUser( user );
@@ -173,7 +182,7 @@ module EmployeeAdmin
 		onRemove():void
 		{
 			this.unregisterListeners();
-			this.getUserForm().unbindListeners();
+			this.getUserForm().destroy();
 		}
 
 		/*

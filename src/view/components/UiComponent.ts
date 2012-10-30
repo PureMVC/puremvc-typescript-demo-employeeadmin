@@ -34,8 +34,7 @@ module EmployeeAdmin
 		 * 		The type of the event to dispatch.
 		 *
 		 * @param properties
-		 *		An optional anonymous object to send to listeners of the event when it is
-		 * 		dispatched.
+		 *		An anonymous object to send to listeners of the event when it is dispatched.
 		 *
 		 * @protected
 		 */
@@ -44,52 +43,48 @@ module EmployeeAdmin
 			if( typeof type == 'undefined' )
 				return;
 
-			if( typeof this.listenerMap[UiComponent.QUEUE_PATTERN + type] == 'undefined' )
+			if( typeof this.listenerMap[ UiComponent.QUEUE_PATTERN + type ] == 'undefined' )
 				return;
 
-			var queue:ListenerDescriptor[] = this.listenerMap[UiComponent.QUEUE_PATTERN + type].slice(0);
+			var queue:ListenerDescriptor[] = this.listenerMap[ UiComponent.QUEUE_PATTERN + type ].slice(0);
 
-			var props:Object = properties || {}
 			var len:number = queue.length;
 			for( var i:number=0; i<len; i++ )
 			{
 				var listenerDescriptor:ListenerDescriptor = queue[i];
 
-				if( typeof listenerDescriptor.listener == 'function' )
-				{
-					if( typeof listenerDescriptor.context != "undefined" )
-						listenerDescriptor.listener.call( listenerDescriptor.context, props );
-					else
-						listenerDescriptor.listener.call( this, event, props );
-				}
+				if( typeof listenerDescriptor.context != "undefined" )
+					listenerDescriptor.listener.call( listenerDescriptor.context, type, properties );
+				else
+					listenerDescriptor.listener.call( this, type, properties );
 			}
 		}
 
 		/**
 		 * Add an event listener so that the listener receives notification of an event.
 		 *
-		 * @param {string} type
+		 * @param type
 		 * 		Type of the event to add.
 		 *
-		 * @param {Function} listener
+		 * @param listener
 		 * 		The listener method of the event to add.
 		 *
-		 * @param {Object} context
-		 * 		The context attached for the listener method of the event to remove.
+		 * @param context
+		 * 		The context attached for the listener method of the event to add.
 		 *
 		 * @protected
 		 */
 		addEventListener
 		(
-			type,
-			listener,
-			context
+			type:string,
+			listener:( type:string, properties:any ) => void,
+			context:any=null
 		):void
 		{
 			if( typeof type == "undefined" )
 				return;
 
-			if( typeof listener == "undefined" )
+			if( typeof listener != 'function' )
 				return;
 
 			var newListener:ListenerDescriptor = new ListenerDescriptor( listener, context );
@@ -129,8 +124,8 @@ module EmployeeAdmin
 		removeEventListener
 		(
 			type:string,
-			listener:Function,
-			context:any
+			listener:( type:string, properties:any ) => void,
+			context:any=null
 		):void
 		{
 			if( typeof type == "undefined" )
@@ -156,6 +151,14 @@ module EmployeeAdmin
 		}
 
 		/**
+		 * Remove any references used by the component to help garbage collection.
+		 */
+		destroy():void
+		{
+			this.listenerMap = {};
+		}
+
+		/**
 		 * A prefix used on map item names to prevent name conflicts.
 		 *
 		 * @type {string}
@@ -164,27 +167,9 @@ module EmployeeAdmin
 		private static QUEUE_PATTERN:string = '@_@';
 	}
 
-
-	//FIXME Public
 	/**
-	 * The event object dispatched by the <code>UiComponent</code> class to its event listeners.
-	 */
-	export class Event
-	{
-		/**
-		 * Type of the dispatched event.
-		 */
-		type:string = null;
-
-		/**
-		 * Properties that follow the dispatched event.
-		 */
-		properties:any = null;
-	}
-
-	/**
-	 * Private class defining a descriptor object used by the <code>listenerMap</code> to identify
-	 * each event listener.
+	 * Private class (this is what TypeScript compile today we better have to say) defining a
+	 * descriptor object used by the <code>listenerMap</code> to identify each event listener.
 	 */
 	class ListenerDescriptor
 	{

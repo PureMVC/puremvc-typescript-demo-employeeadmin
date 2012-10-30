@@ -16,7 +16,7 @@ module EmployeeAdmin
 		 * @param app
 		 * 		The HTML root node element of the application.
 		 */
-		startup( app:HTMLElement )
+		startup( app:JQuery )
 		{
 			this.sendNotification( NotificationNames.STARTUP, app );
 		}
@@ -33,7 +33,7 @@ module EmployeeAdmin
 		 * result in an error being thrown because the View has not yet been initialized calling
 		 * <code>this.parent()</code> is also required.
 		 */
-		initializeController()
+		initializeController():void
 		{
 			super.initializeController();
 

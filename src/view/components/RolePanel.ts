@@ -21,12 +21,12 @@ module EmployeeAdmin
 		/**
 		 * The user roles list.
 		 */
-		private userRoles:RoleVO[] = null;
+		private userRoles:RoleEnum[] = null;
 
 		/**
 		 * Currently selected role.
 		 */
-		private selectedRole:RoleVO = null;
+		private selectedRole:RoleEnum = null;
 
 		/**
 		 * The ADD_MODE or REMOVE_MODE role mode.
@@ -36,27 +36,27 @@ module EmployeeAdmin
 		/**
 		 * The role panel HTML element.
 		 */
-		private rolePanel:HTMLElement = null;
+		private rolePanel:JQuery = null;
 
 		/**
 		 * The full role list HTML element.
 		 */
-		private roleList:HTMLElement = null;
+		private roleList:JQuery = null;
 
 		/**
 		 * The user role datagrid HTML element.
 		 */
-		private userRoleList:HTMLElement = null;
+		private userRoleList:JQuery = null;
 
 		/**
 		 * The add role button HTML element.
 		 */
-		private addRoleButton:HTMLElement = null;
+		private addRoleButton:JQuery = null;
 
 		/**
 		 * The remove role button HTML element.
 		 */
-		private removeRoleButton:HTMLElement = null;
+		private removeRoleButton:JQuery = null;
 
 		/**
 		 * Constructs a <code>UserList</code> instance.
@@ -131,7 +131,7 @@ module EmployeeAdmin
 		 */
 		private fillRoleList():void
 		{
-			var roleEnumList:Array = RoleEnum.getComboList();
+			var roleEnumList:RoleEnum[] = RoleEnum.getComboList();
 
 			/*First clear all*/
 			this.roleList.empty();
@@ -139,7 +139,7 @@ module EmployeeAdmin
 			var htmlList:string = "";
 			for(var i:number=0; i<roleEnumList.length; i++)
 			{
-				var role:RoleVO = roleEnumList[i];
+				var role:RoleEnum = roleEnumList[i];
 
 				/*
 				 * An item not having a value in jQuery will be excluded from the
@@ -159,7 +159,7 @@ module EmployeeAdmin
 		 * @param userRoles
 		 * 		The role list associated to the currently selected user.
 		 */
-		setUserRoles( userRoles:RoleVO[] ):void
+		setUserRoles( userRoles:RoleEnum[] ):void
 		{
 			// First clear all
 			this.userRoleList.jqGrid( 'clearGridData' );
@@ -172,7 +172,7 @@ module EmployeeAdmin
 			// Fill the data-grid
 			for(var i:number=0; i<userRoles.length; i++)
 			{
-				var role:RoleVO = userRoles[i];
+				var role:RoleEnum = userRoles[i];
 				this.userRoleList.jqGrid( 'addRowData', i+1, role );
 			}
 		}
@@ -189,12 +189,23 @@ module EmployeeAdmin
 		}
 
 		/**
+		 * Set the selected user for whom roles list is displayed.
+		 *
+		 * @param user
+		 * 		The selected user for whom to display the roles.
+		 */
+		setUser( user:UserVO ):void
+		{
+			this.user = user;;
+		}
+
+		/**
 		 * Get the selected role in the remove/add combobox if any.
 		 *
 		 * @return
 		 * 		The selected role in the remove/add combobox if any.
 		 */
-		getSelectedRole():RoleVO
+		getSelectedRole():RoleEnum
 		{
 			return this.selectedRole;
 		}
@@ -265,6 +276,16 @@ module EmployeeAdmin
 		}
 
 		/**
+		 * Remove any references used by the component to help garbage collection.
+		 */
+		destroy():void
+		{
+			super.destroy();
+
+			this.unbindListeners();
+		}
+
+		/**
 		 * Add button onclick event listener.
 		 */
 		private addRoleButton_clickHandler():void
@@ -283,10 +304,10 @@ module EmployeeAdmin
 		/**
 		 * Select role to remove.
 		 *
-		 * @param {string} id
+		 * @param id
 		 * 		The id of the selected row.
 		 */
-		private userRoleList_changeHandler( id ):void
+		private userRoleList_changeHandler( id:string ):void
 		{
 			var index:number = this.userRoleList.jqGrid( 'getInd', id );
 			this.selectedRole = this.userRoles[index-1];
@@ -300,13 +321,13 @@ module EmployeeAdmin
 		{
 			this.userRoleList.jqGrid( 'resetSelection' );
 
-			var roleEnumList:Array = RoleEnum.getComboList();
+			var roleEnumList:RoleEnum[] = RoleEnum.getComboList();
 			this.selectedRole = roleEnumList[this.roleList.prop("selectedIndex")];
 
 			var alreadyInList:bool = false;
 			for(var i:number=0; i<this.userRoles.length; i++)
 			{
-				var role:RoleVO = this.userRoles[i];
+				var role:RoleEnum = this.userRoles[i];
 				if( role.equals(this.selectedRole) )
 				{
 					alreadyInList = true;
@@ -320,28 +341,28 @@ module EmployeeAdmin
 				this.setMode( RolePanel.ADD_MODE );
 		}
 
-		/*
+		/**
 		 * Add event name.
 		 *
 		 * @constant
 		 */
 		static ADD:string 			= "add";
 
-		/*
+		/**
 		 * Remove event name.
 		 *
 		 * @constant
 		 */
 		static REMOVE:string 		= "remove";
 
-		/*
+		/**
 		 * Add mode name.
 		 *
 		 * @constant
 		 */
 		static ADD_MODE:string 		= "addMode";
 
-		/*
+		/**
 		 * Remove mode name.
 		 *
 		 * @constant

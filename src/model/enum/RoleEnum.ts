@@ -125,8 +125,8 @@ module EmployeeAdmin
 		{
 			var list:RoleEnum[] = RoleEnum.getList();
 			for( var i:number=0; i<list.length; i++ )
-				if( RoleEnum[list[i]].ordinal == ordinal )
-					return RoleEnum[list[i]];
+				if( list[i].ordinal == ordinal )
+					return list[i];
 
 			return null;
 		}

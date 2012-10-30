@@ -10,13 +10,13 @@ module EmployeeAdmin
 	export class RoleVO
 	{
 		/**
-		 * Unique name of the user to whom is associated the role.
+		 * Unique name of the user to whom are associated the roles.
 		 */
 		uname:string = "";
 
 		/**
 		 * The list of roles associated to the user.
 		 */
-		roles:RoleVO[] = new RoleVO[]();
+		roles:RoleEnum[] = new RoleEnum[]();
 	}
 }

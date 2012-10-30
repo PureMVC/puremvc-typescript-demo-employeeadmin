@@ -24,11 +24,11 @@ module EmployeeAdmin
 		execute( note:puremvc.INotification ):void
 		{
 			var user:UserVO = note.getBody();
-			var userProxy:UserProxy = this.facade.retrieveProxy( ProxyNames.USER_PROXY );
-			var roleProxy:RoleProxy = this.facade.retrieveProxy( ProxyNames.ROLE_PROXY );
+			var userProxy:UserProxy = <UserProxy> /*</>*/ this.facade.retrieveProxy( ProxyNames.USER_PROXY );
+			var roleProxy:RoleProxy = <RoleProxy> /*</>*/ this.facade.retrieveProxy( ProxyNames.ROLE_PROXY );
 
-			userProxy.deleteItem( user );
-			roleProxy.deleteItem( user );
+			userProxy.deleteItem( user.uname );
+			roleProxy.deleteItem( user.uname );
 
 			this.sendNotification( NotificationNames.USER_DELETED );
 		}

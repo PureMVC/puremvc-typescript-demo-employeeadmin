@@ -1,5 +1,9 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
+///<reference path='enum/RoleEnum.ts'/>
+///<reference path='vo/RoleVO.ts'/>
+///<reference path='vo/UserVO.ts'/>
+
 /**
  * PureMVC <code>Proxy</code> class object used to control the user roles list of the application.
  */
@@ -35,15 +39,15 @@ module EmployeeAdmin
 		/**
 		 * Remove a role from the list. 
 		 * 
-		 * @param item
-		 * 		The role to remove.
+		 * @param uname
+		 * 		The user name associated to the role to remove.
 		 */ 
-		deleteItem( item:RoleVO ):void
+		deleteItem( uname:string ):void
 		{
 			var roles:RoleVO[] = this.getRoles();
-			for( var i:number=0; i<roles.length; i++)
+			for( var i:number=0; i<roles.length; i++ )
 			{
-				if( roles[i].uname === item.uname )
+				if( roles[i].uname === uname )
 				{
 					roles.splice(i,1);
 					break;
@@ -67,11 +71,11 @@ module EmployeeAdmin
 		{
 			var roles:RoleVO[] = this.getRoles();
 			var hasRole:bool = false;
-			for( var i:number=0; i<roles.length; i++)
+			for( var i:number=0; i<roles.length; i++ )
 			{ 
 				if( roles[i].uname === user.uname )
 				{
-					var userRoles:Array = roles[i].roles;
+					var userRoles:RoleEnum[] = roles[i].roles;
 					for( var j:number=0; j<userRoles.length; j++ )
 					{
 						var roleEnum:RoleEnum = userRoles[j];
@@ -100,13 +104,13 @@ module EmployeeAdmin
 		{
 			var roles:RoleVO[] = this.getRoles();
 			var result:bool = false;
-			if ( !this.doesUserHaveRole(user, role) )
+			if ( !this.doesUserHaveRole( user, role ) )
 			{
-				for( var i:number=0; i<roles.length; i++)
-				{ 
+				for( var i:number=0; i<roles.length; i++ )
+				{
 					if( roles[i].uname == user.uname )
 					{
-						var userRoles:Array = roles[i].roles;
+						var userRoles:RoleEnum[] = roles[i].roles;
 						userRoles.push( role );
 						result = true;
 						break;
@@ -129,12 +133,12 @@ module EmployeeAdmin
 			var roles:RoleVO[] = this.getRoles();
 			if( this.doesUserHaveRole( user, role ) )
 			{
-				for( var i:number=0; i<roles.length; i++)
+				for( var i:number=0; i<roles.length; i++ )
 				{ 
 					if( roles[i].uname === user.uname )
 					{
-						var userRoles:RoleVO[] = roles[i].roles;
-						for( var j:number=0; j<userRoles.length; j++)
+						var userRoles:RoleEnum[] = roles[i].roles;
+						for( var j:number=0; j<userRoles.length; j++ )
 						{
 							var roleEnum:RoleEnum = userRoles[j];
 							if( roleEnum.equals( role ) )
@@ -158,11 +162,11 @@ module EmployeeAdmin
 		 * @return
 		 * 		The user's role list.
 		 */ 
-		getUserRoles( uname:string ):RoleVO[]
+		getUserRoles( uname:string ):RoleEnum[]
 		{
 			var roles:RoleVO[] = this.getRoles();
-			var userRoles:RoleVO[] = new Array();
-			for( var i:number=0; i<roles.length; i++)
+			var userRoles:RoleEnum[] = new RoleEnum[]();
+			for( var i:number=0; i<roles.length; i++ )
 			{ 
 				if( roles[i].uname === uname )
 				{

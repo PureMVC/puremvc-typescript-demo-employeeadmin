@@ -57,6 +57,11 @@ module EmployeeAdmin
 		private department:JQuery = null;
 
 		/**
+		 * The cancel button HTML element.
+		 */
+		private cancelButton:JQuery = null;
+
+		/**
 		 * The submit button HTML element.
 		 */
 		private submitButton:JQuery = null;
@@ -310,6 +315,16 @@ module EmployeeAdmin
 					this.submitButton.find(".ui-button-text").text("Save");
 				break;
 			}
+		}
+
+		/**
+		 * Remove any references used by the component to help garbage collection.
+		 */
+		destroy():void
+		{
+			super.destroy();
+
+			this.unbindListeners();
 		}
 
 		/**

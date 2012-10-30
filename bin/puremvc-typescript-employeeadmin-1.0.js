@@ -79,6 +79,42 @@ var EmployeeAdmin;
 var EmployeeAdmin;
 (function (EmployeeAdmin) {
     "use strict";
+    var DeptEnum = (function () {
+        function DeptEnum(value, ordinal) {
+            this.ordinal = null;
+            this.value = null;
+            this.value = value;
+            this.ordinal = ordinal;
+        }
+        DeptEnum.prototype.equals = function (deptEnum) {
+            return (this.ordinal == deptEnum.ordinal && this.value == deptEnum.value);
+        };
+        DeptEnum.NONE_SELECTED = new DeptEnum("Select a department", -1);
+        DeptEnum.ACCT = new DeptEnum("Accounting", 0);
+        DeptEnum.SALES = new DeptEnum("Sales", 1);
+        DeptEnum.PLANT = new DeptEnum("Plant", 2);
+        DeptEnum.SHIPPING = new DeptEnum("Shipping", 3);
+        DeptEnum.QC = new DeptEnum("Quality Control", 4);
+        DeptEnum.getList = function getList() {
+            return [
+                DeptEnum.ACCT, 
+                DeptEnum.SALES, 
+                DeptEnum.PLANT
+            ];
+        }
+        DeptEnum.getComboList = function getComboList() {
+            var cList = DeptEnum.getList();
+            cList.unshift(DeptEnum.NONE_SELECTED);
+            return cList;
+        }
+        return DeptEnum;
+    })();
+    EmployeeAdmin.DeptEnum = DeptEnum;    
+})(EmployeeAdmin || (EmployeeAdmin = {}));
+
+var EmployeeAdmin;
+(function (EmployeeAdmin) {
+    "use strict";
     var UserVO = (function () {
         function UserVO() {
             this.uname = "";
@@ -144,10 +180,10 @@ var EmployeeAdmin;
                 }
             }
         };
-        UserProxy.prototype.deleteItem = function (user) {
+        UserProxy.prototype.deleteItem = function (uname) {
             var users = this.getUsers();
             for(var i = 0; i < users.length; i++) {
-                if(users[i].uname === user.uname) {
+                if(users[i].uname === uname) {
                     users.splice(i, 1);
                 }
             }
@@ -155,6 +191,71 @@ var EmployeeAdmin;
         return UserProxy;
     })(puremvc.Proxy);
     EmployeeAdmin.UserProxy = UserProxy;    
+})(EmployeeAdmin || (EmployeeAdmin = {}));
+
+var EmployeeAdmin;
+(function (EmployeeAdmin) {
+    "use strict";
+    var RoleEnum = (function () {
+        function RoleEnum(value, ordinal) {
+            this.ordinal = null;
+            this.value = null;
+            this.value = value;
+            this.ordinal = ordinal;
+        }
+        RoleEnum.prototype.equals = function (roleEnum) {
+            return (this.ordinal == roleEnum.ordinal && this.value == roleEnum.value);
+        };
+        RoleEnum.NONE_SELECTED = new RoleEnum("Select a role", -1);
+        RoleEnum.ADMIN = new RoleEnum("Administrator", 0);
+        RoleEnum.ACCT_PAY = new RoleEnum("Accounts Payable", 1);
+        RoleEnum.ACCT_RCV = new RoleEnum("Accounts Receivable", 2);
+        RoleEnum.EMP_BENEFITS = new RoleEnum("Employee Benefits", 3);
+        RoleEnum.GEN_LEDGER = new RoleEnum("General Ledger", 4);
+        RoleEnum.PAYROLL = new RoleEnum("Payroll", 5);
+        RoleEnum.INVENTORY = new RoleEnum("Inventory", 6);
+        RoleEnum.PRODUCTION = new RoleEnum("Production", 7);
+        RoleEnum.QUALITY_CTL = new RoleEnum("Quality Control", 8);
+        RoleEnum.SALES = new RoleEnum("Sales", 9);
+        RoleEnum.ORDERS = new RoleEnum("Orders", 10);
+        RoleEnum.CUSTOMERS = new RoleEnum("Customers", 11);
+        RoleEnum.SHIPPING = new RoleEnum("Shipping", 12);
+        RoleEnum.RETURNS = new RoleEnum("Returns", 13);
+        RoleEnum.getList = function getList() {
+            return [
+                RoleEnum.ADMIN, 
+                RoleEnum.ACCT_PAY, 
+                RoleEnum.ACCT_RCV, 
+                RoleEnum.EMP_BENEFITS, 
+                RoleEnum.GEN_LEDGER, 
+                RoleEnum.PAYROLL, 
+                RoleEnum.INVENTORY, 
+                RoleEnum.PRODUCTION, 
+                RoleEnum.QUALITY_CTL, 
+                RoleEnum.SALES, 
+                RoleEnum.ORDERS, 
+                RoleEnum.CUSTOMERS, 
+                RoleEnum.SHIPPING, 
+                RoleEnum.RETURNS
+            ];
+        }
+        RoleEnum.getComboList = function getComboList() {
+            var cList = RoleEnum.getList();
+            cList.unshift(RoleEnum.NONE_SELECTED);
+            return cList;
+        }
+        RoleEnum.getItem = function getItem(ordinal) {
+            var list = RoleEnum.getList();
+            for(var i = 0; i < list.length; i++) {
+                if(list[i].ordinal == ordinal) {
+                    return list[i];
+                }
+            }
+            return null;
+        }
+        return RoleEnum;
+    })();
+    EmployeeAdmin.RoleEnum = RoleEnum;    
 })(EmployeeAdmin || (EmployeeAdmin = {}));
 
 var EmployeeAdmin;
@@ -172,10 +273,10 @@ var EmployeeAdmin;
         RoleProxy.prototype.addItem = function (role) {
             this.getRoles().push(role);
         };
-        RoleProxy.prototype.deleteItem = function (item) {
+        RoleProxy.prototype.deleteItem = function (uname) {
             var roles = this.getRoles();
             for(var i = 0; i < roles.length; i++) {
-                if(roles[i].uname === item.uname) {
+                if(roles[i].uname === uname) {
                     roles.splice(i, 1);
                     break;
                 }
@@ -260,8 +361,8 @@ var EmployeeAdmin;
             var user = note.getBody();
             var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
             var roleProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.ROLE_PROXY);
-            userProxy.deleteItem(user);
-            roleProxy.deleteItem(user);
+            userProxy.deleteItem(user.uname);
+            roleProxy.deleteItem(user.uname);
             this.sendNotification(EmployeeAdmin.NotificationNames.USER_DELETED);
         };
         return DeleteUserCommand;
@@ -411,18 +512,18 @@ var EmployeeAdmin;
                 }
             }
         };
-        UserListMediator.prototype.onNew = function (event) {
+        UserListMediator.prototype.onNew = function () {
             var user = new EmployeeAdmin.UserVO();
             this.sendNotification(EmployeeAdmin.NotificationNames.NEW_USER, user);
         };
-        UserListMediator.prototype.onDelete = function (event) {
+        UserListMediator.prototype.onDelete = function (type, properties) {
             var userList = this.getUserList();
             var uname = userList.getSelectedUser();
             var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
             var selectedUser = userProxy.getUser(uname);
             this.sendNotification(EmployeeAdmin.NotificationNames.DELETE_USER, selectedUser);
         };
-        UserListMediator.prototype.onSelect = function (event) {
+        UserListMediator.prototype.onSelect = function (type, properties) {
             var userList = this.getUserList();
             var uname = userList.getSelectedUser();
             var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
@@ -431,7 +532,7 @@ var EmployeeAdmin;
         };
         UserListMediator.prototype.onRemove = function () {
             this.unregisterListeners();
-            this.getUserList().unbindListeners();
+            this.getUserList().destroy();
         };
         return UserListMediator;
     })(puremvc.Mediator);
@@ -464,7 +565,7 @@ var EmployeeAdmin;
             userForm.addEventListener(EmployeeAdmin.UserForm.UPDATE, this.onUpdate, this);
             userForm.addEventListener(EmployeeAdmin.UserForm.CANCEL, this.onCancel, this);
         };
-        UserFormMediator.prototype.onAdd = function (event) {
+        UserFormMediator.prototype.onAdd = function (type, properties) {
             var user = this.getUserForm().getUser();
             this.userProxy.addItem(user);
             this.sendNotification(EmployeeAdmin.NotificationNames.USER_ADDED, user);
@@ -473,7 +574,7 @@ var EmployeeAdmin;
             userForm.setEnabled(false);
             userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
         };
-        UserFormMediator.prototype.onUpdate = function (event) {
+        UserFormMediator.prototype.onUpdate = function (type, properties) {
             var user = this.getUserForm().getUser();
             this.userProxy.updateItem(user);
             this.sendNotification(EmployeeAdmin.NotificationNames.USER_UPDATED, user);
@@ -482,7 +583,7 @@ var EmployeeAdmin;
             userForm.setEnabled(false);
             userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
         };
-        UserFormMediator.prototype.onCancel = function (event) {
+        UserFormMediator.prototype.onCancel = function (type, properties) {
             this.sendNotification(EmployeeAdmin.NotificationNames.CANCEL_SELECTED);
             var userForm = this.getUserForm();
             userForm.clearForm();
@@ -528,7 +629,7 @@ var EmployeeAdmin;
         };
         UserFormMediator.prototype.onRemove = function () {
             this.unregisterListeners();
-            this.getUserForm().unbindListeners();
+            this.getUserForm().destroy();
         };
         UserFormMediator.ADD = "add";
         UserFormMediator.UPDATE = "update";
@@ -564,12 +665,12 @@ var EmployeeAdmin;
             rolePanel.removeEventListener(EmployeeAdmin.RolePanel.ADD, this.onAddRole, this);
             rolePanel.removeEventListener(EmployeeAdmin.RolePanel.REMOVE, this.onRemoveRole, this);
         };
-        RolePanelMediator.prototype.onAddRole = function (event) {
+        RolePanelMediator.prototype.onAddRole = function (type, properties) {
             this.roleProxy.addRoleToUser(this.getRolePanel().getUser(), this.getRolePanel().getSelectedRole());
             this.updateUserRoleList();
             this.getRolePanel().setMode(null);
         };
-        RolePanelMediator.prototype.onRemoveRole = function (event) {
+        RolePanelMediator.prototype.onRemoveRole = function (type, properties) {
             this.roleProxy.removeRoleFromUser(this.getRolePanel().getUser(), this.getRolePanel().getSelectedRole());
             this.updateUserRoleList();
             this.getRolePanel().setMode(null);
@@ -645,7 +746,7 @@ var EmployeeAdmin;
         };
         RolePanelMediator.prototype.onRemove = function () {
             this.unregisterListeners();
-            this.getRolePanel().unbindListeners();
+            this.getRolePanel().destroy();
         };
         return RolePanelMediator;
     })(puremvc.Mediator);
@@ -670,25 +771,22 @@ var EmployeeAdmin;
                 return;
             }
             var queue = this.listenerMap[UiComponent.QUEUE_PATTERN + type].slice(0);
-            var props = properties || {
-            };
             var len = queue.length;
             for(var i = 0; i < len; i++) {
                 var listenerDescriptor = queue[i];
-                if(typeof listenerDescriptor.listener == 'function') {
-                    if(typeof listenerDescriptor.context != "undefined") {
-                        listenerDescriptor.listener.call(listenerDescriptor.context, props);
-                    } else {
-                        listenerDescriptor.listener.call(this, event, props);
-                    }
+                if(typeof listenerDescriptor.context != "undefined") {
+                    listenerDescriptor.listener.call(listenerDescriptor.context, type, properties);
+                } else {
+                    listenerDescriptor.listener.call(this, type, properties);
                 }
             }
         };
         UiComponent.prototype.addEventListener = function (type, listener, context) {
+            if (typeof context === "undefined") { context = null; }
             if(typeof type == "undefined") {
                 return;
             }
-            if(typeof listener == "undefined") {
+            if(typeof listener != 'function') {
                 return;
             }
             var newListener = new ListenerDescriptor(listener, context);
@@ -708,6 +806,7 @@ var EmployeeAdmin;
             queue.push(newListener);
         };
         UiComponent.prototype.removeEventListener = function (type, listener, context) {
+            if (typeof context === "undefined") { context = null; }
             if(typeof type == "undefined") {
                 return;
             }
@@ -727,18 +826,14 @@ var EmployeeAdmin;
                 }
             }
         };
+        UiComponent.prototype.destroy = function () {
+            this.listenerMap = {
+            };
+        };
         UiComponent.QUEUE_PATTERN = '@_@';
         return UiComponent;
     })();
     EmployeeAdmin.UiComponent = UiComponent;    
-    var Event = (function () {
-        function Event() {
-            this.type = null;
-            this.properties = null;
-        }
-        return Event;
-    })();
-    EmployeeAdmin.Event = Event;    
     var ListenerDescriptor = (function () {
         function ListenerDescriptor(listener, context) {
             this.listener = listener;
@@ -894,6 +989,10 @@ var EmployeeAdmin;
             this.roleList.prop("selectedIndex", 0);
             this.userRoleList.jqGrid('resetSelection');
         };
+        RolePanel.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+            this.unbindListeners();
+        };
         RolePanel.prototype.addRoleButton_clickHandler = function () {
             this.dispatchEvent(RolePanel.ADD);
         };
@@ -930,42 +1029,6 @@ var EmployeeAdmin;
         return RolePanel;
     })(EmployeeAdmin.UiComponent);
     EmployeeAdmin.RolePanel = RolePanel;    
-})(EmployeeAdmin || (EmployeeAdmin = {}));
-
-var EmployeeAdmin;
-(function (EmployeeAdmin) {
-    "use strict";
-    var DeptEnum = (function () {
-        function DeptEnum(value, ordinal) {
-            this.ordinal = null;
-            this.value = null;
-            this.value = value;
-            this.ordinal = ordinal;
-        }
-        DeptEnum.prototype.equals = function (deptEnum) {
-            return (this.ordinal == deptEnum.ordinal && this.value == deptEnum.value);
-        };
-        DeptEnum.NONE_SELECTED = new DeptEnum("Select a department", -1);
-        DeptEnum.ACCT = new DeptEnum("Accounting", 0);
-        DeptEnum.SALES = new DeptEnum("Sales", 1);
-        DeptEnum.PLANT = new DeptEnum("Plant", 2);
-        DeptEnum.SHIPPING = new DeptEnum("Shipping", 3);
-        DeptEnum.QC = new DeptEnum("Quality Control", 4);
-        DeptEnum.getList = function getList() {
-            return [
-                DeptEnum.ACCT, 
-                DeptEnum.SALES, 
-                DeptEnum.PLANT
-            ];
-        }
-        DeptEnum.getComboList = function getComboList() {
-            var cList = DeptEnum.getList();
-            cList.unshift(DeptEnum.NONE_SELECTED);
-            return cList;
-        }
-        return DeptEnum;
-    })();
-    EmployeeAdmin.DeptEnum = DeptEnum;    
 })(EmployeeAdmin || (EmployeeAdmin = {}));
 
 var EmployeeAdmin;
@@ -1126,6 +1189,10 @@ var EmployeeAdmin;
                 }
             }
         };
+        UserForm.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+            this.unbindListeners();
+        };
         UserForm.prototype.submitButton_clickHandler = function () {
             this.updateUser();
             if(this.getErrors()) {
@@ -1269,6 +1336,10 @@ var EmployeeAdmin;
             this.newButton.off("click" + namespace);
             this.deleteButton.off("click" + namespace);
         };
+        UserList.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+            this.unbindListeners();
+        };
         UserList.prototype.setUsers = function (userList) {
             this.users = userList;
             this.userList.jqGrid("clearGridData");
@@ -1359,72 +1430,7 @@ var EmployeeAdmin;
             this.addSubCommand(EmployeeAdmin.PrepViewCommand);
         };
         return StartupCommand;
-    })(puremvc.SimpleCommand);
+    })(puremvc.MacroCommand);
     EmployeeAdmin.StartupCommand = StartupCommand;    
-})(EmployeeAdmin || (EmployeeAdmin = {}));
-
-var EmployeeAdmin;
-(function (EmployeeAdmin) {
-    "use strict";
-    var RoleEnum = (function () {
-        function RoleEnum(value, ordinal) {
-            this.ordinal = null;
-            this.value = null;
-            this.value = value;
-            this.ordinal = ordinal;
-        }
-        RoleEnum.prototype.equals = function (roleEnum) {
-            return (this.ordinal == roleEnum.ordinal && this.value == roleEnum.value);
-        };
-        RoleEnum.NONE_SELECTED = new RoleEnum("Select a role", -1);
-        RoleEnum.ADMIN = new RoleEnum("Administrator", 0);
-        RoleEnum.ACCT_PAY = new RoleEnum("Accounts Payable", 1);
-        RoleEnum.ACCT_RCV = new RoleEnum("Accounts Receivable", 2);
-        RoleEnum.EMP_BENEFITS = new RoleEnum("Employee Benefits", 3);
-        RoleEnum.GEN_LEDGER = new RoleEnum("General Ledger", 4);
-        RoleEnum.PAYROLL = new RoleEnum("Payroll", 5);
-        RoleEnum.INVENTORY = new RoleEnum("Inventory", 6);
-        RoleEnum.PRODUCTION = new RoleEnum("Production", 7);
-        RoleEnum.QUALITY_CTL = new RoleEnum("Quality Control", 8);
-        RoleEnum.SALES = new RoleEnum("Sales", 9);
-        RoleEnum.ORDERS = new RoleEnum("Orders", 10);
-        RoleEnum.CUSTOMERS = new RoleEnum("Customers", 11);
-        RoleEnum.SHIPPING = new RoleEnum("Shipping", 12);
-        RoleEnum.RETURNS = new RoleEnum("Returns", 13);
-        RoleEnum.getList = function getList() {
-            return [
-                RoleEnum.ADMIN, 
-                RoleEnum.ACCT_PAY, 
-                RoleEnum.ACCT_RCV, 
-                RoleEnum.EMP_BENEFITS, 
-                RoleEnum.GEN_LEDGER, 
-                RoleEnum.PAYROLL, 
-                RoleEnum.INVENTORY, 
-                RoleEnum.PRODUCTION, 
-                RoleEnum.QUALITY_CTL, 
-                RoleEnum.SALES, 
-                RoleEnum.ORDERS, 
-                RoleEnum.CUSTOMERS, 
-                RoleEnum.SHIPPING, 
-                RoleEnum.RETURNS
-            ];
-        }
-        RoleEnum.getComboList = function getComboList() {
-            var cList = RoleEnum.getList();
-            cList.unshift(RoleEnum.NONE_SELECTED);
-            return cList;
-        }
-        RoleEnum.getItem = function getItem(ordinal) {
-            var list = RoleEnum.getList();
-            for(var i = 0; i < list.length; i++) {
-                if(RoleEnum[list[i]].ordinal == ordinal) {
-                    return RoleEnum[list[i]];
-                }
-            }
-            return null;
-        }
-        return RoleEnum;
-    })();
-    EmployeeAdmin.RoleEnum = RoleEnum;    
 })(EmployeeAdmin || (EmployeeAdmin = {}));
 

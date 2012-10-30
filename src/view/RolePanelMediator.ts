@@ -26,10 +26,10 @@ module EmployeeAdmin
 		 */
 		constructor( name:string, viewComponent:RolePanel )
 		{
-			super( RolePanelMediator.NAME, viewComponent );
+			super( name, viewComponent );
 
 			this.registerListeners();
-			this.roleProxy = this.facade.retrieveProxy( ProxyNames.ROLE_PROXY );
+			this.roleProxy = <RoleProxy> /*</>*/ this.facade.retrieveProxy( ProxyNames.ROLE_PROXY );
 		}
 
 		/**
@@ -66,10 +66,13 @@ module EmployeeAdmin
 		/**
 		 * Called when a role is added to the selected user's role list.
 		 *
-		 * @param event
-		 * 		The dispatched event object.
+		 * @param type
+		 * 		Type of the event dispatched.
+		 *
+		 * @param properties
+		 * 		An anonymous object associated to the event dispatched.
 		 */
-		private onAddRole( event:Event ):void
+		private onAddRole( type:string, properties:any ):void
 		{
 			this.roleProxy.addRoleToUser
 			(
@@ -84,10 +87,13 @@ module EmployeeAdmin
 		/**
 		 * Called when a role is removed from the selected user's role list.
 		 *
-		 * @param event
-		 * 		The dispatched event object.
+		 * @param type
+		 * 		Type of the event dispatched.
+		 *
+		 * @param properties
+		 * 		An anonymous object associated to the event dispatched.
 		 */
-		private onRemoveRole( event:Event ):void
+		private onRemoveRole( type:string, properties:any ):void
 		{
 			this.roleProxy.removeRoleFromUser
 			(
@@ -104,8 +110,9 @@ module EmployeeAdmin
 		 */
 		private updateUserRoleList():void
 		{
-			var userName:string = this.getRolePanel().user.uname;
-			var userRoles:RoleVO[] = this.roleProxy.getUserRoles( userName );
+			var user:UserVO = this.getRolePanel().getUser();
+
+			var userRoles:RoleEnum[] = this.roleProxy.getUserRoles( user.uname );
 			this.getRolePanel().setUserRoles( userRoles );
 		}
 
@@ -140,10 +147,10 @@ module EmployeeAdmin
 				break;
 
 				case NotificationNames.USER_ADDED:
-					rolePanel.user = note.getBody();
+					rolePanel.setUser( <UserVO> /*</>*/ note.getBody() );
 
-					var roleVO:RoleVO = new RoleVO ();
-					roleVO.uname = rolePanel.user.uname;
+					var roleVO:RoleVO = new RoleVO();
+					roleVO.uname = rolePanel.getUser().uname;
 
 					this.roleProxy.addItem( roleVO );
 					rolePanel.clearForm();
@@ -170,7 +177,7 @@ module EmployeeAdmin
 					rolePanel.setEnabled(true);
 					rolePanel.setMode(null);
 
-					rolePanel.user = note.getBody();
+					rolePanel.setUser( <UserVO> /*</>*/ note.getBody() );
 					this.updateUserRoleList();
 				break;
 
@@ -190,7 +197,7 @@ module EmployeeAdmin
 		onRemove():void
 		{
 			this.unregisterListeners();
-			this.getRolePanel().unbindListeners();
+			this.getRolePanel().destroy();
 		}
 	}
 }

@@ -17,17 +17,22 @@ module EmployeeAdmin
 		/**
 		 * The user list panel HTML element.
 		 */
-		private userListPanel:HTMLElement = null;
+		private userListPanel:JQuery = null;
 
 		/**
 		 * The user list HTML element.
 		 */
-		private userList:HTMLElement = null;
+		private userList:JQuery = null;
 
 		/**
 		 * The "new" button HTML element.
 		 */
-		private newButton:HTMLElement = null;
+		private newButton:JQuery = null;
+
+		/**
+		 * The "delete" button HTML element.
+		 */
+		private deleteButton:JQuery = null;
 
 		/**
 		 * The current selected user.
@@ -53,7 +58,7 @@ module EmployeeAdmin
 		/**
 		 * Initialize references to DOM elements.
 		 */
-		private initializeChildren()
+		private initializeChildren():void
 		{
 			 //We use JQuery to initialize reference to UI components.
 			//FIXME Have to be initialized in the view startup command
@@ -86,7 +91,7 @@ module EmployeeAdmin
 		/**
 		 * Bind events to their listeners.
 		 */
-		private bindListeners()
+		private bindListeners():void
 		{
 			//jQuery will be able to only remove events attached under this namespace
 			var namespace:string = ".UserList";
@@ -98,7 +103,7 @@ module EmployeeAdmin
 		/**
 		 * Unbind events from their listeners.
 		 */
-		private unbindListeners()
+		private unbindListeners():void
 		{
 			//jQuery will only remove events attached under this namespace
 			var namespace:string = ".UserList";
@@ -108,12 +113,22 @@ module EmployeeAdmin
 		}
 
 		/**
+		 * Remove any references used by the component to help garbage collection.
+		 */
+		destroy():void
+		{
+			super.destroy();
+
+			this.unbindListeners();
+		}
+
+		/**
 		 * Add users from a list to the <SELECT> component.
 		 *
 		 * @param {Array} userList
 		 * 		The user list to set.
 		 */
-		setUsers( userList )
+		setUsers( userList ):void
 		{
 			this.users = userList;
 
@@ -154,7 +169,7 @@ module EmployeeAdmin
 		/**
 		 * Remove selection in the user list.
 		 */
-		deSelect()
+		deSelect():void
 		{
 			this.userList.jqGrid( "resetSelection" );
 			this.selectedUser = null;
@@ -168,7 +183,7 @@ module EmployeeAdmin
 		 * @param id
 		 * 		The id of the selected row.
 		 */
-		private userList_selectHandler( id:string )
+		private userList_selectHandler( id:string ):void
 		{
 			var rowData:Object = this.userList.jqGrid( "getRowData", id );
 
@@ -191,7 +206,7 @@ module EmployeeAdmin
 		/**
 		 * New button click event listener.
 		 */
-		private newButton_clickHandler()
+		private newButton_clickHandler():void
 		{
 			this.deSelect();
 			this.dispatchEvent( UserList.NEW );
@@ -200,7 +215,7 @@ module EmployeeAdmin
 		/**
 		 * New button click event listener.
 		 */
-		private deleteButton_clickHandler()
+		private deleteButton_clickHandler():void
 		{
 			this.dispatchEvent( UserList.DELETE );
 		}

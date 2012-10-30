@@ -1,5 +1,7 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
+///<reference path='vo/UserVO.ts'/>
+
 /**
  * PureMVC <code>Proxy</code> class object used to control the user list of the application.
  */
@@ -22,6 +24,7 @@ module EmployeeAdmin
 		 * Add a user to the list.
 		 * 
 		 * @param user
+		 * 		The user to add to the list of users.
 		 */ 
 		addItem( user:UserVO ):void
 		{
@@ -65,14 +68,14 @@ module EmployeeAdmin
 		/**
 		 * Remove a user from the list.
 		 * 
-		 * @param user
-		 * 		The user to remove.
+		 * @param uname
+		 * 		The name ot the user to remove.
 		 */ 
-		deleteItem( user:UserVO ):void
+		deleteItem( uname:string ):void
 		{
 			var users:UserVO[] = this.getUsers();
 			for( var i:number=0; i<users.length; i++ )
-				if( users[i].uname === user.uname )
+				if( users[i].uname === uname )
 					users.splice(i,1);
 		}
 	}
