@@ -647,7 +647,7 @@ var EmployeeAdmin;
     var RolePanelMediator = (function (_super) {
         __extends(RolePanelMediator, _super);
         function RolePanelMediator(name, viewComponent) {
-                _super.call(this, RolePanelMediator.NAME, viewComponent);
+                _super.call(this, name, viewComponent);
             this.roleProxy = null;
             this.registerListeners();
             this.roleProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.ROLE_PROXY);
@@ -676,8 +676,8 @@ var EmployeeAdmin;
             this.getRolePanel().setMode(null);
         };
         RolePanelMediator.prototype.updateUserRoleList = function () {
-            var userName = this.getRolePanel().user.uname;
-            var userRoles = this.roleProxy.getUserRoles(userName);
+            var user = this.getRolePanel().getUser();
+            var userRoles = this.roleProxy.getUserRoles(user.uname);
             this.getRolePanel().setUserRoles(userRoles);
         };
         RolePanelMediator.prototype.listNotificationInterests = function () {
@@ -701,9 +701,9 @@ var EmployeeAdmin;
 
                 }
                 case EmployeeAdmin.NotificationNames.USER_ADDED: {
-                    rolePanel.user = note.getBody();
+                    rolePanel.setUser(note.getBody());
                     var roleVO = new EmployeeAdmin.RoleVO();
-                    roleVO.uname = rolePanel.user.uname;
+                    roleVO.uname = rolePanel.getUser().uname;
                     this.roleProxy.addItem(roleVO);
                     rolePanel.clearForm();
                     rolePanel.setEnabled(false);
@@ -732,7 +732,7 @@ var EmployeeAdmin;
                     rolePanel.clearForm();
                     rolePanel.setEnabled(true);
                     rolePanel.setMode(null);
-                    rolePanel.user = note.getBody();
+                    rolePanel.setUser(note.getBody());
                     this.updateUserRoleList();
                     break;
 
@@ -942,6 +942,10 @@ var EmployeeAdmin;
         RolePanel.prototype.getUser = function () {
             return this.user;
         };
+        RolePanel.prototype.setUser = function (user) {
+            this.user = user;
+            ; ;
+        };
         RolePanel.prototype.getSelectedRole = function () {
             return this.selectedRole;
         };
@@ -1046,6 +1050,7 @@ var EmployeeAdmin;
             this.password = null;
             this.confirm = null;
             this.department = null;
+            this.cancelButton = null;
             this.submitButton = null;
             this.user = null;
             this.userRoles = null;
@@ -1269,6 +1274,7 @@ var EmployeeAdmin;
             this.userListPanel = null;
             this.userList = null;
             this.newButton = null;
+            this.deleteButton = null;
             this.selectedUser = null;
             this.users = null;
             this.initializeChildren();
@@ -1425,7 +1431,7 @@ var EmployeeAdmin;
             _super.apply(this, arguments);
 
         }
-        StartupCommand.prototype.initializeMacroCommand = function (note) {
+        StartupCommand.prototype.initializeMacroCommand = function () {
             this.addSubCommand(EmployeeAdmin.PrepModelCommand);
             this.addSubCommand(EmployeeAdmin.PrepViewCommand);
         };

@@ -15,24 +15,21 @@
 		<script src="lib/jqgrid/i18n/grid.locale-en.js" type="text/javascript"></script>
 		<script src="lib/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
-		<!-- Objs library -->
-		<script type="text/javascript" src="lib/objs-2.1.2-min.js"></script>
-
 		<!-- PureMVC framework for JavaScript based on Objs -->
-		<script type="text/javascript" src="lib/puremvc-objs-2.0-min.js"></script>
+		<script type="text/javascript" src="lib/puremvc/puremvc-typescript-standard-1.0-min.js"></script>
 		
 		<!-- EmployeeAdmin application CSS -->		
 		<link rel="stylesheet" href="css/employee-admin.css"/> 
 
 		<!-- EmployeeAdmin application minified code -->		
-		<script type="text/javascript" src="bin/puremvc_employeeadmin_jquery-min.js"></script>
+		<script type="text/javascript" src="bin/puremvc-typescript-employeeadmin-1.0-min.js"></script>
 		
 		<script type="text/javascript">
 		$(document).ready
 		(
 			function()
 			{
-				var applicationFacade/*ApplicationFacade*/ = ApplicationFacade.getInstance();
+				var applicationFacade/*ApplicationFacade*/ = EmployeeAdmin.ApplicationFacade.getInstance();
 				applicationFacade.startup( $("body") );
 			}
 		);
