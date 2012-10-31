@@ -1,5 +1,5 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
-///<reference path='../../../lib/jquery/jquery-1.7.x.d.ts'/>
+///<reference path='../../../lib/jquery/jquery-1.7.x-jqueryui-1.8.x.d.ts'/>
 
 ///<reference path='UiComponent.ts'/>
 
@@ -42,7 +42,7 @@ module EmployeeAdmin
 		/**
 		 * The user list of the application.
 		 */
-		private users:UserVO = null;
+		private users:UserVO[] = null;
 
 		/**
 		 * Constructs a <code>UserList</code> instance.
@@ -139,7 +139,7 @@ module EmployeeAdmin
 			for(var i:number=0; i<userList.length; i++)
 			{
 				var user:UserVO = userList[i];
-				var rowData:Object =
+				var rowData:any =
 				{
 					uname: user.uname,
 					fname: user.fname,
@@ -185,12 +185,13 @@ module EmployeeAdmin
 		 */
 		private userList_selectHandler( id:string ):void
 		{
-			var rowData:Object = this.userList.jqGrid( "getRowData", id );
+			var rowData:any = this.userList.jqGrid( "getRowData", id );
 
 			var uname:string;
 			for( var i:number=0; i<this.users.length; i++ )
 			{
-				if( this.users[i].uname == rowData.uname )
+				var userVO:UserVO = this.users[i];
+				if( userVO.uname === rowData.uname )
 				{
 					uname = rowData.uname;
 					break;

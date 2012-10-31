@@ -1,49 +1,3 @@
-var __extends = this.__extends || function (d, b) {
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-}
-var EmployeeAdmin;
-(function (EmployeeAdmin) {
-    "use strict";
-    var ApplicationFacade = (function (_super) {
-        __extends(ApplicationFacade, _super);
-        function ApplicationFacade() {
-            _super.apply(this, arguments);
-
-        }
-        ApplicationFacade.prototype.startup = function (app) {
-            this.sendNotification(EmployeeAdmin.NotificationNames.STARTUP, app);
-        };
-        ApplicationFacade.prototype.initializeController = function () {
-            _super.prototype.initializeController.call(this);
-            this.registerCommand(EmployeeAdmin.NotificationNames.STARTUP, EmployeeAdmin.StartupCommand);
-            this.registerCommand(EmployeeAdmin.NotificationNames.DELETE_USER, EmployeeAdmin.DeleteUserCommand);
-        };
-        ApplicationFacade.getInstance = function getInstance() {
-            if(!puremvc.Facade.instance) {
-                puremvc.Facade.instance = new ApplicationFacade();
-            }
-            return puremvc.Facade.instance;
-        }
-        return ApplicationFacade;
-    })(puremvc.Facade);
-    EmployeeAdmin.ApplicationFacade = ApplicationFacade;    
-})(EmployeeAdmin || (EmployeeAdmin = {}));
-
-var EmployeeAdmin;
-(function (EmployeeAdmin) {
-    "use strict";
-    var MediatorNames = (function () {
-        function MediatorNames() { }
-        MediatorNames.USER_FORM_MEDIATOR = "userFormMediator";
-        MediatorNames.USER_LIST_MEDIATOR = "userListMediator";
-        MediatorNames.ROLE_PANEL_MEDIATOR = "rolePanelMediator";
-        return MediatorNames;
-    })();
-    EmployeeAdmin.MediatorNames = MediatorNames;    
-})(EmployeeAdmin || (EmployeeAdmin = {}));
-
 var EmployeeAdmin;
 (function (EmployeeAdmin) {
     "use strict";
@@ -148,6 +102,11 @@ var EmployeeAdmin;
     EmployeeAdmin.RoleVO = RoleVO;    
 })(EmployeeAdmin || (EmployeeAdmin = {}));
 
+var __extends = this.__extends || function (d, b) {
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+}
 var EmployeeAdmin;
 (function (EmployeeAdmin) {
     "use strict";
@@ -351,28 +310,6 @@ var EmployeeAdmin;
 var EmployeeAdmin;
 (function (EmployeeAdmin) {
     "use strict";
-    var DeleteUserCommand = (function (_super) {
-        __extends(DeleteUserCommand, _super);
-        function DeleteUserCommand() {
-            _super.apply(this, arguments);
-
-        }
-        DeleteUserCommand.prototype.execute = function (note) {
-            var user = note.getBody();
-            var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
-            var roleProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.ROLE_PROXY);
-            userProxy.deleteItem(user.uname);
-            roleProxy.deleteItem(user.uname);
-            this.sendNotification(EmployeeAdmin.NotificationNames.USER_DELETED);
-        };
-        return DeleteUserCommand;
-    })(puremvc.SimpleCommand);
-    EmployeeAdmin.DeleteUserCommand = DeleteUserCommand;    
-})(EmployeeAdmin || (EmployeeAdmin = {}));
-
-var EmployeeAdmin;
-(function (EmployeeAdmin) {
-    "use strict";
     var PrepModelCommand = (function (_super) {
         __extends(PrepModelCommand, _super);
         function PrepModelCommand() {
@@ -446,6 +383,19 @@ var EmployeeAdmin;
         return PrepModelCommand;
     })(puremvc.SimpleCommand);
     EmployeeAdmin.PrepModelCommand = PrepModelCommand;    
+})(EmployeeAdmin || (EmployeeAdmin = {}));
+
+var EmployeeAdmin;
+(function (EmployeeAdmin) {
+    "use strict";
+    var MediatorNames = (function () {
+        function MediatorNames() { }
+        MediatorNames.USER_FORM_MEDIATOR = "userFormMediator";
+        MediatorNames.USER_LIST_MEDIATOR = "userListMediator";
+        MediatorNames.ROLE_PANEL_MEDIATOR = "rolePanelMediator";
+        return MediatorNames;
+    })();
+    EmployeeAdmin.MediatorNames = MediatorNames;    
 })(EmployeeAdmin || (EmployeeAdmin = {}));
 
 var EmployeeAdmin;
@@ -976,7 +926,7 @@ var EmployeeAdmin;
                 case RolePanel.REMOVE_MODE: {
                     this.addRoleButton.button("disable");
                     this.removeRoleButton.button("enable");
-                    this.roleList.selectedIndex = 0;
+                    this.roleList.prop("selectedIndex", 0);
                     break;
 
                 }
@@ -1088,7 +1038,6 @@ var EmployeeAdmin;
             this.password.off("focus" + namespace);
             this.confirm.off("focus" + namespace);
             this.department.off("focus" + namespace);
-            this.roles.off("focus" + namespace);
             this.submitButton.off("click" + namespace);
             this.cancelButton.off("click" + namespace);
         };
@@ -1373,7 +1322,8 @@ var EmployeeAdmin;
             var rowData = this.userList.jqGrid("getRowData", id);
             var uname;
             for(var i = 0; i < this.users.length; i++) {
-                if(this.users[i].uname == rowData.uname) {
+                var userVO = this.users[i];
+                if(userVO.uname === rowData.uname) {
                     uname = rowData.uname;
                     break;
                 }
@@ -1438,5 +1388,55 @@ var EmployeeAdmin;
         return StartupCommand;
     })(puremvc.MacroCommand);
     EmployeeAdmin.StartupCommand = StartupCommand;    
+})(EmployeeAdmin || (EmployeeAdmin = {}));
+
+var EmployeeAdmin;
+(function (EmployeeAdmin) {
+    "use strict";
+    var DeleteUserCommand = (function (_super) {
+        __extends(DeleteUserCommand, _super);
+        function DeleteUserCommand() {
+            _super.apply(this, arguments);
+
+        }
+        DeleteUserCommand.prototype.execute = function (note) {
+            var user = note.getBody();
+            var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
+            var roleProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.ROLE_PROXY);
+            userProxy.deleteItem(user.uname);
+            roleProxy.deleteItem(user.uname);
+            this.sendNotification(EmployeeAdmin.NotificationNames.USER_DELETED);
+        };
+        return DeleteUserCommand;
+    })(puremvc.SimpleCommand);
+    EmployeeAdmin.DeleteUserCommand = DeleteUserCommand;    
+})(EmployeeAdmin || (EmployeeAdmin = {}));
+
+var EmployeeAdmin;
+(function (EmployeeAdmin) {
+    "use strict";
+    var ApplicationFacade = (function (_super) {
+        __extends(ApplicationFacade, _super);
+        function ApplicationFacade() {
+            _super.apply(this, arguments);
+
+        }
+        ApplicationFacade.prototype.startup = function (app) {
+            this.sendNotification(EmployeeAdmin.NotificationNames.STARTUP, app);
+        };
+        ApplicationFacade.prototype.initializeController = function () {
+            _super.prototype.initializeController.call(this);
+            this.registerCommand(EmployeeAdmin.NotificationNames.STARTUP, EmployeeAdmin.StartupCommand);
+            this.registerCommand(EmployeeAdmin.NotificationNames.DELETE_USER, EmployeeAdmin.DeleteUserCommand);
+        };
+        ApplicationFacade.getInstance = function getInstance() {
+            if(!puremvc.Facade.instance) {
+                puremvc.Facade.instance = new ApplicationFacade();
+            }
+            return puremvc.Facade.instance;
+        }
+        return ApplicationFacade;
+    })(puremvc.Facade);
+    EmployeeAdmin.ApplicationFacade = ApplicationFacade;    
 })(EmployeeAdmin || (EmployeeAdmin = {}));
 

@@ -1,5 +1,5 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
-///<reference path='../../../lib/jquery/jquery-1.7.x.d.ts'/>
+///<reference path='../../../lib/jquery/jquery-1.7.x-jqueryui-1.8.x.d.ts'/>
 
 ///<reference path='../../model/enum/DeptEnum.ts'/>
 ///<reference path='../../model/vo/RoleVO.ts'/>
@@ -148,7 +148,6 @@ module EmployeeAdmin
 			this.password.off("focus" + namespace );
 			this.confirm.off("focus" + namespace );
 			this.department.off("focus" + namespace );
-			this.roles.off("focus" + namespace );
 
 			this.submitButton.off( "click" + namespace );
 			this.cancelButton.off( "click" + namespace );

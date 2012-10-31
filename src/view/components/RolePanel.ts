@@ -1,5 +1,5 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
-///<reference path='../../../lib/jquery/jquery-1.7.x.d.ts'/>
+///<reference path='../../../lib/jquery/jquery-1.7.x-jqueryui-1.8.x.d.ts'/>
 
 ///<reference path='UiComponent.ts'/>
 
@@ -255,7 +255,7 @@ module EmployeeAdmin
 				case RolePanel.REMOVE_MODE:
 					this.addRoleButton.button("disable");
 					this.removeRoleButton.button("enable");
-					this.roleList.selectedIndex = 0;
+					this.roleList.prop("selectedIndex", 0);
 				break;
 
 				default:

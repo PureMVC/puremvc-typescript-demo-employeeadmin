@@ -1,4 +1,9 @@
 ///<reference path='../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+///<reference path='../../../lib/jquery/jquery-1.7.x-jqueryui-1.8.x.d.ts'/>
+
+///<reference path='abc/NotificationNames.ts'/>
+///<reference path='controller/StartupCommand.ts'/>
+///<reference path='controller/DeleteUserCommand.ts'/>
 
 /**
  * PureMVC <code>Facade</code> for this application.
