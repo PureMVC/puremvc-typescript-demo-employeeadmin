@@ -173,7 +173,7 @@ module EmployeeAdmin
 			for(var i:number=0; i<userRoles.length; i++)
 			{
 				var role:RoleEnum = userRoles[i];
-				this.userRoleList.jqGrid( 'addRowData', i+1, role );
+				this.userRoleList.jqGrid('addRowData', i+1, role );
 			}
 		}
 
@@ -220,15 +220,15 @@ module EmployeeAdmin
 		{
 			if( isEnabled )
 			{
-				this.userRoleList.removeAttr("disabled");
-				this.roleList.removeAttr("disabled");
+				this.userRoleList.removeAttr( "disabled" );
+				this.roleList.removeAttr( "disabled" );
 				this.addRoleButton.button( "enable" );
 				this.removeRoleButton.button( "enable" );
 			}
 			else
 			{
-				this.userRoleList.attr("disabled", "disabled");
-				this.roleList.attr("disabled", "disabled");
+				this.userRoleList.attr( "disabled", "disabled" );
+				this.roleList.attr( "disabled", "disabled" );
 				this.addRoleButton.button( "disable" );
 				this.removeRoleButton.button( "disable" );
 			}

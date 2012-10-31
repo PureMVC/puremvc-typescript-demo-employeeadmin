@@ -1,6 +1,14 @@
-// Typing for the jQuery library, version 1.7.x
+/*
+ * PureMVC - Employee Admin demo additions
+ *
+ * Original file was taken from : http://typescript.codeplex.com/SourceControl/changeset/view/fe3bc0bfce1f#samples%2fjquery%2fjquery.d.ts
+ * and adapted to add required definitions for jQuery UI 1.8x (just the one required by the project).
+ *
+ * Addition to the file are noted «PureMVC - Employee Admin demo additions».
+ */
 
-//Taken from : http://typescript.codeplex.com/SourceControl/changeset/view/fe3bc0bfce1f#samples%2fjquery%2fjquery.d.ts
+
+// TypeScript description file for the jQuery library, version 1.7.x
 
 /*
     Interface for the AJAX setting that will configure the AJAX request 
@@ -698,6 +706,12 @@ interface JQuery {
     queue(queueName?: string): any[];
     queue(queueName: string, newQueueOrCallback: any): JQuery;
     queue(newQueueOrCallback: any): JQuery;
+
+    /*********
+	 PureMVC - Employee Admin demo additions
+	**********/
+	button( state?:string ):any;
+	jqGrid( pin:any, ...rest:any[] ):any;
 }
 
 declare var jQuery: JQueryStatic;
