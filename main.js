@@ -45,7 +45,7 @@ require
 
 	[
 		'puremvc',
-		//'jqGridLocale',
+		'jqGridLocale',
 		'jqGrid',
 		'jQueryUi',
 		'EmployeeAdmin'
@@ -54,23 +54,15 @@ require
 	function
 	(
 		puremvc,
-		//jqGridLocale,
+		jqGridLocale,
 		jqGrid,
 		jQueryUi,
-		EmployeeAdminShell
+		EmployeeAdmin
 	)
 	{
 		//Wait for dom ready before setting up the application.
 		jQuery( function ()
 		{
-			/*
-			 * The loaded module is not the direct reference to the EmployeeAdmin module itself, but
-			 * a shell created by the EmployeeAdminModule.ts file to allow TypeScript to compile the
-			 * application as
-			 */
-			var EmployeeAdmin/*EmployeeAdmin*/ = EmployeeAdminShell.EmployeeAdmin;
-
-
 			var applicationFacade/*ApplicationFacade*/ = EmployeeAdmin.ApplicationFacade.getInstance();
 			applicationFacade.startup( jQuery("body") );
 		})

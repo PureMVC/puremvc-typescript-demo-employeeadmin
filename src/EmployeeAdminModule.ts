@@ -1,9 +1,12 @@
 declare var define;
-define
-(
-	["require", "exports"],
-	function(require, exports)
-	{
-		exports.EmployeeAdmin = EmployeeAdmin;
-	}
-)
+if( typeof define === "function" )
+{
+	define
+	(
+		"EmployeeAdmin", [],
+		function ()
+		{
+			return EmployeeAdmin;
+		}
+	);
+}
