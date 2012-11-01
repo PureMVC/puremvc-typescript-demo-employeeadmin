@@ -32,16 +32,19 @@
 	-->
 	<macrodef name="TypeScriptCompileDir">
 
-		<!-- required attribute -->
+		<!-- required parameter -->
 		<attribute name="src" />
 
-		<!-- optional attributes -->
+		<!-- optional parameters -->
 		<attribute name="out" default="" />
 		<attribute name="module" default="" />
 		<attribute name="comments" default="" />
 		<attribute name="declarations" default="" />
 		<attribute name="nolib" default="" />
 		<attribute name="target" default="" />
+
+		<!-- extra parameters -->
+		<attribute name="usedefine" default="false" />
 
 		<sequential>
 
@@ -57,6 +60,7 @@
 			<local name="tsc.compile.file.content"/>
 
 			<property name="tsc.compile.file.path" value="@{src}compile.list" />
+			<property name="usedefine.prop" value="@{usedefine}" />
 
 			<!-- Optional arguments are not written to compile file when attributes not set -->
 			<condition property="out.arg" value="" else='${line.separator}--out "@{out}"'>
@@ -110,6 +114,35 @@
 				<arg value="@${tsc.compile.file.path}"/>
 			</exec>
 
+			<!-- TODO if the file is not written because out is not defined this will break the build -->
+			<loadfile property="out.file.content" srcFile="@{out}"/>
+
+			<condition property="amd.file.content" value="${out.file.content}" else="${out.file.content}">
+				<and>
+					<equals arg1="@{usedefine}" arg2="true" casesensitive="false" />
+					<equals arg1="@{module}" arg2="amd" casesensitive="false" />
+					<not>
+						<equals arg1="@{out}" arg2="" />
+					</not>
+				</and>
+			</condition>
+
+			<echo file="@{out}">
+if( typeof define === "function" )
+{
+	define
+	(
+		"EmployeeAdmin", [],
+		function ()
+		{
+			${out.file.content}
+
+			return EmployeeAdmin;
+		}
+	);
+}
+			</echo>
+
 			<!-- Finally delete the compile file -->
 			<echo message="${tsc.compile.file.path} deleted" />
 			<delete file="${tsc.compile.file.path}" />
@@ -132,6 +165,7 @@
 			out="${release-file-path}"
 			module="amd"
 			target="ES5"
+			usedefine="true"
 		/>
 
 	</target>

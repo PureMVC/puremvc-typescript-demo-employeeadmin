@@ -1,4 +1,12 @@
-var EmployeeAdmin;
+
+if( typeof define === "function" )
+{
+	define
+	(
+		"EmployeeAdmin", [],
+		function ()
+		{
+			var EmployeeAdmin;
 (function (EmployeeAdmin) {
     "use strict";
     var NotificationNames = (function () {
@@ -1440,8 +1448,10 @@ var EmployeeAdmin;
     EmployeeAdmin.ApplicationFacade = ApplicationFacade;    
 })(EmployeeAdmin || (EmployeeAdmin = {}));
 
-if(typeof define === "function") {
-    define("EmployeeAdmin", [], function () {
-        return EmployeeAdmin;
-    });
+
+
+			return EmployeeAdmin;
+		}
+	);
 }
+			
