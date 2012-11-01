@@ -1,17 +1,16 @@
 require.config
 (
 	{
-		baseUrl: 'lib',
+		baseUrl: 'lib/',
 
 		paths:
 		{
-			jQuery: 'jquery/jquery-1.7.1',
 			jQueryUi: 'jquery-ui/jquery-ui-1.8.16.custom.min',
 			jqGrid: 'jqgrid/js/jquery.jqGrid.min',
-			jqGridLocale: 'jqgrid/i18n/grid.locale-en.js',
+			jqGridLocale: 'jqgrid/i18n/grid.locale-en',
 
-			puremvc: 'puremvc/puremvc-typescript-standard-1.0-min',
-			EmployeeAdmin: '../bin/puremvc-typescript-employeeadmin-1.0-min'
+			puremvc: 'puremvc/puremvc-typescript-standard-1.0',
+			EmployeeAdmin: '../bin/puremvc-typescript-employeeadmin-1.0'
 		},
 
 		shims:
@@ -19,22 +18,22 @@ require.config
 
 			"jqGrid":
 			{
-				deps: ["jQuery","jqGridLocale"]
+				deps: ["jquery","jqGridLocale"]
 			},
 
 			"jqGridLocale":
 			{
-				deps: ["jQuery"]
+				deps: ["jquery"]
 			},
 
 			"jQueryUi":
 			{
-				deps: ["jQuery"]
+				deps: ["jquery"]
 			},
 
 			"EmployeeAdmin":
 			{
-				deps: ["puremvc","jQuery","jqGrid","jQueryUi"]
+				deps: ["puremvc","jquery","jqGrid","jQueryUi"]
 			}
 
 		}
@@ -43,22 +42,38 @@ require.config
 
 require
 (
-	[
-		'jQuery',
-		'EmployeeAdmin'
 
+	[
+		'puremvc',
+		//'jqGridLocale',
+		'jqGrid',
+		'jQueryUi',
+		'EmployeeAdmin'
 	],
+
 	function
 	(
-		jQuery,
-		EmployeeAdmin
+		puremvc,
+		//jqGridLocale,
+		jqGrid,
+		jQueryUi,
+		EmployeeAdminShell
 	)
 	{
 		//Wait for dom ready before setting up the application.
 		jQuery( function ()
 		{
+			/*
+			 * The loaded module is not the direct reference to the EmployeeAdmin module itself, but
+			 * a shell created by the EmployeeAdminModule.ts file to allow TypeScript to compile the
+			 * application as
+			 */
+			var EmployeeAdmin/*EmployeeAdmin*/ = EmployeeAdminShell.EmployeeAdmin;
+
+
 			var applicationFacade/*ApplicationFacade*/ = EmployeeAdmin.ApplicationFacade.getInstance();
 			applicationFacade.startup( jQuery("body") );
 		})
 	}
+
 );

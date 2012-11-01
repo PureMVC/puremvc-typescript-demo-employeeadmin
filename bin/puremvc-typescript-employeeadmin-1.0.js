@@ -1440,3 +1440,9 @@ var EmployeeAdmin;
     EmployeeAdmin.ApplicationFacade = ApplicationFacade;    
 })(EmployeeAdmin || (EmployeeAdmin = {}));
 
+define([
+    "require", 
+    "exports"
+], function (require, exports) {
+    exports.EmployeeAdmin = EmployeeAdmin;
+});
