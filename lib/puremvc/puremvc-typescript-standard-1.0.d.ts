@@ -1,6 +1,7 @@
-module puremvc
+declare module puremvc
 {
 	export interface ICommand
+		extends INotifier
 	{
 		execute( notification:INotification ):void;
 	}
@@ -12,6 +13,7 @@ module puremvc
 		hasCommand( notificationName:string ):bool;
 		removeCommand( notificationName:string ):void;
 	}
+
 	export interface IFacade
 		extends INotifier
 	{
@@ -26,10 +28,11 @@ module puremvc
 		retrieveMediator( mediatorName:string ):IMediator;
 		removeMediator( mediatorName:string ):IMediator;
 		hasMediator( mediatorName:string ):bool;
-		notifyObservers( note:INotification ):void;
+		notifyObservers( notification:INotification ):void;
 	}
 
 	export interface IMediator
+		extends INotifier
 	{
 		getMediatorName():string;
 		getViewComponent():any;
@@ -72,6 +75,7 @@ module puremvc
 	}
 
 	export interface IProxy
+		extends INotifier
 	{
 		getProxyName():string;
 		setData( data:any ):void;
@@ -84,7 +88,7 @@ module puremvc
 	{
 		registerObserver( notificationName:string, observer:IObserver ):void;
 		removeObserver( notificationName:string, notifyContext:any ):void;
-		notifyObservers( note:INotification ):void;
+		notifyObservers( notification:INotification ):void;
 		registerMediator( mediator:IMediator ):void;
 		retrieveMediator( mediatorName:string ):IMediator;
 		removeMediator( mediatorName:string ):IMediator;
@@ -104,6 +108,26 @@ module puremvc
         public notifyObserver(notification: INotification): void;
         public compareNotifyContext(object: any): bool;
     }
+	
+	export class View
+		implements IView
+	{
+        public mediatorMap: Object;
+        public observerMap: Object;
+        constructor ();
+        public initializeView(): void;
+        public registerObserver(notificationName: string, observer: IObserver): void;
+        public removeObserver(notificationName: string, notifyContext: any): void;
+        public notifyObservers(notification: INotification): void;
+        public registerMediator(mediator: IMediator): void;
+        public retrieveMediator(mediatorName: string): IMediator;
+        public removeMediator(mediatorName: string): IMediator;
+        public hasMediator(mediatorName: string): bool;
+        static SINGLETON_MSG: string;
+        static instance: IView;
+        static getInstance(): IView;
+    }
+
 
     export class Controller
 		implements IController
@@ -134,25 +158,6 @@ module puremvc
         static SINGLETON_MSG: string;
         static instance: IModel;
         static getInstance(): IModel;
-    }
-
-    export class View
-		implements IView
-	{
-        public mediatorMap: Object;
-        public observerMap: Object;
-        constructor ();
-        public initializeView(): void;
-        public registerObserver(notificationName: string, observer: IObserver): void;
-        public removeObserver(notificationName: string, notifyContext: any): void;
-        public notifyObservers(notification: INotification): void;
-        public registerMediator(mediator: IMediator): void;
-        public retrieveMediator(mediatorName: string): IMediator;
-        public removeMediator(mediatorName: string): IMediator;
-        public hasMediator(mediatorName: string): bool;
-        static SINGLETON_MSG: string;
-        static instance: IView;
-        static getInstance(): IView;
     }
 
     export class Notification
