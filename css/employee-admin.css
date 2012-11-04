@@ -1,6 +1,6 @@
 HTML,BODY
 {
-	background-color:#8aadde;
+	background:url(../img/background.png);
 	padding:0;
 	margin:0;
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
@@ -79,7 +79,7 @@ HTML,BODY
 	padding:10px;
 	width:630px;
 	height:240px;
-	background-color:#A8C2E6;
+	background-color:#bed7fa;
 	text-align:center;
 	margin-left:10px;
     border-radius: 4px;
@@ -116,7 +116,7 @@ HTML,BODY
 	height:280px;
 
 	padding:10px;
-	background-color:#A8C2E6;
+	background-color:#bed7fa;
 	text-align:center;
 	vertical-align:middle;
     border-radius: 4px;
@@ -209,7 +209,7 @@ HTML,BODY
 	height:280px;
 
 	padding:10px;
-	background-color:#A8C2E6;
+	background-color:#bed7fa;
 	text-align:center;
 	vertical-align:middle;
     border-radius: 4px;
