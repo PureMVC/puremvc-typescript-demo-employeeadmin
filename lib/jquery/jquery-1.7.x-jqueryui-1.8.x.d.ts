@@ -11,8 +11,6 @@
  * Additions made are located at the end of the file.
  */
 
-// TypeScript description file for the jQuery library, version 1.7.x
-
 /*
     Interface for the AJAX setting that will configure the AJAX request 
 */
