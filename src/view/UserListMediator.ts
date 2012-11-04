@@ -1,6 +1,9 @@
 ///<reference path='../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
 ///<reference path='../abc/NotificationNames.ts'/>
+///<reference path='../abc/ProxyNames.ts'/>
+///<reference path='../model/UserProxy.ts'/>
+///<reference path='components/UserList.ts'/>
 
 /**
  * User list component <code>Mediator</code>.

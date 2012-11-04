@@ -96,69 +96,6 @@ if( typeof define === "function" )
         var EmployeeAdmin;
         (function (EmployeeAdmin) {
             "use strict";
-            var RoleVO = (function () {
-                function RoleVO() {
-                    this.uname = "";
-                    this.roles = new Array();
-                }
-                return RoleVO;
-            })();
-            EmployeeAdmin.RoleVO = RoleVO;    
-        })(EmployeeAdmin || (EmployeeAdmin = {}));
-        
-        var __extends = this.__extends || function (d, b) {
-            function __() { this.constructor = d; }
-            __.prototype = b.prototype;
-            d.prototype = new __();
-        }
-        var EmployeeAdmin;
-        (function (EmployeeAdmin) {
-            "use strict";
-            var UserProxy = (function (_super) {
-                __extends(UserProxy, _super);
-                function UserProxy() {
-                    _super.apply(this, arguments);
-        
-                }
-                UserProxy.prototype.getUsers = function () {
-                    return this.data;
-                };
-                UserProxy.prototype.addItem = function (user) {
-                    this.getUsers().push(user);
-                };
-                UserProxy.prototype.getUser = function (uname) {
-                    var users = this.getUsers();
-                    for(var i = 0; i < users.length; i++) {
-                        if(users[i].uname === uname) {
-                            return users[i];
-                        }
-                    }
-                    return null;
-                };
-                UserProxy.prototype.updateItem = function (user) {
-                    var users = this.getUsers();
-                    for(var i = 0; i < users.length; i++) {
-                        if(users[i].uname === user.uname) {
-                            users[i] = user;
-                        }
-                    }
-                };
-                UserProxy.prototype.deleteItem = function (uname) {
-                    var users = this.getUsers();
-                    for(var i = 0; i < users.length; i++) {
-                        if(users[i].uname === uname) {
-                            users.splice(i, 1);
-                        }
-                    }
-                };
-                return UserProxy;
-            })(puremvc.Proxy);
-            EmployeeAdmin.UserProxy = UserProxy;    
-        })(EmployeeAdmin || (EmployeeAdmin = {}));
-        
-        var EmployeeAdmin;
-        (function (EmployeeAdmin) {
-            "use strict";
             var RoleEnum = (function () {
                 function RoleEnum(value, ordinal) {
                     this.ordinal = null;
@@ -219,6 +156,69 @@ if( typeof define === "function" )
                 return RoleEnum;
             })();
             EmployeeAdmin.RoleEnum = RoleEnum;    
+        })(EmployeeAdmin || (EmployeeAdmin = {}));
+        
+        var EmployeeAdmin;
+        (function (EmployeeAdmin) {
+            "use strict";
+            var RoleVO = (function () {
+                function RoleVO() {
+                    this.uname = "";
+                    this.roles = new Array();
+                }
+                return RoleVO;
+            })();
+            EmployeeAdmin.RoleVO = RoleVO;    
+        })(EmployeeAdmin || (EmployeeAdmin = {}));
+        
+        var __extends = this.__extends || function (d, b) {
+            function __() { this.constructor = d; }
+            __.prototype = b.prototype;
+            d.prototype = new __();
+        }
+        var EmployeeAdmin;
+        (function (EmployeeAdmin) {
+            "use strict";
+            var UserProxy = (function (_super) {
+                __extends(UserProxy, _super);
+                function UserProxy() {
+                    _super.apply(this, arguments);
+        
+                }
+                UserProxy.prototype.getUsers = function () {
+                    return this.data;
+                };
+                UserProxy.prototype.addItem = function (user) {
+                    this.getUsers().push(user);
+                };
+                UserProxy.prototype.getUser = function (uname) {
+                    var users = this.getUsers();
+                    for(var i = 0; i < users.length; i++) {
+                        if(users[i].uname === uname) {
+                            return users[i];
+                        }
+                    }
+                    return null;
+                };
+                UserProxy.prototype.updateItem = function (user) {
+                    var users = this.getUsers();
+                    for(var i = 0; i < users.length; i++) {
+                        if(users[i].uname === user.uname) {
+                            users[i] = user;
+                        }
+                    }
+                };
+                UserProxy.prototype.deleteItem = function (uname) {
+                    var users = this.getUsers();
+                    for(var i = 0; i < users.length; i++) {
+                        if(users[i].uname === uname) {
+                            users.splice(i, 1);
+                        }
+                    }
+                };
+                return UserProxy;
+            })(puremvc.Proxy);
+            EmployeeAdmin.UserProxy = UserProxy;    
         })(EmployeeAdmin || (EmployeeAdmin = {}));
         
         var EmployeeAdmin;
@@ -405,311 +405,6 @@ if( typeof define === "function" )
         var EmployeeAdmin;
         (function (EmployeeAdmin) {
             "use strict";
-            var UserListMediator = (function (_super) {
-                __extends(UserListMediator, _super);
-                function UserListMediator(name, viewComponent) {
-                        _super.call(this, name, viewComponent);
-                    this.userList = null;
-                    this.registerListeners();
-                    var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
-                    viewComponent.setUsers(userProxy.getUsers());
-                }
-                UserListMediator.prototype.registerListeners = function () {
-                    var userList = this.getUserList();
-                    userList.addEventListener(EmployeeAdmin.UserList.NEW, this.onNew, this);
-                    userList.addEventListener(EmployeeAdmin.UserList.DELETE, this.onDelete, this);
-                    userList.addEventListener(EmployeeAdmin.UserList.SELECT, this.onSelect, this);
-                };
-                UserListMediator.prototype.unregisterListeners = function () {
-                    var userList = this.getUserList();
-                    userList.removeEventListener(EmployeeAdmin.UserList.NEW, this.onNew, this);
-                    userList.removeEventListener(EmployeeAdmin.UserList.DELETE, this.onDelete, this);
-                    userList.removeEventListener(EmployeeAdmin.UserList.SELECT, this.onSelect, this);
-                };
-                UserListMediator.prototype.getUserList = function () {
-                    return this.viewComponent;
-                };
-                UserListMediator.prototype.listNotificationInterests = function () {
-                    return [
-                        EmployeeAdmin.NotificationNames.CANCEL_SELECTED, 
-                        EmployeeAdmin.NotificationNames.USER_UPDATED, 
-                        EmployeeAdmin.NotificationNames.USER_ADDED, 
-                        EmployeeAdmin.NotificationNames.USER_DELETED
-                    ];
-                };
-                UserListMediator.prototype.handleNotification = function (note) {
-                    var userList = this.getUserList();
-                    var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
-                    switch(note.getName()) {
-                        case EmployeeAdmin.NotificationNames.CANCEL_SELECTED: {
-                            userList.deSelect();
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.USER_UPDATED: {
-                            userList.setUsers(userProxy.getUsers());
-                            userList.deSelect();
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.USER_ADDED: {
-                            userList.setUsers(userProxy.getUsers());
-                            userList.deSelect();
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.USER_DELETED: {
-                            userList.setUsers(userProxy.getUsers());
-                            userList.deSelect();
-                            break;
-        
-                        }
-                    }
-                };
-                UserListMediator.prototype.onNew = function () {
-                    var user = new EmployeeAdmin.UserVO();
-                    this.sendNotification(EmployeeAdmin.NotificationNames.NEW_USER, user);
-                };
-                UserListMediator.prototype.onDelete = function (type, properties) {
-                    var userList = this.getUserList();
-                    var uname = userList.getSelectedUser();
-                    var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
-                    var selectedUser = userProxy.getUser(uname);
-                    this.sendNotification(EmployeeAdmin.NotificationNames.DELETE_USER, selectedUser);
-                };
-                UserListMediator.prototype.onSelect = function (type, properties) {
-                    var userList = this.getUserList();
-                    var uname = userList.getSelectedUser();
-                    var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
-                    var selectedUser = userProxy.getUser(uname);
-                    this.sendNotification(EmployeeAdmin.NotificationNames.USER_SELECTED, selectedUser);
-                };
-                UserListMediator.prototype.onRemove = function () {
-                    this.unregisterListeners();
-                    this.getUserList().destroy();
-                };
-                return UserListMediator;
-            })(puremvc.Mediator);
-            EmployeeAdmin.UserListMediator = UserListMediator;    
-        })(EmployeeAdmin || (EmployeeAdmin = {}));
-        
-        var EmployeeAdmin;
-        (function (EmployeeAdmin) {
-            "use strict";
-            var UserFormMediator = (function (_super) {
-                __extends(UserFormMediator, _super);
-                function UserFormMediator(name, viewComponent) {
-                        _super.call(this, name, viewComponent);
-                    this.userProxy = null;
-                    this.registerListeners();
-                    this.userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
-                }
-                UserFormMediator.prototype.getUserForm = function () {
-                    return this.viewComponent;
-                };
-                UserFormMediator.prototype.registerListeners = function () {
-                    var userForm = this.getUserForm();
-                    userForm.addEventListener(EmployeeAdmin.UserForm.ADD, this.onAdd, this);
-                    userForm.addEventListener(EmployeeAdmin.UserForm.UPDATE, this.onUpdate, this);
-                    userForm.addEventListener(EmployeeAdmin.UserForm.CANCEL, this.onCancel, this);
-                };
-                UserFormMediator.prototype.unregisterListeners = function () {
-                    var userForm = this.getUserForm();
-                    userForm.addEventListener(EmployeeAdmin.UserForm.ADD, this.onAdd, this);
-                    userForm.addEventListener(EmployeeAdmin.UserForm.UPDATE, this.onUpdate, this);
-                    userForm.addEventListener(EmployeeAdmin.UserForm.CANCEL, this.onCancel, this);
-                };
-                UserFormMediator.prototype.onAdd = function (type, properties) {
-                    var user = this.getUserForm().getUser();
-                    this.userProxy.addItem(user);
-                    this.sendNotification(EmployeeAdmin.NotificationNames.USER_ADDED, user);
-                    var userForm = this.getUserForm();
-                    userForm.clearForm();
-                    userForm.setEnabled(false);
-                    userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
-                };
-                UserFormMediator.prototype.onUpdate = function (type, properties) {
-                    var user = this.getUserForm().getUser();
-                    this.userProxy.updateItem(user);
-                    this.sendNotification(EmployeeAdmin.NotificationNames.USER_UPDATED, user);
-                    var userForm = this.getUserForm();
-                    userForm.clearForm();
-                    userForm.setEnabled(false);
-                    userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
-                };
-                UserFormMediator.prototype.onCancel = function (type, properties) {
-                    this.sendNotification(EmployeeAdmin.NotificationNames.CANCEL_SELECTED);
-                    var userForm = this.getUserForm();
-                    userForm.clearForm();
-                    userForm.setEnabled(false);
-                    userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
-                };
-                UserFormMediator.prototype.listNotificationInterests = function () {
-                    return [
-                        EmployeeAdmin.NotificationNames.NEW_USER, 
-                        EmployeeAdmin.NotificationNames.USER_DELETED, 
-                        EmployeeAdmin.NotificationNames.USER_SELECTED
-                    ];
-                };
-                UserFormMediator.prototype.handleNotification = function (note) {
-                    var userForm = this.getUserForm();
-                    var user;
-                    switch(note.getName()) {
-                        case EmployeeAdmin.NotificationNames.NEW_USER: {
-                            userForm.setUser(note.getBody());
-                            userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
-                            userForm.setEnabled(true);
-                            userForm.setFocus();
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.USER_DELETED: {
-                            userForm.clearForm();
-                            userForm.setEnabled(false);
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.USER_SELECTED: {
-                            user = note.getBody();
-                            userForm.clearForm();
-                            userForm.setUser(user);
-                            userForm.setMode(EmployeeAdmin.UserForm.MODE_EDIT);
-                            userForm.setEnabled(true);
-                            userForm.setFocus();
-                            break;
-        
-                        }
-                    }
-                };
-                UserFormMediator.prototype.onRemove = function () {
-                    this.unregisterListeners();
-                    this.getUserForm().destroy();
-                };
-                UserFormMediator.ADD = "add";
-                UserFormMediator.UPDATE = "update";
-                UserFormMediator.CANCEL = "cancel";
-                UserFormMediator.MODE_ADD = "modeAdd";
-                UserFormMediator.MODE_EDIT = "modeEdit";
-                return UserFormMediator;
-            })(puremvc.Mediator);
-            EmployeeAdmin.UserFormMediator = UserFormMediator;    
-        })(EmployeeAdmin || (EmployeeAdmin = {}));
-        
-        var EmployeeAdmin;
-        (function (EmployeeAdmin) {
-            "use strict";
-            var RolePanelMediator = (function (_super) {
-                __extends(RolePanelMediator, _super);
-                function RolePanelMediator(name, viewComponent) {
-                        _super.call(this, name, viewComponent);
-                    this.roleProxy = null;
-                    this.registerListeners();
-                    this.roleProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.ROLE_PROXY);
-                }
-                RolePanelMediator.prototype.getRolePanel = function () {
-                    return this.viewComponent;
-                };
-                RolePanelMediator.prototype.registerListeners = function () {
-                    var rolePanel = this.getRolePanel();
-                    rolePanel.addEventListener(EmployeeAdmin.RolePanel.ADD, this.onAddRole, this);
-                    rolePanel.addEventListener(EmployeeAdmin.RolePanel.REMOVE, this.onRemoveRole, this);
-                };
-                RolePanelMediator.prototype.unregisterListeners = function () {
-                    var rolePanel = this.getRolePanel();
-                    rolePanel.removeEventListener(EmployeeAdmin.RolePanel.ADD, this.onAddRole, this);
-                    rolePanel.removeEventListener(EmployeeAdmin.RolePanel.REMOVE, this.onRemoveRole, this);
-                };
-                RolePanelMediator.prototype.onAddRole = function (type, properties) {
-                    this.roleProxy.addRoleToUser(this.getRolePanel().getUser(), this.getRolePanel().getSelectedRole());
-                    this.updateUserRoleList();
-                    this.getRolePanel().setMode(null);
-                };
-                RolePanelMediator.prototype.onRemoveRole = function (type, properties) {
-                    this.roleProxy.removeRoleFromUser(this.getRolePanel().getUser(), this.getRolePanel().getSelectedRole());
-                    this.updateUserRoleList();
-                    this.getRolePanel().setMode(null);
-                };
-                RolePanelMediator.prototype.updateUserRoleList = function () {
-                    var user = this.getRolePanel().getUser();
-                    var userRoles = this.roleProxy.getUserRoles(user.uname);
-                    this.getRolePanel().setUserRoles(userRoles);
-                };
-                RolePanelMediator.prototype.listNotificationInterests = function () {
-                    return [
-                        EmployeeAdmin.NotificationNames.NEW_USER, 
-                        EmployeeAdmin.NotificationNames.USER_ADDED, 
-                        EmployeeAdmin.NotificationNames.USER_UPDATED, 
-                        EmployeeAdmin.NotificationNames.USER_DELETED, 
-                        EmployeeAdmin.NotificationNames.CANCEL_SELECTED, 
-                        EmployeeAdmin.NotificationNames.USER_SELECTED, 
-                        EmployeeAdmin.NotificationNames.ADD_ROLE_RESULT
-                    ];
-                };
-                RolePanelMediator.prototype.handleNotification = function (note) {
-                    var rolePanel = this.getRolePanel();
-                    switch(note.getName()) {
-                        case EmployeeAdmin.NotificationNames.NEW_USER: {
-                            rolePanel.clearForm();
-                            rolePanel.setEnabled(false);
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.USER_ADDED: {
-                            rolePanel.setUser(note.getBody());
-                            var roleVO = new EmployeeAdmin.RoleVO();
-                            roleVO.uname = rolePanel.getUser().uname;
-                            this.roleProxy.addItem(roleVO);
-                            rolePanel.clearForm();
-                            rolePanel.setEnabled(false);
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.USER_UPDATED: {
-                            rolePanel.clearForm();
-                            rolePanel.setEnabled(false);
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.USER_DELETED: {
-                            rolePanel.clearForm();
-                            rolePanel.setEnabled(false);
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.CANCEL_SELECTED: {
-                            rolePanel.clearForm();
-                            rolePanel.setEnabled(false);
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.USER_SELECTED: {
-                            rolePanel.clearForm();
-                            rolePanel.setEnabled(true);
-                            rolePanel.setMode(null);
-                            rolePanel.setUser(note.getBody());
-                            this.updateUserRoleList();
-                            break;
-        
-                        }
-                        case EmployeeAdmin.NotificationNames.ADD_ROLE_RESULT: {
-                            this.updateUserRoleList();
-                            break;
-        
-                        }
-                    }
-                };
-                RolePanelMediator.prototype.onRemove = function () {
-                    this.unregisterListeners();
-                    this.getRolePanel().destroy();
-                };
-                return RolePanelMediator;
-            })(puremvc.Mediator);
-            EmployeeAdmin.RolePanelMediator = RolePanelMediator;    
-        })(EmployeeAdmin || (EmployeeAdmin = {}));
-        
-        var EmployeeAdmin;
-        (function (EmployeeAdmin) {
-            "use strict";
             var UiComponent = (function () {
                 function UiComponent() {
                     this.listenerMap = null;
@@ -813,181 +508,229 @@ if( typeof define === "function" )
         var EmployeeAdmin;
         (function (EmployeeAdmin) {
             "use strict";
-            var RolePanel = (function (_super) {
-                __extends(RolePanel, _super);
-                function RolePanel(selector) {
+            var UserList = (function (_super) {
+                __extends(UserList, _super);
+                function UserList(selector) {
                         _super.call(this);
-                    this.user = null;
-                    this.userRoles = null;
-                    this.selectedRole = null;
-                    this.mode = null;
-                    this.rolePanel = null;
-                    this.roleList = null;
-                    this.userRoleList = null;
-                    this.addRoleButton = null;
-                    this.removeRoleButton = null;
-                    this.selectedFullname = null;
-                    this.rolePanel = jQuery(selector);
+                    this.userListPanel = null;
+                    this.userList = null;
+                    this.newButton = null;
+                    this.deleteButton = null;
+                    this.selectedUser = null;
+                    this.userTotal = null;
+                    this.users = null;
+                    this.userListPanel = jQuery(selector);
                     this.initializeChildren();
                     this.bindListeners();
-                    this.fillRoleList();
-                    this.setEnabled(false);
                 }
-                RolePanel.prototype.initializeChildren = function () {
-                    this.userRoleList = this.rolePanel.find(".user-role-list");
-                    this.userRoleList.jqGrid({
+                UserList.prototype.initializeChildren = function () {
+                    this.userList = this.userListPanel.find(".user-list");
+                    this.userTotal = this.userListPanel.find(".user-total");
+                    this.userList.jqGrid({
                         datatype: "local",
-                        width: 280,
-                        height: 170,
+                        width: 630,
+                        height: 160,
                         colNames: [
-                            'Roles'
+                            "User Name", 
+                            "First Name", 
+                            "Last Name", 
+                            "Email", 
+                            "Department"
                         ],
                         colModel: [
                             {
-                                name: 'value',
-                                index: 'value'
+                                name: "uname",
+                                index: "uname",
+                                width: 125
+                            }, 
+                            {
+                                name: "fname",
+                                index: "fname",
+                                width: 125
+                            }, 
+                            {
+                                name: "lname",
+                                index: "lname",
+                                width: 125
+                            }, 
+                            {
+                                name: "email",
+                                index: "email",
+                                width: 130
+                            }, 
+                            {
+                                name: "department",
+                                index: "department",
+                                width: 125
                             }
                         ]
                     });
-                    this.selectedFullname = this.rolePanel.find(".selected-fullname");
-                    this.roleList = this.rolePanel.find(".role-list");
-                    this.addRoleButton = this.rolePanel.find(".add-role-button").button();
-                    this.removeRoleButton = this.rolePanel.find(".remove-role-button").button();
+                    this.newButton = this.userListPanel.find(".new-button").button();
+                    this.deleteButton = this.userListPanel.find(".delete-button").button();
+                    this.deleteButton.button("disable");
                 };
-                RolePanel.prototype.bindListeners = function () {
-                    var namespace = ".UserRoleList";
-                    this.addRoleButton.on("click" + namespace, jQuery.proxy(this, "addRoleButton_clickHandler"));
-                    this.removeRoleButton.on("click" + namespace, jQuery.proxy(this, "removeRoleButton_clickHandler"));
-                    this.roleList.on("change" + namespace, jQuery.proxy(this, "roleList_changeHandler"));
-                    this.userRoleList.jqGrid("setGridParam", {
-                        onSelectRow: jQuery.proxy(this, "userRoleList_changeHandler")
+                UserList.prototype.bindListeners = function () {
+                    var namespace = ".UserList";
+                    this.userList.jqGrid("setGridParam", {
+                        onSelectRow: jQuery.proxy(this, "userList_selectHandler")
                     });
+                    this.newButton.on("click" + namespace, jQuery.proxy(this, "newButton_clickHandler"));
+                    this.deleteButton.on("click" + namespace, jQuery.proxy(this, "deleteButton_clickHandler"));
                 };
-                RolePanel.prototype.unbindListeners = function () {
-                    var namespace = ".UserRoleList";
-                    this.addRoleButton.off("click" + namespace);
-                    this.removeRoleButton.off("click" + namespace);
-                    this.roleList.off("change" + namespace);
-                    this.userRoleList.jqGrid("setGridParam", {
+                UserList.prototype.unbindListeners = function () {
+                    var namespace = ".UserList";
+                    this.userList.jqGrid("setGridParam", {
                         onSelectRow: null
                     });
+                    this.newButton.off("click" + namespace);
+                    this.deleteButton.off("click" + namespace);
                 };
-                RolePanel.prototype.fillRoleList = function () {
-                    var roleEnumList = EmployeeAdmin.RoleEnum.getComboList();
-                    this.roleList.empty();
-                    var htmlList = "";
-                    for(var i = 0; i < roleEnumList.length; i++) {
-                        var role = roleEnumList[i];
-                        var valueAttr = 'value="' + role.ordinal + '"';
-                        var selectedAttr = i == 0 ? "selected" : "";
-                        htmlList += '<option ' + valueAttr + ' ' + selectedAttr + ' >' + role.value + '</option>';
-                    }
-                    this.roleList.html(htmlList);
-                };
-                RolePanel.prototype.setUserRoles = function (userRoles) {
-                    this.userRoleList.jqGrid('clearGridData');
-                    if(!userRoles) {
-                        return;
-                    }
-                    this.userRoles = userRoles;
-                    for(var i = 0; i < userRoles.length; i++) {
-                        var role = userRoles[i];
-                        this.userRoleList.jqGrid('addRowData', i + 1, role);
-                    }
-                };
-                RolePanel.prototype.getUser = function () {
-                    return this.user;
-                };
-                RolePanel.prototype.setUser = function (user) {
-                    this.user = user;
-                    this.selectedFullname.text(user.lname + ", " + user.fname);
-                };
-                RolePanel.prototype.getSelectedRole = function () {
-                    return this.selectedRole;
-                };
-                RolePanel.prototype.setEnabled = function (isEnabled) {
-                    if(isEnabled) {
-                        this.userRoleList.removeAttr("disabled");
-                        this.roleList.removeAttr("disabled");
-                        this.addRoleButton.button("enable");
-                        this.removeRoleButton.button("enable");
-                    } else {
-                        this.userRoleList.attr("disabled", "disabled");
-                        this.roleList.attr("disabled", "disabled");
-                        this.roleList.prop("selectedIndex", 0);
-                        this.addRoleButton.button("disable");
-                        this.removeRoleButton.button("disable");
-                    }
-                };
-                RolePanel.prototype.setMode = function (mode) {
-                    switch(mode) {
-                        case RolePanel.ADD_MODE: {
-                            this.addRoleButton.button("enable");
-                            this.removeRoleButton.button("disable");
-                            break;
-        
-                        }
-                        case RolePanel.REMOVE_MODE: {
-                            this.addRoleButton.button("disable");
-                            this.removeRoleButton.button("enable");
-                            this.roleList.prop("selectedIndex", 0);
-                            break;
-        
-                        }
-                        default: {
-                            this.addRoleButton.button("disable");
-                            this.removeRoleButton.button("disable");
-        
-                        }
-                    }
-                };
-                RolePanel.prototype.clearForm = function () {
-                    this.user = null;
-                    this.setUserRoles(null);
-                    this.selectedFullname.text("");
-                    this.roleList.prop("selectedIndex", 0);
-                    this.userRoleList.jqGrid('resetSelection');
-                };
-                RolePanel.prototype.destroy = function () {
+                UserList.prototype.destroy = function () {
                     _super.prototype.destroy.call(this);
                     this.unbindListeners();
                 };
-                RolePanel.prototype.addRoleButton_clickHandler = function () {
-                    this.dispatchEvent(RolePanel.ADD);
+                UserList.prototype.setUsers = function (userList) {
+                    this.users = userList;
+                    this.userTotal.text(userList.length);
+                    this.userList.jqGrid("clearGridData");
+                    for(var i = 0; i < userList.length; i++) {
+                        var user = userList[i];
+                        var rowData = {
+                            uname: user.uname,
+                            fname: user.fname,
+                            lname: user.lname,
+                            email: user.email,
+                            department: user.department.value
+                        };
+                        this.userList.jqGrid("addRowData", i + 1, rowData);
+                    }
                 };
-                RolePanel.prototype.removeRoleButton_clickHandler = function () {
-                    this.dispatchEvent(RolePanel.REMOVE);
+                UserList.prototype.getSelectedUser = function () {
+                    return this.selectedUser;
                 };
-                RolePanel.prototype.userRoleList_changeHandler = function (id) {
-                    var index = this.userRoleList.jqGrid('getInd', id);
-                    this.selectedRole = this.userRoles[index - 1];
-                    this.setMode(RolePanel.REMOVE_MODE);
+                UserList.prototype.deSelect = function () {
+                    this.userList.jqGrid("resetSelection");
+                    this.selectedUser = null;
+                    this.deleteButton.button("disable");
                 };
-                RolePanel.prototype.roleList_changeHandler = function () {
-                    this.userRoleList.jqGrid('resetSelection');
-                    var roleEnumList = EmployeeAdmin.RoleEnum.getComboList();
-                    this.selectedRole = roleEnumList[this.roleList.prop("selectedIndex")];
-                    var alreadyInList = false;
-                    for(var i = 0; i < this.userRoles.length; i++) {
-                        var role = this.userRoles[i];
-                        if(role.equals(this.selectedRole)) {
-                            alreadyInList = true;
+                UserList.prototype.userList_selectHandler = function (id) {
+                    var rowData = this.userList.jqGrid("getRowData", id);
+                    var uname;
+                    for(var i = 0; i < this.users.length; i++) {
+                        var userVO = this.users[i];
+                        if(userVO.uname === rowData.uname) {
+                            uname = rowData.uname;
                             break;
                         }
                     }
-                    if(this.selectedRole == EmployeeAdmin.RoleEnum.NONE_SELECTED || alreadyInList) {
-                        this.setMode(null);
-                    } else {
-                        this.setMode(RolePanel.ADD_MODE);
+                    this.selectedUser = uname;
+                    this.dispatchEvent(UserList.SELECT);
+                    this.deleteButton.button("enable");
+                };
+                UserList.prototype.newButton_clickHandler = function () {
+                    this.deSelect();
+                    this.dispatchEvent(UserList.NEW);
+                };
+                UserList.prototype.deleteButton_clickHandler = function () {
+                    this.dispatchEvent(UserList.DELETE);
+                };
+                UserList.NEW = "new";
+                UserList.DELETE = "delete";
+                UserList.SELECT = "select";
+                return UserList;
+            })(EmployeeAdmin.UiComponent);
+            EmployeeAdmin.UserList = UserList;    
+        })(EmployeeAdmin || (EmployeeAdmin = {}));
+        
+        var EmployeeAdmin;
+        (function (EmployeeAdmin) {
+            "use strict";
+            var UserListMediator = (function (_super) {
+                __extends(UserListMediator, _super);
+                function UserListMediator(name, viewComponent) {
+                        _super.call(this, name, viewComponent);
+                    this.userList = null;
+                    this.registerListeners();
+                    var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
+                    viewComponent.setUsers(userProxy.getUsers());
+                }
+                UserListMediator.prototype.registerListeners = function () {
+                    var userList = this.getUserList();
+                    userList.addEventListener(EmployeeAdmin.UserList.NEW, this.onNew, this);
+                    userList.addEventListener(EmployeeAdmin.UserList.DELETE, this.onDelete, this);
+                    userList.addEventListener(EmployeeAdmin.UserList.SELECT, this.onSelect, this);
+                };
+                UserListMediator.prototype.unregisterListeners = function () {
+                    var userList = this.getUserList();
+                    userList.removeEventListener(EmployeeAdmin.UserList.NEW, this.onNew, this);
+                    userList.removeEventListener(EmployeeAdmin.UserList.DELETE, this.onDelete, this);
+                    userList.removeEventListener(EmployeeAdmin.UserList.SELECT, this.onSelect, this);
+                };
+                UserListMediator.prototype.getUserList = function () {
+                    return this.viewComponent;
+                };
+                UserListMediator.prototype.listNotificationInterests = function () {
+                    return [
+                        EmployeeAdmin.NotificationNames.CANCEL_SELECTED, 
+                        EmployeeAdmin.NotificationNames.USER_UPDATED, 
+                        EmployeeAdmin.NotificationNames.USER_ADDED, 
+                        EmployeeAdmin.NotificationNames.USER_DELETED
+                    ];
+                };
+                UserListMediator.prototype.handleNotification = function (note) {
+                    var userList = this.getUserList();
+                    var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
+                    switch(note.getName()) {
+                        case EmployeeAdmin.NotificationNames.CANCEL_SELECTED: {
+                            userList.deSelect();
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.USER_UPDATED: {
+                            userList.setUsers(userProxy.getUsers());
+                            userList.deSelect();
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.USER_ADDED: {
+                            userList.setUsers(userProxy.getUsers());
+                            userList.deSelect();
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.USER_DELETED: {
+                            userList.setUsers(userProxy.getUsers());
+                            userList.deSelect();
+                            break;
+        
+                        }
                     }
                 };
-                RolePanel.ADD = "add";
-                RolePanel.REMOVE = "remove";
-                RolePanel.ADD_MODE = "addMode";
-                RolePanel.REMOVE_MODE = "removeMode";
-                return RolePanel;
-            })(EmployeeAdmin.UiComponent);
-            EmployeeAdmin.RolePanel = RolePanel;    
+                UserListMediator.prototype.onNew = function () {
+                    var user = new EmployeeAdmin.UserVO();
+                    this.sendNotification(EmployeeAdmin.NotificationNames.NEW_USER, user);
+                };
+                UserListMediator.prototype.onDelete = function (type, properties) {
+                    var userList = this.getUserList();
+                    var uname = userList.getSelectedUser();
+                    var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
+                    var selectedUser = userProxy.getUser(uname);
+                    this.sendNotification(EmployeeAdmin.NotificationNames.DELETE_USER, selectedUser);
+                };
+                UserListMediator.prototype.onSelect = function (type, properties) {
+                    var userList = this.getUserList();
+                    var uname = userList.getSelectedUser();
+                    var userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
+                    var selectedUser = userProxy.getUser(uname);
+                    this.sendNotification(EmployeeAdmin.NotificationNames.USER_SELECTED, selectedUser);
+                };
+                UserListMediator.prototype.onRemove = function () {
+                    this.unregisterListeners();
+                    this.getUserList().destroy();
+                };
+                return UserListMediator;
+            })(puremvc.Mediator);
+            EmployeeAdmin.UserListMediator = UserListMediator;    
         })(EmployeeAdmin || (EmployeeAdmin = {}));
         
         var EmployeeAdmin;
@@ -1234,138 +977,395 @@ if( typeof define === "function" )
         var EmployeeAdmin;
         (function (EmployeeAdmin) {
             "use strict";
-            var UserList = (function (_super) {
-                __extends(UserList, _super);
-                function UserList(selector) {
+            var UserFormMediator = (function (_super) {
+                __extends(UserFormMediator, _super);
+                function UserFormMediator(name, viewComponent) {
+                        _super.call(this, name, viewComponent);
+                    this.userProxy = null;
+                    this.registerListeners();
+                    this.userProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.USER_PROXY);
+                }
+                UserFormMediator.prototype.getUserForm = function () {
+                    return this.viewComponent;
+                };
+                UserFormMediator.prototype.registerListeners = function () {
+                    var userForm = this.getUserForm();
+                    userForm.addEventListener(EmployeeAdmin.UserForm.ADD, this.onAdd, this);
+                    userForm.addEventListener(EmployeeAdmin.UserForm.UPDATE, this.onUpdate, this);
+                    userForm.addEventListener(EmployeeAdmin.UserForm.CANCEL, this.onCancel, this);
+                };
+                UserFormMediator.prototype.unregisterListeners = function () {
+                    var userForm = this.getUserForm();
+                    userForm.addEventListener(EmployeeAdmin.UserForm.ADD, this.onAdd, this);
+                    userForm.addEventListener(EmployeeAdmin.UserForm.UPDATE, this.onUpdate, this);
+                    userForm.addEventListener(EmployeeAdmin.UserForm.CANCEL, this.onCancel, this);
+                };
+                UserFormMediator.prototype.onAdd = function (type, properties) {
+                    var user = this.getUserForm().getUser();
+                    this.userProxy.addItem(user);
+                    this.sendNotification(EmployeeAdmin.NotificationNames.USER_ADDED, user);
+                    var userForm = this.getUserForm();
+                    userForm.clearForm();
+                    userForm.setEnabled(false);
+                    userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
+                };
+                UserFormMediator.prototype.onUpdate = function (type, properties) {
+                    var user = this.getUserForm().getUser();
+                    this.userProxy.updateItem(user);
+                    this.sendNotification(EmployeeAdmin.NotificationNames.USER_UPDATED, user);
+                    var userForm = this.getUserForm();
+                    userForm.clearForm();
+                    userForm.setEnabled(false);
+                    userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
+                };
+                UserFormMediator.prototype.onCancel = function (type, properties) {
+                    this.sendNotification(EmployeeAdmin.NotificationNames.CANCEL_SELECTED);
+                    var userForm = this.getUserForm();
+                    userForm.clearForm();
+                    userForm.setEnabled(false);
+                    userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
+                };
+                UserFormMediator.prototype.listNotificationInterests = function () {
+                    return [
+                        EmployeeAdmin.NotificationNames.NEW_USER, 
+                        EmployeeAdmin.NotificationNames.USER_DELETED, 
+                        EmployeeAdmin.NotificationNames.USER_SELECTED
+                    ];
+                };
+                UserFormMediator.prototype.handleNotification = function (note) {
+                    var userForm = this.getUserForm();
+                    var user;
+                    switch(note.getName()) {
+                        case EmployeeAdmin.NotificationNames.NEW_USER: {
+                            userForm.setUser(note.getBody());
+                            userForm.setMode(EmployeeAdmin.UserForm.MODE_ADD);
+                            userForm.setEnabled(true);
+                            userForm.setFocus();
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.USER_DELETED: {
+                            userForm.clearForm();
+                            userForm.setEnabled(false);
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.USER_SELECTED: {
+                            user = note.getBody();
+                            userForm.clearForm();
+                            userForm.setUser(user);
+                            userForm.setMode(EmployeeAdmin.UserForm.MODE_EDIT);
+                            userForm.setEnabled(true);
+                            userForm.setFocus();
+                            break;
+        
+                        }
+                    }
+                };
+                UserFormMediator.prototype.onRemove = function () {
+                    this.unregisterListeners();
+                    this.getUserForm().destroy();
+                };
+                UserFormMediator.ADD = "add";
+                UserFormMediator.UPDATE = "update";
+                UserFormMediator.CANCEL = "cancel";
+                UserFormMediator.MODE_ADD = "modeAdd";
+                UserFormMediator.MODE_EDIT = "modeEdit";
+                return UserFormMediator;
+            })(puremvc.Mediator);
+            EmployeeAdmin.UserFormMediator = UserFormMediator;    
+        })(EmployeeAdmin || (EmployeeAdmin = {}));
+        
+        var EmployeeAdmin;
+        (function (EmployeeAdmin) {
+            "use strict";
+            var RolePanel = (function (_super) {
+                __extends(RolePanel, _super);
+                function RolePanel(selector) {
                         _super.call(this);
-                    this.userListPanel = null;
-                    this.userList = null;
-                    this.newButton = null;
-                    this.deleteButton = null;
-                    this.selectedUser = null;
-                    this.userTotal = null;
-                    this.users = null;
-                    this.userListPanel = jQuery(selector);
+                    this.user = null;
+                    this.userRoles = null;
+                    this.selectedRole = null;
+                    this.mode = null;
+                    this.rolePanel = null;
+                    this.roleList = null;
+                    this.userRoleList = null;
+                    this.addRoleButton = null;
+                    this.removeRoleButton = null;
+                    this.selectedFullname = null;
+                    this.rolePanel = jQuery(selector);
                     this.initializeChildren();
                     this.bindListeners();
+                    this.fillRoleList();
+                    this.setEnabled(false);
                 }
-                UserList.prototype.initializeChildren = function () {
-                    this.userList = this.userListPanel.find(".user-list");
-                    this.userTotal = this.userListPanel.find(".user-total");
-                    this.userList.jqGrid({
+                RolePanel.prototype.initializeChildren = function () {
+                    this.userRoleList = this.rolePanel.find(".user-role-list");
+                    this.userRoleList.jqGrid({
                         datatype: "local",
-                        width: 630,
-                        height: 160,
+                        width: 280,
+                        height: 170,
                         colNames: [
-                            "User Name", 
-                            "First Name", 
-                            "Last Name", 
-                            "Email", 
-                            "Department"
+                            'Roles'
                         ],
                         colModel: [
                             {
-                                name: "uname",
-                                index: "uname",
-                                width: 125
-                            }, 
-                            {
-                                name: "fname",
-                                index: "fname",
-                                width: 125
-                            }, 
-                            {
-                                name: "lname",
-                                index: "lname",
-                                width: 125
-                            }, 
-                            {
-                                name: "email",
-                                index: "email",
-                                width: 130
-                            }, 
-                            {
-                                name: "department",
-                                index: "department",
-                                width: 125
+                                name: 'value',
+                                index: 'value'
                             }
                         ]
                     });
-                    this.newButton = this.userListPanel.find(".new-button").button();
-                    this.deleteButton = this.userListPanel.find(".delete-button").button();
-                    this.deleteButton.button("disable");
+                    this.selectedFullname = this.rolePanel.find(".selected-fullname");
+                    this.roleList = this.rolePanel.find(".role-list");
+                    this.addRoleButton = this.rolePanel.find(".add-role-button").button();
+                    this.removeRoleButton = this.rolePanel.find(".remove-role-button").button();
                 };
-                UserList.prototype.bindListeners = function () {
-                    var namespace = ".UserList";
-                    this.userList.jqGrid("setGridParam", {
-                        onSelectRow: jQuery.proxy(this, "userList_selectHandler")
+                RolePanel.prototype.bindListeners = function () {
+                    var namespace = ".UserRoleList";
+                    this.addRoleButton.on("click" + namespace, jQuery.proxy(this, "addRoleButton_clickHandler"));
+                    this.removeRoleButton.on("click" + namespace, jQuery.proxy(this, "removeRoleButton_clickHandler"));
+                    this.roleList.on("change" + namespace, jQuery.proxy(this, "roleList_changeHandler"));
+                    this.userRoleList.jqGrid("setGridParam", {
+                        onSelectRow: jQuery.proxy(this, "userRoleList_changeHandler")
                     });
-                    this.newButton.on("click" + namespace, jQuery.proxy(this, "newButton_clickHandler"));
-                    this.deleteButton.on("click" + namespace, jQuery.proxy(this, "deleteButton_clickHandler"));
                 };
-                UserList.prototype.unbindListeners = function () {
-                    var namespace = ".UserList";
-                    this.userList.jqGrid("setGridParam", {
+                RolePanel.prototype.unbindListeners = function () {
+                    var namespace = ".UserRoleList";
+                    this.addRoleButton.off("click" + namespace);
+                    this.removeRoleButton.off("click" + namespace);
+                    this.roleList.off("change" + namespace);
+                    this.userRoleList.jqGrid("setGridParam", {
                         onSelectRow: null
                     });
-                    this.newButton.off("click" + namespace);
-                    this.deleteButton.off("click" + namespace);
                 };
-                UserList.prototype.destroy = function () {
+                RolePanel.prototype.fillRoleList = function () {
+                    var roleEnumList = EmployeeAdmin.RoleEnum.getComboList();
+                    this.roleList.empty();
+                    var htmlList = "";
+                    for(var i = 0; i < roleEnumList.length; i++) {
+                        var role = roleEnumList[i];
+                        var valueAttr = 'value="' + role.ordinal + '"';
+                        var selectedAttr = i == 0 ? "selected" : "";
+                        htmlList += '<option ' + valueAttr + ' ' + selectedAttr + ' >' + role.value + '</option>';
+                    }
+                    this.roleList.html(htmlList);
+                };
+                RolePanel.prototype.setUserRoles = function (userRoles) {
+                    this.userRoleList.jqGrid('clearGridData');
+                    if(!userRoles) {
+                        return;
+                    }
+                    this.userRoles = userRoles;
+                    for(var i = 0; i < userRoles.length; i++) {
+                        var role = userRoles[i];
+                        this.userRoleList.jqGrid('addRowData', i + 1, role);
+                    }
+                };
+                RolePanel.prototype.getUser = function () {
+                    return this.user;
+                };
+                RolePanel.prototype.setUser = function (user) {
+                    this.user = user;
+                    this.selectedFullname.text(user.lname + ", " + user.fname);
+                };
+                RolePanel.prototype.getSelectedRole = function () {
+                    return this.selectedRole;
+                };
+                RolePanel.prototype.setEnabled = function (isEnabled) {
+                    if(isEnabled) {
+                        this.userRoleList.removeAttr("disabled");
+                        this.roleList.removeAttr("disabled");
+                        this.addRoleButton.button("enable");
+                        this.removeRoleButton.button("enable");
+                    } else {
+                        this.userRoleList.attr("disabled", "disabled");
+                        this.roleList.attr("disabled", "disabled");
+                        this.roleList.prop("selectedIndex", 0);
+                        this.addRoleButton.button("disable");
+                        this.removeRoleButton.button("disable");
+                    }
+                };
+                RolePanel.prototype.setMode = function (mode) {
+                    switch(mode) {
+                        case RolePanel.ADD_MODE: {
+                            this.addRoleButton.button("enable");
+                            this.removeRoleButton.button("disable");
+                            break;
+        
+                        }
+                        case RolePanel.REMOVE_MODE: {
+                            this.addRoleButton.button("disable");
+                            this.removeRoleButton.button("enable");
+                            this.roleList.prop("selectedIndex", 0);
+                            break;
+        
+                        }
+                        default: {
+                            this.addRoleButton.button("disable");
+                            this.removeRoleButton.button("disable");
+        
+                        }
+                    }
+                };
+                RolePanel.prototype.clearForm = function () {
+                    this.user = null;
+                    this.setUserRoles(null);
+                    this.selectedFullname.text("");
+                    this.roleList.prop("selectedIndex", 0);
+                    this.userRoleList.jqGrid('resetSelection');
+                };
+                RolePanel.prototype.destroy = function () {
                     _super.prototype.destroy.call(this);
                     this.unbindListeners();
                 };
-                UserList.prototype.setUsers = function (userList) {
-                    this.users = userList;
-                    this.userTotal.text(userList.length);
-                    this.userList.jqGrid("clearGridData");
-                    for(var i = 0; i < userList.length; i++) {
-                        var user = userList[i];
-                        var rowData = {
-                            uname: user.uname,
-                            fname: user.fname,
-                            lname: user.lname,
-                            email: user.email,
-                            department: user.department.value
-                        };
-                        this.userList.jqGrid("addRowData", i + 1, rowData);
-                    }
+                RolePanel.prototype.addRoleButton_clickHandler = function () {
+                    this.dispatchEvent(RolePanel.ADD);
                 };
-                UserList.prototype.getSelectedUser = function () {
-                    return this.selectedUser;
+                RolePanel.prototype.removeRoleButton_clickHandler = function () {
+                    this.dispatchEvent(RolePanel.REMOVE);
                 };
-                UserList.prototype.deSelect = function () {
-                    this.userList.jqGrid("resetSelection");
-                    this.selectedUser = null;
-                    this.deleteButton.button("disable");
+                RolePanel.prototype.userRoleList_changeHandler = function (id) {
+                    var index = this.userRoleList.jqGrid('getInd', id);
+                    this.selectedRole = this.userRoles[index - 1];
+                    this.setMode(RolePanel.REMOVE_MODE);
                 };
-                UserList.prototype.userList_selectHandler = function (id) {
-                    var rowData = this.userList.jqGrid("getRowData", id);
-                    var uname;
-                    for(var i = 0; i < this.users.length; i++) {
-                        var userVO = this.users[i];
-                        if(userVO.uname === rowData.uname) {
-                            uname = rowData.uname;
+                RolePanel.prototype.roleList_changeHandler = function () {
+                    this.userRoleList.jqGrid('resetSelection');
+                    var roleEnumList = EmployeeAdmin.RoleEnum.getComboList();
+                    this.selectedRole = roleEnumList[this.roleList.prop("selectedIndex")];
+                    var alreadyInList = false;
+                    for(var i = 0; i < this.userRoles.length; i++) {
+                        var role = this.userRoles[i];
+                        if(role.equals(this.selectedRole)) {
+                            alreadyInList = true;
                             break;
                         }
                     }
-                    this.selectedUser = uname;
-                    this.dispatchEvent(UserList.SELECT);
-                    this.deleteButton.button("enable");
+                    if(this.selectedRole == EmployeeAdmin.RoleEnum.NONE_SELECTED || alreadyInList) {
+                        this.setMode(null);
+                    } else {
+                        this.setMode(RolePanel.ADD_MODE);
+                    }
                 };
-                UserList.prototype.newButton_clickHandler = function () {
-                    this.deSelect();
-                    this.dispatchEvent(UserList.NEW);
-                };
-                UserList.prototype.deleteButton_clickHandler = function () {
-                    this.dispatchEvent(UserList.DELETE);
-                };
-                UserList.NEW = "new";
-                UserList.DELETE = "delete";
-                UserList.SELECT = "select";
-                return UserList;
+                RolePanel.ADD = "add";
+                RolePanel.REMOVE = "remove";
+                RolePanel.ADD_MODE = "addMode";
+                RolePanel.REMOVE_MODE = "removeMode";
+                return RolePanel;
             })(EmployeeAdmin.UiComponent);
-            EmployeeAdmin.UserList = UserList;    
+            EmployeeAdmin.RolePanel = RolePanel;    
+        })(EmployeeAdmin || (EmployeeAdmin = {}));
+        
+        var EmployeeAdmin;
+        (function (EmployeeAdmin) {
+            "use strict";
+            var RolePanelMediator = (function (_super) {
+                __extends(RolePanelMediator, _super);
+                function RolePanelMediator(name, viewComponent) {
+                        _super.call(this, name, viewComponent);
+                    this.roleProxy = null;
+                    this.registerListeners();
+                    this.roleProxy = this.facade.retrieveProxy(EmployeeAdmin.ProxyNames.ROLE_PROXY);
+                }
+                RolePanelMediator.prototype.getRolePanel = function () {
+                    return this.viewComponent;
+                };
+                RolePanelMediator.prototype.registerListeners = function () {
+                    var rolePanel = this.getRolePanel();
+                    rolePanel.addEventListener(EmployeeAdmin.RolePanel.ADD, this.onAddRole, this);
+                    rolePanel.addEventListener(EmployeeAdmin.RolePanel.REMOVE, this.onRemoveRole, this);
+                };
+                RolePanelMediator.prototype.unregisterListeners = function () {
+                    var rolePanel = this.getRolePanel();
+                    rolePanel.removeEventListener(EmployeeAdmin.RolePanel.ADD, this.onAddRole, this);
+                    rolePanel.removeEventListener(EmployeeAdmin.RolePanel.REMOVE, this.onRemoveRole, this);
+                };
+                RolePanelMediator.prototype.onAddRole = function (type, properties) {
+                    this.roleProxy.addRoleToUser(this.getRolePanel().getUser(), this.getRolePanel().getSelectedRole());
+                    this.updateUserRoleList();
+                    this.getRolePanel().setMode(null);
+                };
+                RolePanelMediator.prototype.onRemoveRole = function (type, properties) {
+                    this.roleProxy.removeRoleFromUser(this.getRolePanel().getUser(), this.getRolePanel().getSelectedRole());
+                    this.updateUserRoleList();
+                    this.getRolePanel().setMode(null);
+                };
+                RolePanelMediator.prototype.updateUserRoleList = function () {
+                    var user = this.getRolePanel().getUser();
+                    var userRoles = this.roleProxy.getUserRoles(user.uname);
+                    this.getRolePanel().setUserRoles(userRoles);
+                };
+                RolePanelMediator.prototype.listNotificationInterests = function () {
+                    return [
+                        EmployeeAdmin.NotificationNames.NEW_USER, 
+                        EmployeeAdmin.NotificationNames.USER_ADDED, 
+                        EmployeeAdmin.NotificationNames.USER_UPDATED, 
+                        EmployeeAdmin.NotificationNames.USER_DELETED, 
+                        EmployeeAdmin.NotificationNames.CANCEL_SELECTED, 
+                        EmployeeAdmin.NotificationNames.USER_SELECTED, 
+                        EmployeeAdmin.NotificationNames.ADD_ROLE_RESULT
+                    ];
+                };
+                RolePanelMediator.prototype.handleNotification = function (note) {
+                    var rolePanel = this.getRolePanel();
+                    switch(note.getName()) {
+                        case EmployeeAdmin.NotificationNames.NEW_USER: {
+                            rolePanel.clearForm();
+                            rolePanel.setEnabled(false);
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.USER_ADDED: {
+                            rolePanel.setUser(note.getBody());
+                            var roleVO = new EmployeeAdmin.RoleVO();
+                            roleVO.uname = rolePanel.getUser().uname;
+                            this.roleProxy.addItem(roleVO);
+                            rolePanel.clearForm();
+                            rolePanel.setEnabled(false);
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.USER_UPDATED: {
+                            rolePanel.clearForm();
+                            rolePanel.setEnabled(false);
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.USER_DELETED: {
+                            rolePanel.clearForm();
+                            rolePanel.setEnabled(false);
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.CANCEL_SELECTED: {
+                            rolePanel.clearForm();
+                            rolePanel.setEnabled(false);
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.USER_SELECTED: {
+                            rolePanel.clearForm();
+                            rolePanel.setEnabled(true);
+                            rolePanel.setMode(null);
+                            rolePanel.setUser(note.getBody());
+                            this.updateUserRoleList();
+                            break;
+        
+                        }
+                        case EmployeeAdmin.NotificationNames.ADD_ROLE_RESULT: {
+                            this.updateUserRoleList();
+                            break;
+        
+                        }
+                    }
+                };
+                RolePanelMediator.prototype.onRemove = function () {
+                    this.unregisterListeners();
+                    this.getRolePanel().destroy();
+                };
+                return RolePanelMediator;
+            })(puremvc.Mediator);
+            EmployeeAdmin.RolePanelMediator = RolePanelMediator;    
         })(EmployeeAdmin || (EmployeeAdmin = {}));
         
         var EmployeeAdmin;

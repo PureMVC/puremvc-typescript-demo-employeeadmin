@@ -2,6 +2,7 @@
 ///<reference path='../../../lib/jquery/jquery-1.7.x-jqueryui-1.8.x.d.ts'/>
 
 ///<reference path='../../model/enum/DeptEnum.ts'/>
+///<reference path='../../model/enum/RoleEnum.ts'/>
 ///<reference path='../../model/vo/RoleVO.ts'/>
 ///<reference path='../../model/vo/UserVO.ts'/>
 ///<reference path='UiComponent.ts'/>

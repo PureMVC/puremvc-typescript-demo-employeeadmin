@@ -2,6 +2,9 @@
 ///<reference path='../../../lib/jquery/jquery-1.7.x-jqueryui-1.8.x.d.ts'/>
 
 ///<reference path='UiComponent.ts'/>
+///<reference path='../../model/vo/RoleVO.ts'/>
+///<reference path='../../model/vo/UserVO.ts'/>
+///<reference path='../..//model/enum/RoleEnum.ts'/>
 
 /**
  * The UI component in charge of the <em>role panel</em>.

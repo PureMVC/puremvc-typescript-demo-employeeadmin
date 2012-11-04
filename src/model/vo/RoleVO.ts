@@ -1,5 +1,6 @@
 ///<reference path='../../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
 
+///<reference path='../enum/RoleEnum.ts'/>
 /**
  * The value object in charge of transporting the data to describe each user roles.
  */
