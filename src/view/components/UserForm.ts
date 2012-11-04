@@ -429,9 +429,15 @@ module EmployeeAdmin
 			var field:JQuery = this.userFormPanel.find( "#" + fieldName );
 
 			if( error )
+			{
+				label.addClass( "fieldError" );
 				field.addClass( "fieldError" );
+			}
 			else
+			{
+				label.removeClass( "fieldError" );
 				field.removeClass( "fieldError" );
+			}
 		}
 
 		/*

@@ -1214,8 +1214,10 @@ if( typeof define === "function" )
                     var label = this.userFormPanel.find('label[for="' + fieldName + '"]');
                     var field = this.userFormPanel.find("#" + fieldName);
                     if(error) {
+                        label.addClass("fieldError");
                         field.addClass("fieldError");
                     } else {
+                        label.removeClass("fieldError");
                         field.removeClass("fieldError");
                     }
                 };
