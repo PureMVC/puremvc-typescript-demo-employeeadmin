@@ -510,7 +510,7 @@ if( typeof define === "function" )
             "use strict";
             var UserList = (function (_super) {
                 __extends(UserList, _super);
-                function UserList(selector) {
+                function UserList(view) {
                         _super.call(this);
                     this.userListPanel = null;
                     this.userList = null;
@@ -519,7 +519,7 @@ if( typeof define === "function" )
                     this.selectedUser = null;
                     this.userTotal = null;
                     this.users = null;
-                    this.userListPanel = jQuery(selector);
+                    this.userListPanel = view;
                     this.initializeChildren();
                     this.bindListeners();
                 }
@@ -738,7 +738,7 @@ if( typeof define === "function" )
             "use strict";
             var UserForm = (function (_super) {
                 __extends(UserForm, _super);
-                function UserForm(selector) {
+                function UserForm(view) {
                         _super.call(this);
                     this.userFormPanel = null;
                     this.uname = null;
@@ -754,7 +754,7 @@ if( typeof define === "function" )
                     this.user = null;
                     this.userRoles = null;
                     this.mode = null;
-                    this.userFormPanel = jQuery(selector);
+                    this.userFormPanel = view;
                     this.initializeChildren();
                     this.bindListeners();
                     this.clearForm();
@@ -945,7 +945,7 @@ if( typeof define === "function" )
                     } else {
                         this.setFieldError("department", false);
                     }
-                    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                    var emailReg = /^[a-z0-9!#$%&'*+\/=?^_`\{|\}~\.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/;
                     if(this.email.val() != "" && !emailReg.test(this.email.val())) {
                         this.setFieldError("email", error = true);
                     } else {
@@ -1081,7 +1081,7 @@ if( typeof define === "function" )
             "use strict";
             var RolePanel = (function (_super) {
                 __extends(RolePanel, _super);
-                function RolePanel(selector) {
+                function RolePanel(view) {
                         _super.call(this);
                     this.user = null;
                     this.userRoles = null;
@@ -1093,7 +1093,7 @@ if( typeof define === "function" )
                     this.addRoleButton = null;
                     this.removeRoleButton = null;
                     this.selectedFullname = null;
-                    this.rolePanel = jQuery(selector);
+                    this.rolePanel = view;
                     this.initializeChildren();
                     this.bindListeners();
                     this.fillRoleList();
@@ -1378,9 +1378,10 @@ if( typeof define === "function" )
         
                 }
                 PrepViewCommand.prototype.execute = function (note) {
-                    var userForm = new EmployeeAdmin.UserForm(".user-form-panel");
-                    var userList = new EmployeeAdmin.UserList(".user-list-panel");
-                    var rolePanel = new EmployeeAdmin.RolePanel(".role-panel");
+                    var mainView = note.getBody();
+                    var userForm = new EmployeeAdmin.UserForm(mainView.find(".user-form-panel"));
+                    var userList = new EmployeeAdmin.UserList(mainView.find(".user-list-panel"));
+                    var rolePanel = new EmployeeAdmin.RolePanel(mainView.find(".role-panel"));
                     var userListMediator = new EmployeeAdmin.UserListMediator(EmployeeAdmin.MediatorNames.USER_LIST_MEDIATOR, userList);
                     var userFormMediator = new EmployeeAdmin.UserFormMediator(EmployeeAdmin.MediatorNames.USER_FORM_MEDIATOR, userForm);
                     var rolePanelMediator = new EmployeeAdmin.RolePanelMediator(EmployeeAdmin.MediatorNames.ROLE_PANEL_MEDIATOR, rolePanel);

@@ -53,14 +53,14 @@ module EmployeeAdmin
 		/**
 		 * Constructs a <code>UserList</code> instance.
 		 *
-		 * @param selector
-		 * 		The jQuery selector giving access to the UI component instance in the page.
+		 * @param view
+		 * 		The jQuery element giving access to the corresponding UI HTML element in the page.
 		 */
-		constructor( selector:string )
+		constructor( view:JQuery )
 		{
 			super();
 
-			this.userListPanel = jQuery(selector);
+			this.userListPanel = view;
 
 			this.initializeChildren();
 			this.bindListeners();

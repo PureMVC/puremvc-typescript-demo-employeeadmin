@@ -90,14 +90,14 @@ module EmployeeAdmin
 		/**
 		 * Constructs a <code>UserForm</code> instance.
 		 *
-		 * @param selector
-		 * 		The jQuery selector giving access to the UI component instance in the page.
+		 * @param view
+		 * 		The jQuery element giving access to the corresponding UI HTML element in the page.
 		 */
-		constructor( selector:string )
+		constructor( view:JQuery )
 		{
 			super();
 
-			this.userFormPanel = jQuery(selector);
+			this.userFormPanel = view;
 
 			this.initializeChildren();
 			this.bindListeners();
@@ -406,7 +406,11 @@ module EmployeeAdmin
 			else
 				this.setFieldError( "department", false );
 
-			var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+			/**
+			 * The e-mail verification rule is the one used by HTML5 e-mail inputs.
+			 * @see http://stackoverflow.com/questions/7786058/find-the-regex-used-by-html5-forms-for-validation
+			 */
+			var emailReg:RegExp = /^[a-z0-9!#$%&'*+\/=?^_`\{|\}~\.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/;
 			if( this.email.val() != "" && !emailReg.test(this.email.val()) )
 				this.setFieldError( "email", error = true );
 			else

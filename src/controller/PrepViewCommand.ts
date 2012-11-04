@@ -1,4 +1,5 @@
 ///<reference path='../../lib/puremvc/puremvc-typescript-standard-1.0.d.ts'/>
+///<reference path='../../lib/jquery/jquery-1.7.x-jqueryui-1.8.x.d.ts'/>
 
 ///<reference path='../abc/MediatorNames.ts'/>
 
@@ -25,12 +26,14 @@ module EmployeeAdmin
 		 */
 		execute( note:puremvc.INotification )
 		{
+			var mainView:JQuery = note.getBody();
+
 			/*
-			 * View Components initialization
+			 * View Components are initialized using the application main view selector
 			 */
-			var userForm:UserForm = new UserForm(".user-form-panel");
-			var userList:UserList = new UserList(".user-list-panel");
-			var rolePanel:RolePanel = new RolePanel(".role-panel");
+			var userForm:UserForm = new UserForm( mainView.find(".user-form-panel") );
+			var userList:UserList = new UserList( mainView.find(".user-list-panel") );
+			var rolePanel:RolePanel = new RolePanel( mainView.find(".role-panel") );
 
 			/*
 			 * Mediators initialization

@@ -69,14 +69,14 @@ module EmployeeAdmin
 		/**
 		 * Constructs a <code>RolePanel</code> instance.
 		 *
-		 * @param selector
-		 * 		The jQuery selector giving access to the UI component instance in the page.
+		 * @param view
+		 * 		The jQuery element giving access to the corresponding UI HTML element in the page.
 		 */
-		constructor( selector:string )
+		constructor( view:JQuery )
 		{
 			super();
 
-			this.rolePanel = jQuery(selector);
+			this.rolePanel = view;
 
 			this.initializeChildren();
 			this.bindListeners();
