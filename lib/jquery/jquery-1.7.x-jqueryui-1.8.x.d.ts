@@ -1,12 +1,15 @@
 /*
  * PureMVC - Employee Admin demo additions
  *
- * Original file was taken from : http://typescript.codeplex.com/SourceControl/changeset/view/fe3bc0bfce1f#samples%2fjquery%2fjquery.d.ts
- * and adapted to add required definitions for jQuery UI 1.8x (just the one required by the project).
+ * Original file found at :
+ * http://typescript.codeplex.com/SourceControl/changeset/view/fe3bc0bfce1f#samples%2fjquery%2fjquery.d.ts
  *
- * Addition to the file are noted «PureMVC - Employee Admin demo additions».
+ * The file is adapted to have required definitions for jQuery UI 1.8x (just the one required by the
+ * project). Today it can't be made differently as TypeScript definitions does'nt support to be
+ * overridden by another one.
+ *
+ * Additions made are located at the end of the file.
  */
-
 
 // TypeScript description file for the jQuery library, version 1.7.x
 
