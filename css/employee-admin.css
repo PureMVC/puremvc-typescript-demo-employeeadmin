@@ -65,7 +65,7 @@ HTML,BODY
 {
 	padding-left:12px;
 	color:#000000;
-	font-size:0.6em;
+	font-size:0.97em;
 	font-weight:bold;
 }
 
@@ -152,8 +152,8 @@ HTML,BODY
 	margin:0;
 	width:150px;
 	border: thin solid grey;
+	font-size:0.75em;
 }
-
 
 .user-form-panel-content input.fieldError
 {
@@ -164,6 +164,7 @@ HTML,BODY
 {
 	margin:0;
 	width:155px;
+	font-size:0.75em;
 }
 
 .user-form-panel-content select.fieldError
@@ -193,7 +194,7 @@ HTML,BODY
 	vertical-align:middle;
 }
 
-.role-panel-content
+.role-panel .role-panel-content
 {
 	text-align:right;
 	background-color:#FFF;
@@ -203,9 +204,10 @@ HTML,BODY
 	margin-bottom:10px;
 }
 
-.role-list
+.role-panel .role-list
 {
 	width:170px;
+    font-size:0.75em;
 }
 
 
@@ -231,4 +233,15 @@ UL[role="listbox"]
 	height:20px;
 	padding-left:0.5em;
 	width:115px;
+}
+
+
+
+/* =============================================================================== *
+ * ============================== jQgrid overrides =============================== *
+ * =============================================================================== */
+
+.ui-jqgrid .ui-jqgrid-view
+{
+	font-size: 1em;
 }
