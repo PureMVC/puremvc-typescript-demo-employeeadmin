@@ -28,9 +28,9 @@ module EmployeeAdmin
 			/*
 			 * View Components initialization
 			 */
-			var userForm:UserForm = new UserForm();
-			var userList:UserList = new UserList();
-			var rolePanel:RolePanel = new RolePanel();
+			var userForm:UserForm = new UserForm(".user-form-panel");
+			var userList:UserList = new UserList(".user-list-panel");
+			var rolePanel:RolePanel = new RolePanel(".role-panel");
 
 			/*
 			 * Mediators initialization

@@ -46,24 +46,25 @@ module EmployeeAdmin
 
 		/**
 		 * Constructs a <code>UserList</code> instance.
+		 *
+		 * @param selector
+		 * 		The jQuery selector giving access to the UI component instance in the page.
 		 */
-		constructor()
+		constructor( selector:string )
 		{
 			super();
+
+			this.userListPanel = jQuery(selector);
 
 			this.initializeChildren();
 			this.bindListeners();
 		}
 
 		/**
-		 * Initialize references to DOM elements.
+		 * Initialize references to DOM elements using jQuery.
 		 */
 		private initializeChildren():void
 		{
-			 //We use JQuery to initialize reference to UI components.
-			//FIXME Have to be initialized in the view startup command
-			this.userListPanel = jQuery(".user-list-panel");
-
 			this.userList = this.userListPanel.find("#user-list");
 			this.userList.jqGrid
 			(

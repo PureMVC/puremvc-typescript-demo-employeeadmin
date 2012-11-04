@@ -815,7 +815,7 @@ if( typeof define === "function" )
             "use strict";
             var RolePanel = (function (_super) {
                 __extends(RolePanel, _super);
-                function RolePanel() {
+                function RolePanel(selector) {
                         _super.call(this);
                     this.user = null;
                     this.userRoles = null;
@@ -826,13 +826,13 @@ if( typeof define === "function" )
                     this.userRoleList = null;
                     this.addRoleButton = null;
                     this.removeRoleButton = null;
+                    this.rolePanel = jQuery(selector);
                     this.initializeChildren();
                     this.bindListeners();
                     this.fillRoleList();
                     this.setEnabled(false);
                 }
                 RolePanel.prototype.initializeChildren = function () {
-                    this.rolePanel = jQuery(".role-panel");
                     this.userRoleList = this.rolePanel.find("#user-role-list");
                     this.userRoleList.jqGrid({
                         datatype: "local",
@@ -994,7 +994,7 @@ if( typeof define === "function" )
             "use strict";
             var UserForm = (function (_super) {
                 __extends(UserForm, _super);
-                function UserForm() {
+                function UserForm(selector) {
                         _super.call(this);
                     this.userFormPanel = null;
                     this.uname = null;
@@ -1009,13 +1009,13 @@ if( typeof define === "function" )
                     this.user = null;
                     this.userRoles = null;
                     this.mode = null;
+                    this.userFormPanel = jQuery(selector);
                     this.initializeChildren();
                     this.bindListeners();
                     this.clearForm();
                     this.setEnabled(false);
                 }
                 UserForm.prototype.initializeChildren = function () {
-                    this.userFormPanel = jQuery(".user-form-panel");
                     this.uname = this.userFormPanel.find("#uname");
                     this.fname = this.userFormPanel.find("#fname");
                     this.lname = this.userFormPanel.find("#lname");
@@ -1100,6 +1100,7 @@ if( typeof define === "function" )
                     this.password.val("");
                     this.confirm.val("");
                     this.fillList([]);
+                    this.setFieldError("email", false);
                     this.setFieldError("uname", false);
                     this.setFieldError("password", false);
                     this.setFieldError("confirm", false);
@@ -1152,10 +1153,10 @@ if( typeof define === "function" )
                     this.unbindListeners();
                 };
                 UserForm.prototype.submitButton_clickHandler = function () {
-                    this.updateUser();
                     if(this.getErrors()) {
                         return;
                     }
+                    this.updateUser();
                     var user = this.getUser();
                     if(user.getIsValid()) {
                         if(this.mode == UserForm.MODE_ADD) {
@@ -1228,7 +1229,7 @@ if( typeof define === "function" )
             "use strict";
             var UserList = (function (_super) {
                 __extends(UserList, _super);
-                function UserList() {
+                function UserList(selector) {
                         _super.call(this);
                     this.userListPanel = null;
                     this.userList = null;
@@ -1236,11 +1237,11 @@ if( typeof define === "function" )
                     this.deleteButton = null;
                     this.selectedUser = null;
                     this.users = null;
+                    this.userListPanel = jQuery(selector);
                     this.initializeChildren();
                     this.bindListeners();
                 }
                 UserList.prototype.initializeChildren = function () {
-                    this.userListPanel = jQuery(".user-list-panel");
                     this.userList = this.userListPanel.find("#user-list");
                     this.userList.jqGrid({
                         datatype: "local",
@@ -1367,9 +1368,9 @@ if( typeof define === "function" )
         
                 }
                 PrepViewCommand.prototype.execute = function (note) {
-                    var userForm = new EmployeeAdmin.UserForm();
-                    var userList = new EmployeeAdmin.UserList();
-                    var rolePanel = new EmployeeAdmin.RolePanel();
+                    var userForm = new EmployeeAdmin.UserForm(".user-form-panel");
+                    var userList = new EmployeeAdmin.UserList(".user-list-panel");
+                    var rolePanel = new EmployeeAdmin.RolePanel(".role-panel");
                     var userListMediator = new EmployeeAdmin.UserListMediator(EmployeeAdmin.MediatorNames.USER_LIST_MEDIATOR, userList);
                     var userFormMediator = new EmployeeAdmin.UserFormMediator(EmployeeAdmin.MediatorNames.USER_FORM_MEDIATOR, userForm);
                     var rolePanelMediator = new EmployeeAdmin.RolePanelMediator(EmployeeAdmin.MediatorNames.ROLE_PANEL_MEDIATOR, rolePanel);

@@ -59,11 +59,16 @@ module EmployeeAdmin
 		private removeRoleButton:JQuery = null;
 
 		/**
-		 * Constructs a <code>UserList</code> instance.
+		 * Constructs a <code>RolePanel</code> instance.
+		 *
+		 * @param selector
+		 * 		The jQuery selector giving access to the UI component instance in the page.
 		 */
-		constructor()
+		constructor( selector:string )
 		{
 			super();
+
+			this.rolePanel = jQuery(selector);
 
 			this.initializeChildren();
 			this.bindListeners();
@@ -73,13 +78,10 @@ module EmployeeAdmin
 		}
 
 		/**
-		 * Initialize references to DOM elements.
+		 * Initialize references to DOM elements using jQuery.
 		 */
 		private initializeChildren():void
 		{
-			//FIXME Have to be initialized in the view startup command
-			this.rolePanel = jQuery(".role-panel");
-
 			this.userRoleList = this.rolePanel.find("#user-role-list");
 			this.userRoleList.jqGrid
 			(

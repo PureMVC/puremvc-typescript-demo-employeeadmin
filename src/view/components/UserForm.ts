@@ -83,10 +83,15 @@ module EmployeeAdmin
 
 		/**
 		 * Constructs a <code>UserForm</code> instance.
+		 *
+		 * @param selector
+		 * 		The jQuery selector giving access to the UI component instance in the page.
 		 */
-		constructor()
+		constructor( selector:string )
 		{
 			super();
+
+			this.userFormPanel = jQuery(selector);
 
 			this.initializeChildren();
 			this.bindListeners();
@@ -97,16 +102,10 @@ module EmployeeAdmin
 		}
 
 		/**
-		 * Initialize references to DOM elements.
+		 * Initialize references to DOM elements using jQuery.
 		 */
 		private initializeChildren():void
 		{
-			/*
-			 * We use JQuery to initialize reference to UI components
-			 */
-			//FIXME Have to be initialized in the view startup command
-			this.userFormPanel = jQuery(".user-form-panel");
-
 			this.uname = this.userFormPanel.find("#uname");
 			this.fname = this.userFormPanel.find("#fname");
 			this.lname = this.userFormPanel.find("#lname");
@@ -250,6 +249,7 @@ module EmployeeAdmin
 			this.password.val("");
 			this.confirm.val("");
 			this.fillList([]);
+			this.setFieldError( "email", false );
 			this.setFieldError( "uname", false );
 			this.setFieldError( "password", false );
 			this.setFieldError( "confirm", false );
@@ -331,10 +331,10 @@ module EmployeeAdmin
 		 */
 		private submitButton_clickHandler():void
 		{
-			this.updateUser();
-
 			if( this.getErrors() )
 				return;
+
+			this.updateUser();
 
 			var user:UserVO = this.getUser();
 			if( user.getIsValid() )
