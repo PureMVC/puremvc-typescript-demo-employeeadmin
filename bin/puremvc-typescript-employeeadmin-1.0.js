@@ -826,6 +826,7 @@ if( typeof define === "function" )
                     this.userRoleList = null;
                     this.addRoleButton = null;
                     this.removeRoleButton = null;
+                    this.selectedFullname = null;
                     this.rolePanel = jQuery(selector);
                     this.initializeChildren();
                     this.bindListeners();
@@ -833,7 +834,7 @@ if( typeof define === "function" )
                     this.setEnabled(false);
                 }
                 RolePanel.prototype.initializeChildren = function () {
-                    this.userRoleList = this.rolePanel.find("#user-role-list");
+                    this.userRoleList = this.rolePanel.find(".user-role-list");
                     this.userRoleList.jqGrid({
                         datatype: "local",
                         width: 280,
@@ -848,6 +849,7 @@ if( typeof define === "function" )
                             }
                         ]
                     });
+                    this.selectedFullname = this.rolePanel.find(".selected-fullname");
                     this.roleList = this.rolePanel.find(".role-list");
                     this.addRoleButton = this.rolePanel.find(".add-role-button").button();
                     this.removeRoleButton = this.rolePanel.find(".remove-role-button").button();
@@ -898,7 +900,7 @@ if( typeof define === "function" )
                 };
                 RolePanel.prototype.setUser = function (user) {
                     this.user = user;
-                    ; ;
+                    this.selectedFullname.text(user.lname + ", " + user.fname);
                 };
                 RolePanel.prototype.getSelectedRole = function () {
                     return this.selectedRole;
@@ -912,11 +914,9 @@ if( typeof define === "function" )
                     } else {
                         this.userRoleList.attr("disabled", "disabled");
                         this.roleList.attr("disabled", "disabled");
+                        this.roleList.prop("selectedIndex", 0);
                         this.addRoleButton.button("disable");
                         this.removeRoleButton.button("disable");
-                    }
-                    if(!isEnabled) {
-                        this.roleList.prop("selectedIndex", 0);
                     }
                 };
                 RolePanel.prototype.setMode = function (mode) {
@@ -944,6 +944,7 @@ if( typeof define === "function" )
                 RolePanel.prototype.clearForm = function () {
                     this.user = null;
                     this.setUserRoles(null);
+                    this.selectedFullname.text("");
                     this.roleList.prop("selectedIndex", 0);
                     this.userRoleList.jqGrid('resetSelection');
                 };
@@ -1006,6 +1007,7 @@ if( typeof define === "function" )
                     this.department = null;
                     this.cancelButton = null;
                     this.submitButton = null;
+                    this.selectedUname = null;
                     this.user = null;
                     this.userRoles = null;
                     this.mode = null;
@@ -1016,15 +1018,16 @@ if( typeof define === "function" )
                     this.setEnabled(false);
                 }
                 UserForm.prototype.initializeChildren = function () {
-                    this.uname = this.userFormPanel.find("#uname");
-                    this.fname = this.userFormPanel.find("#fname");
-                    this.lname = this.userFormPanel.find("#lname");
-                    this.email = this.userFormPanel.find("#email");
-                    this.password = this.userFormPanel.find("#password");
-                    this.confirm = this.userFormPanel.find("#confirm");
+                    this.selectedUname = this.userFormPanel.find(".selected-uname");
+                    this.uname = this.userFormPanel.find(".uname");
+                    this.fname = this.userFormPanel.find(".fname");
+                    this.lname = this.userFormPanel.find(".lname");
+                    this.email = this.userFormPanel.find(".email");
+                    this.password = this.userFormPanel.find(".password");
+                    this.confirm = this.userFormPanel.find(".confirm");
                     this.department = this.userFormPanel.find(".department");
-                    this.submitButton = this.userFormPanel.find("#submit-button").button();
-                    this.cancelButton = this.userFormPanel.find("#cancel-button").button();
+                    this.submitButton = this.userFormPanel.find(".submit-button").button();
+                    this.cancelButton = this.userFormPanel.find(".cancel-button").button();
                 };
                 UserForm.prototype.bindListeners = function () {
                     var namespace = ".UserForm";
@@ -1069,6 +1072,7 @@ if( typeof define === "function" )
                     if(!user) {
                         this.clearForm();
                     } else {
+                        this.selectedUname.text(user.uname);
                         this.uname.val(user.uname);
                         this.fname.val(user.fname);
                         this.lname.val(user.lname);
@@ -1093,6 +1097,7 @@ if( typeof define === "function" )
                     this.user.department = deptEnumList[selected];
                 };
                 UserForm.prototype.clearForm = function () {
+                    this.selectedUname.text("");
                     this.uname.val("");
                     this.fname.val("");
                     this.lname.val("");
@@ -1236,13 +1241,15 @@ if( typeof define === "function" )
                     this.newButton = null;
                     this.deleteButton = null;
                     this.selectedUser = null;
+                    this.userTotal = null;
                     this.users = null;
                     this.userListPanel = jQuery(selector);
                     this.initializeChildren();
                     this.bindListeners();
                 }
                 UserList.prototype.initializeChildren = function () {
-                    this.userList = this.userListPanel.find("#user-list");
+                    this.userList = this.userListPanel.find(".user-list");
+                    this.userTotal = this.userListPanel.find(".user-total");
                     this.userList.jqGrid({
                         datatype: "local",
                         width: 630,
@@ -1308,6 +1315,7 @@ if( typeof define === "function" )
                 };
                 UserList.prototype.setUsers = function (userList) {
                     this.users = userList;
+                    this.userTotal.text(userList.length);
                     this.userList.jqGrid("clearGridData");
                     for(var i = 0; i < userList.length; i++) {
                         var user = userList[i];

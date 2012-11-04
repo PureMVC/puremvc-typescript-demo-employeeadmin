@@ -59,6 +59,11 @@ module EmployeeAdmin
 		private removeRoleButton:JQuery = null;
 
 		/**
+		 * The selected fullname HTML element.
+		 */
+		private selectedFullname:JQuery = null;
+
+		/**
 		 * Constructs a <code>RolePanel</code> instance.
 		 *
 		 * @param selector
@@ -82,7 +87,7 @@ module EmployeeAdmin
 		 */
 		private initializeChildren():void
 		{
-			this.userRoleList = this.rolePanel.find("#user-role-list");
+			this.userRoleList = this.rolePanel.find(".user-role-list");
 			this.userRoleList.jqGrid
 			(
 				{
@@ -97,6 +102,7 @@ module EmployeeAdmin
 				}
 			);
 
+			this.selectedFullname = this.rolePanel.find(".selected-fullname");
 			this.roleList = this.rolePanel.find(".role-list");
 			this.addRoleButton = this.rolePanel.find(".add-role-button").button();
 			this.removeRoleButton = this.rolePanel.find(".remove-role-button").button();
@@ -172,7 +178,7 @@ module EmployeeAdmin
 			this.userRoles = userRoles;
 
 			// Fill the data-grid
-			for(var i:number=0; i<userRoles.length; i++)
+			for( var i:number=0; i<userRoles.length; i++ )
 			{
 				var role:RoleEnum = userRoles[i];
 				this.userRoleList.jqGrid('addRowData', i+1, role );
@@ -198,7 +204,9 @@ module EmployeeAdmin
 		 */
 		setUser( user:UserVO ):void
 		{
-			this.user = user;;
+			this.user = user;
+
+			this.selectedFullname.text( user.lname + ", " + user.fname );
 		}
 
 		/**
@@ -231,12 +239,10 @@ module EmployeeAdmin
 			{
 				this.userRoleList.attr( "disabled", "disabled" );
 				this.roleList.attr( "disabled", "disabled" );
+				this.roleList.prop( "selectedIndex", 0 );
 				this.addRoleButton.button( "disable" );
 				this.removeRoleButton.button( "disable" );
 			}
-
-			if( !isEnabled )
-				this.roleList.prop("selectedIndex",0);
 		}
 
 		/**
@@ -273,6 +279,7 @@ module EmployeeAdmin
 		{
 			this.user = null;
 			this.setUserRoles(null);
+			this.selectedFullname.text("");
 			this.roleList.prop("selectedIndex",0);
 			this.userRoleList.jqGrid('resetSelection');
 		}

@@ -40,6 +40,11 @@ module EmployeeAdmin
 		private selectedUser:string = null;
 
 		/**
+		 * The user total HTML element.
+		 */
+		private userTotal:JQuery = null;
+
+		/**
 		 * The user list of the application.
 		 */
 		private users:UserVO[] = null;
@@ -65,7 +70,9 @@ module EmployeeAdmin
 		 */
 		private initializeChildren():void
 		{
-			this.userList = this.userListPanel.find("#user-list");
+			this.userList = this.userListPanel.find(".user-list");
+			this.userTotal = this.userListPanel.find(".user-total");
+
 			this.userList.jqGrid
 			(
 				{
@@ -132,6 +139,8 @@ module EmployeeAdmin
 		setUsers( userList ):void
 		{
 			this.users = userList;
+
+			this.userTotal.text(userList.length);
 
 			// First clear all
 			this.userList.jqGrid( "clearGridData" );

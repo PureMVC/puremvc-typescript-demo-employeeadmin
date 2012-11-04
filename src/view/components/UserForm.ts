@@ -67,6 +67,11 @@ module EmployeeAdmin
 		private submitButton:JQuery = null;
 
 		/**
+		 * The selected uname HTML element.
+		 */
+		private selectedUname:JQuery = null;
+
+		/**
 		 * The selected user.
 		 */
 		private user:UserVO = null;
@@ -106,16 +111,17 @@ module EmployeeAdmin
 		 */
 		private initializeChildren():void
 		{
-			this.uname = this.userFormPanel.find("#uname");
-			this.fname = this.userFormPanel.find("#fname");
-			this.lname = this.userFormPanel.find("#lname");
-			this.email = this.userFormPanel.find("#email");
-			this.password = this.userFormPanel.find("#password");
-			this.confirm = this.userFormPanel.find("#confirm");
+			this.selectedUname = this.userFormPanel.find(".selected-uname");
+			this.uname = this.userFormPanel.find(".uname");
+			this.fname = this.userFormPanel.find(".fname");
+			this.lname = this.userFormPanel.find(".lname");
+			this.email = this.userFormPanel.find(".email");
+			this.password = this.userFormPanel.find(".password");
+			this.confirm = this.userFormPanel.find(".confirm");
 			this.department = this.userFormPanel.find(".department");
 
-			this.submitButton = this.userFormPanel.find("#submit-button").button();
-			this.cancelButton = this.userFormPanel.find("#cancel-button").button();
+			this.submitButton = this.userFormPanel.find(".submit-button").button();
+			this.cancelButton = this.userFormPanel.find(".cancel-button").button();
 		}
 
 		/**
@@ -204,6 +210,7 @@ module EmployeeAdmin
 				this.clearForm();
 			else
 			{
+				this.selectedUname.text(user.uname);
 				this.uname.val(user.uname);
 				this.fname.val(user.fname);
 				this.lname.val(user.lname);
@@ -242,6 +249,7 @@ module EmployeeAdmin
 		 */
 		clearForm():void
 		{
+			this.selectedUname.text("");
 			this.uname.val("");
 			this.fname.val("");
 			this.lname.val("");

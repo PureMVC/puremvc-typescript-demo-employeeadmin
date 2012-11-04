@@ -38,6 +38,8 @@
 			
 			<div class="user-list-panel">	
 				<div class="panel-title">Users</div>
+				<div class="user-total"></div>
+
 				<div class="user-list-panel-content">
 				
 					<!-- User List DataGrid -->
@@ -67,64 +69,69 @@
 			<div class="user-form-panel">
 			
 				<div class="panel-title">User Profile</div>
-				
+				<div class="selected-uname"></div>
+
 				<div class="user-form-panel-content">
-	
-					<!-- First Name-->
-					<div class="field">
-						<label for="fname">First Name</label>
-						<input id="fname" type="text" class="fname ui-corner-all" value="" />
-					</div>
-	
-					<!-- Last Name -->
-					<div class="field">
-						<label for="lname">Last Name</label>
-						<input id="lname" type="text" class="lname ui-corner-all" value="" />
-					</div>
-	
-					<!-- Email -->
-					<div class="field">
-						<label for="email">Email</label>
-						<input id="email" type="text" class="email ui-corner-all" value="" />
-					</div>
-	
-					<!-- Username -->
-					<div class="field">
-						<label for="uname" class="required">Username</label>
-						<input id="uname" type="text" class="uname ui-corner-all" value="" />
-					</div>
-	
-					<!-- Password -->
-					<div class="field">
-						<label for="password" class="required">Password</label>
-						<input id="password" type="password" class="password ui-corner-all" value=""/>
-					</div>
-	
-					<!-- Confirm Password -->
-					<div class="field">
-						<label for="confirm" class="required">Confirm Password</label>
-						<input id="confirm" type="password" class="confirm ui-corner-all" value="" />
-					</div>
-	
-					<!-- Department Combo -->
-					<div class="field">
-						<label for="department" class="required">Department</label>
-						<select id="department" class="department"><option></option></select>
+
+					<form action="#">
+
+						<!-- First Name-->
+						<div class="field">
+							<label for="fname">First Name</label>
+							<input id="fname" type="text" class="fname ui-corner-all" value="" />
+						</div>
+
+						<!-- Last Name -->
+						<div class="field">
+							<label for="lname">Last Name</label>
+							<input id="lname" type="text" class="lname ui-corner-all" value="" />
+						</div>
+
+						<!-- Email -->
+						<div class="field">
+							<label for="email">Email</label>
+							<input type="email" id="email" class="email ui-corner-all" value="" />
+						</div>
+
+						<!-- Username -->
+						<div class="field">
+							<label for="uname" class="required">Username</label>
+							<input id="uname" type="text" class="uname ui-corner-all" value="" required/>
+						</div>
+
+						<!-- Password -->
+						<div class="field">
+							<label for="password" class="required">Password</label>
+							<input id="password" type="password" class="password ui-corner-all" value="" required />
+						</div>
+
+						<!-- Confirm Password -->
+						<div class="field">
+							<label for="confirm" class="required">Confirm Password</label>
+							<input id="confirm" type="password" class="confirm ui-corner-all" value="" required />
+						</div>
+
+						<!-- Department Combo -->
+						<div class="field">
+							<label for="department" class="required">Department</label>
+							<select id="department" class="department"><option></option></select>
+						</div>
+
 					</div>
 
-				</div>
-	
-				<!-- User Profile Controls -->
-				<div class="controlBar">
-	
-					<!-- Update/Add User Button -->
-					<button id="submit-button">Add User</button>
-	
-					<!-- Cancel Button -->
-					<button id="cancel-button">Cancel</button>
-	
-				</div>
-	
+					<!-- User Profile Controls -->
+					<div class="controlBar">
+
+						<!-- Update/Add User Button -->
+						<button type="submit" class="submit-button">Add User</button>
+
+						<!-- Cancel Button -->
+						<button class="cancel-button">Cancel</button>
+
+					</div>
+
+				</form>
+
 			</div>
 
 
@@ -136,7 +143,8 @@
 			<div class="role-panel">
 	
 				<div class="panel-title">User Roles</div>
-	
+				<div class="selected-fullname"></div>
+
 				<!-- User Role List -->
 				<div class="role-panel-content">
 					
