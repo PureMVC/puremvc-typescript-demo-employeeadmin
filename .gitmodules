@@ -1,0 +1,3 @@
+[submodule "lib/jqgrid"]
+	path = lib/jqgrid
+	url = git://github.com/tonytomov/jqGrid.git
