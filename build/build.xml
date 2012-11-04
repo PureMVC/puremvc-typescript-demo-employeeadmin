@@ -28,9 +28,10 @@
 
 	<!--
 		Recursively read a source directory for TypeScript files, generate a compile list in the
-		format needed by the TypeScript compiler adding every parameters it take.
+		format needed by the TypeScript compiler adding every parameters it takes and finally
+		compile it.
 	-->
-	<macrodef name="TypeScriptCompileDir">
+	<macrodef name="TypeScriptRecurse">
 
 		<!-- required parameter -->
 		<attribute name="src" />
@@ -42,9 +43,6 @@
 		<attribute name="declarations" default="" />
 		<attribute name="nolib" default="" />
 		<attribute name="target" default="" />
-
-		<!-- extra parameters -->
-		<attribute name="usedefine" default="false" />
 
 		<sequential>
 
@@ -60,7 +58,6 @@
 			<local name="tsc.compile.file.content"/>
 
 			<property name="tsc.compile.file.path" value="@{src}compile.list" />
-			<property name="usedefine.prop" value="@{usedefine}" />
 
 			<!-- Optional arguments are not written to compile file when attributes not set -->
 			<condition property="out.arg" value="" else='${line.separator}--out "@{out}"'>
@@ -114,38 +111,41 @@
 				<arg value="@${tsc.compile.file.path}"/>
 			</exec>
 
-			<!-- TODO if the file is not written because out is not defined this will break the build -->
-			<loadfile property="out.file.content" srcFile="@{out}"/>
-
-			<condition property="amd.file.content" value="${out.file.content}" else="${out.file.content}">
-				<and>
-					<equals arg1="@{usedefine}" arg2="true" casesensitive="false" />
-					<equals arg1="@{module}" arg2="amd" casesensitive="false" />
-					<not>
-						<equals arg1="@{out}" arg2="" />
-					</not>
-				</and>
-			</condition>
-
-			<echo file="@{out}">
-if( typeof define === "function" )
-{
-	define
-	(
-		"EmployeeAdmin", [],
-		function ()
-		{
-			${out.file.content}
-
-			return EmployeeAdmin;
-		}
-	);
-}
-			</echo>
-
 			<!-- Finally delete the compile file -->
 			<echo message="${tsc.compile.file.path} deleted" />
 			<delete file="${tsc.compile.file.path}" />
+
+		</sequential>
+
+	</macrodef>
+
+	<!--
+		When using multiple files TypeScript compiler is unable to add the correct module definition
+		when targeting a the single generated JavaScript file. We have to add «manually» the
+		standard AMD define wrapper around the generated JavaScript module.
+	-->
+	<macrodef name="DefineAmdModule">
+
+		<!-- required parameters -->
+		<attribute name="in" />
+		<attribute name="out" />
+		<attribute name="module" />
+
+		<attribute name="paths" default=""/>
+		<attribute name="params" default=""/>
+
+		<sequential>
+
+			<local name="file.content"/>
+
+			<replaceregexp file="@{in}"
+				match="^"
+				replace="        "
+				byline="true"
+			/>
+
+			<loadfile property="file.content" srcFile="@{in}"/>
+			<echo file="@{in}">if( typeof define === "function" )${line.separator}{${line.separator}	define( "@{module}", [@{paths}], function(@{params})${line.separator}	{${line.separator}${file.content}${line.separator}		return @{module};${line.separator}	});${line.separator}}</echo>
 
 		</sequential>
 
@@ -160,12 +160,20 @@ if( typeof define === "function" )
 	<target name="compile.src" description="Compile sources files from TypeScript to JavaScript">
 
 		<!-- Compile a single JavaScript file in the bin dir for release -->
-		<TypeScriptCompileDir
+		<TypeScriptRecurse
 			src="${src.dir}"
 			out="${release-file-path}"
-			module="amd"
 			target="ES5"
-			usedefine="true"
+			module="amd"
+		/>
+
+		<!-- Add the AMD module define wrapper to the generated module file -->
+		<DefineAmdModule
+			in="${release-file-path}"
+			out="${release-file-path}"
+			module="EmployeeAdmin"
+			paths="'puremvc'"
+			params="puremvc"
 		/>
 
 	</target>
