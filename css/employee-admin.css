@@ -160,7 +160,9 @@ HTML,BODY
 
 .user-form-panel-content label.fieldError
 {
-	background-image:url("../img/field_error.gif");
+	background-image:url("../img/field_error.gif") ;
+    background-repeat:no-repeat;
+	background-position:center right;
 }
 
 .user-form-panel-content input[type=text],
@@ -177,7 +179,7 @@ HTML,BODY
 
 .user-form-panel-content input.fieldError
 {
-	background:#FFD087;
+	background: #fff09b;
 }
 
 .user-form-panel-content select
@@ -189,7 +191,7 @@ HTML,BODY
 
 .user-form-panel-content select.fieldError
 {
-	background:#FFD087;
+	background:#fff09b;
 }
 
 
