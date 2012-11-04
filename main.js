@@ -50,7 +50,7 @@ require.config
 );
 
 /***************************************************************************************************
- * Start loading of each module and its dependencies.
+ * Start loading each module and its dependencies.
  */
 require
 (
