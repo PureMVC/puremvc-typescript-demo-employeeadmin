@@ -397,6 +397,12 @@ module EmployeeAdmin
 			else
 				this.setFieldError( "department", false );
 
+			var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+			if( this.email.val() != "" && !emailReg.test(this.email.val()) )
+				this.setFieldError( "email", error = true );
+			else
+				this.setFieldError( "email", false );
+
 			return error;
 		}
 
