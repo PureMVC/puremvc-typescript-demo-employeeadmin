@@ -39,8 +39,8 @@ To build the project you'll need to download and install :
 
 1. Rename the file [user.properties.sample](https://github.com/PureMVC/puremvc-typescript-standard-framework/blob/master/user.properties.sample) to **user.properties**
 2. Edit the file and replace **MY_TYPESCRIPT_COMPILER_PATH** bt the real TypeScript compiler full
-system path. e.g. on windows: `<code>`typescript.compiler.path = C:/Documents and Settings/{USER NAME HERE}/Application Data/npm/tsc.cmd
-3. Use your favorite editor to run Ant or simply type `<code>`ant puremvc-typescript-standard-framework/build
+system path. e.g. on windows: <code>typescript.compiler.path = C:/Documents and Settings/{USER NAME HERE}/Application Data/npm/tsc.cmd
+3. Use your favorite editor to run Ant or simply type <code>ant puremvc-typescript-standard-framework/build
 
 ## License
 * PureMVC TypeScript Demo - Employee Admin (jQuery) - Copyright © 2012 Frederic Saunier
