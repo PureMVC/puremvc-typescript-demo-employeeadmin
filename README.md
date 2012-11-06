@@ -14,7 +14,7 @@ pull request by your own, this will be more than welcome.
 * [Discussion](http://www.tekool.net/blog/puremvc-typescript/)
 
 ## Screenshot
-![PureMVC TypeScript Demo: Employee Admin (jQuery)](https://github.com/PureMVC/puremvc-typescript-demo-jquery-employeeadmin/screenshot.png)
+![PureMVC TypeScript Demo: Employee Admin (jQuery)](https://raw.github.com/tekool/puremvc-typescript-demo-employeeadmin/master/screenshot.png)
 
 ## Status
 Development - [Version 1.0](https://github.com/PureMVC/puremvc-typescript-demo-jquery-employeeadmin/blob/master/VERSION)
