@@ -19,7 +19,8 @@ pull request by your own, this will be more than welcome.
 ## Status
 Development - [Version 1.0](https://github.com/PureMVC/puremvc-typescript-demo-jquery-employeeadmin/blob/master/VERSION)
 
-Considered as «development» while the TypeScript language specification is not finalized.
+Will probably stay tagged as development while TypeScript language specification is not finalized,
+but remember that any TypeScript PureMVC project will output ready for production JavaScript.
 
 ## Platforms / Technologies
 * [TypeScript](http://www.typescriptlang.org/)
@@ -35,7 +36,7 @@ Considered as «development» while the TypeScript language specification is not
 To build the project you'll need to download and install :
 * [TypeScript compiler](http://www.typescriptlang.org/#Download)
 * [Ant](http://ant.apache.org/)
-* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html/) (Ant specifically need a JDK not a simple JRE, don't forget to change environment var JAVA_HOME to the JDK path).
+* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html/) (Ant need a JDK not a JRE, also don't forget to change environment var JAVA_HOME to the JDK path).
 
 1. Rename the file [user.properties.sample](https://github.com/PureMVC/puremvc-typescript-standard-framework/blob/master/user.properties.sample) to **user.properties**
 2. Edit the file and replace **MY_TYPESCRIPT_COMPILER_PATH** bt the real TypeScript compiler full
