@@ -9,8 +9,8 @@ this point in a near future. The demo will be tested and updated on each new Typ
 release. If it's not sufficiently up to date for you, please open an issue on Github or just send a
 pull request by your own, this will be more than welcome.
 
-* [Live Demo](http://puremvc.org/pages/demos/TS/PureMVC_TS_Demo_EmployeeAdmin)
-* [Discussion](http://www.tekool.net/blog/puremvc-typescript/)
+* [Live Demo](http://darkstar.puremvc.org/content_header.html?url=http://puremvc.org/pages/demos/TS/PureMVC_TS_Demo_EmployeeAdmin&desc=PureMVC%20TypeScript%20Demo:%20Employee%20Admin)
+* [Discussion](http://forums.puremvc.org/index.php?topic=2070.0)
 
 ## Screenshot
 ![PureMVC TypeScript Demo: Employee Admin](http://puremvc.org/pages/images/screenshots/PureMVC-Shot-TS-EmployeeAdmin.png)
