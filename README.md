@@ -1,20 +1,19 @@
-## [PureMVC](http://puremvc.github.com/) [TypeScript](https://github.com/puremvc/puremvc-typescript-standard-framework/wiki) Demo: Employee Admin (jQuery)
-This demo illustrates techniques for performing routine client-side maintenance operations in a PureMVC-based TypeScript jQuery application.
+## [PureMVC](http://puremvc.github.com/) [TypeScript](https://github.com/puremvc/puremvc-typescript-standard-framework/wiki) Demo: Employee Admin
+This demo illustrates techniques for performing routine client-side maintenance operations in a PureMVC-based TypeScript application.
 
-PureMVC framework and Employee Admin demo library files are loaded using Require.js. UI components
-are displayed using jQuery, jQuery UI and jQgrid.
+PureMVC framework and Employee Admin demo library files are loaded using Require.js. UI components are displayed using jQuery, jQuery UI and jQgrid.
 
-The demo is compiled as an AMD module using an Ant script that palliate TypeScript compiler
+The demo is compiled as an AMD module using an Ant script that palliate TypeScript compiler 
 issues building a single module using multiple TypeScript files. TypeScript will probably evolve on
 this point in a near future. The demo will be tested and updated on each new TypeScript compiler
 release. If it's not sufficiently up to date for you, please open an issue on Github or just send a
 pull request by your own, this will be more than welcome.
 
-* [Live Demo](http://www.tekool.net/blogfiles/puremvc-typescript/puremvc-typescript-demo-jquery-employeeadmin/)
+* [Live Demo](http://puremvc.org/pages/demos/TS/PureMVC_TS_Demo_EmployeeAdmin)
 * [Discussion](http://www.tekool.net/blog/puremvc-typescript/)
 
 ## Screenshot
-![PureMVC TypeScript Demo: Employee Admin (jQuery)](https://raw.github.com/tekool/puremvc-typescript-demo-employeeadmin/master/screenshot.png)
+![PureMVC TypeScript Demo: Employee Admin](http://puremvc.org/pages/images/screenshots/PureMVC-Shot-TS-EmployeeAdmin.png)
 
 ## Status
 Development - [Version 1.0](https://github.com/PureMVC/puremvc-typescript-demo-jquery-employeeadmin/blob/master/VERSION)
