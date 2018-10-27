@@ -16,7 +16,7 @@ pull request by your own, this will be more than welcome.
 ![PureMVC TypeScript Demo: Employee Admin](http://puremvc.org/pages/images/screenshots/PureMVC-Shot-TS-EmployeeAdmin.png)
 
 ## Status
-Development - [Version 1.0](https://github.com/PureMVC/puremvc-typescript-demo-jquery-employeeadmin/blob/master/VERSION)
+Production - [Version 1.0](https://github.com/PureMVC/puremvc-typescript-demo-jquery-employeeadmin/blob/master/VERSION)
 
 Will probably stay tagged as development while TypeScript language specification is not finalized,
 but remember that any TypeScript PureMVC project will output ready for production JavaScript.
